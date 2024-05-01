@@ -12,22 +12,20 @@ function LoginForm() {
   };
 
   return (
-    <div>
+    <form action="submit" onSubmit={handleSubmit}>
       <h1>Bienvenue chez nous !</h1>
       <br />
       <h2>Connectez-vous</h2>
-      <form action="submit" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="firstname"
-          value={inputValue}
-          onChange={handleChange}
-          placeholder="Entrez votre prénom..."
-          required
-        />
-        <button type="submit">Accédez à votre espace</button>
-      </form>
-    </div>
+      <input
+        type="text"
+        name="firstname"
+        value={inputValue}
+        onChange={handleChange}
+        placeholder="Entrez votre prénom..."
+        required
+      />
+      <button type="submit">Accédez à votre espace</button>
+    </form>
   );
 }
 
