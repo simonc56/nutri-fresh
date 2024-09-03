@@ -1,0 +1,20 @@
+// @use "../../../theme/colors" as colors;
+@use "../../theme/theme";
+
+div.logo-text {
+  margin: 5rem 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(2.5);
+  & span {
+    color: theme.$color_primary_burger;
+    font-family: "Amatic SC";
+    font-weight: 700;
+    font-size: 44px;
+  }
+  & img {
+    width: 80px;
+    margin-inline: 0.4rem;
+  }
+}
