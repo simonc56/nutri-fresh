@@ -1,7 +1,8 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { FormEvent, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { PiUserCircleFill } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
+import TextInput from "./TextInput";
 
 import "./LoginForm.scss";
 
@@ -14,28 +15,20 @@ function LoginForm() {
     setInputValue("");
     navigate(`/order/${inputValue}`);
   };
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
 
   return (
     <form className="login-form" action="submit" onSubmit={handleSubmit}>
       <h1>Bienvenue chez nous !</h1>
       <br />
       <h2>Connectez-vous</h2>
-      <div className="input-firstname">
-        <i className="icon">
-          <PiUserCircleFill />
-        </i>
-        <input
-          type="text"
-          name="firstname"
-          value={inputValue}
-          onChange={handleChange}
-          placeholder="Entrez votre prénom..."
-          required
-        />
-      </div>
+      <TextInput
+        value={inputValue}
+        setValue={setInputValue}
+        Icon={<PiUserCircleFill />}
+        placeholder="Entrez votre prénom..."
+        aria-label="Entrez votre prénom"
+        required
+      />
       <button type="submit">
         Accéder à mon espace <IoIosArrowForward />
       </button>

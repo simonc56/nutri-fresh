@@ -25,24 +25,6 @@
   }
 
   align-items: center;
-  & .input-firstname {
-    color: theme.$color_greyDark;
-    position: relative;
-    & .icon {
-      position: absolute;
-      left: 13px;
-      top: 19px;
-    }
-    & input {
-      color: theme.$color_dark;
-      padding: 18px 38px;
-      width: 400px;
-      text-align: left;
-      border: none;
-      border-radius: 5px;
-      font-size: 14px;
-    }
-  }
   & button {
     font-family: "Arial";
     font-weight: 700;
