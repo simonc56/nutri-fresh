@@ -7,4 +7,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  & div.logo-text {
+    margin: 7rem 0 3rem;
+    transform: scale(2.5);
+  }
 }

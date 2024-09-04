@@ -2,11 +2,9 @@
 @use "../../theme/theme";
 
 div.logo-text {
-  margin: 5rem 0 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: scale(2.5);
   & span {
     color: theme.$color_primary_burger;
     font-family: "Amatic SC";
