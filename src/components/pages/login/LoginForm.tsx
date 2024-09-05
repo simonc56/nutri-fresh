@@ -27,7 +27,7 @@ function LoginForm() {
         setValue={setInputValue}
         Icon={<PiUserCircleFill />}
         type="text"
-        placeholder="Entrez votre prénom..."
+        placeholder="Entrez votre prénom"
         aria-label="Entrez votre prénom"
         required
       />

@@ -23,4 +23,8 @@
     color: theme.$color_primary;
     border: 1px solid theme.$color_primary;
   }
+  &:active {
+    background-color: theme.$color_primary;
+    color: theme.$color_white;
+  }
 }
