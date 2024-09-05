@@ -1,0 +1,28 @@
+// @use "../../../theme/colors" as colors;
+@use "../../../theme/theme";
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  h1,
+  h2 {
+    color: theme.$color_white;
+    font-family: "Amatic SC";
+  }
+
+  h1 {
+    font-size: theme.size(P5);
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    width: 400px;
+    border-bottom: 0.15rem solid theme.$color_primary;
+  }
+
+  h2 {
+    font-size: 36px;
+    margin: 30px 0 10px;
+  }
+
+  align-items: center;
+}

@@ -1,0 +1,68 @@
+$color_dark: #17161a;
+$color_incognito: #333;
+$color_white: #fff;
+$color_background_white: #f5f5f7;
+$color_background_dark: #292729;
+$color_primary: #ffa01b;
+$color_green: green;
+$color_success: #60bd4f;
+$color_red: #e25549;
+$color_redSecondary: #c4151c;
+$color_blue: #51a7e1;
+$color_greyLight: #e4e5e9;
+$color_greyMedium: #a7a8ad;
+$color_greySemiDark: #93a2b1;
+$color_greyDark: #6f737e;
+$color_greyBlue: #747b91;
+
+$spacing: (
+  xxs: 4px,
+  xs: 8px,
+  sm: 12px,
+  md: 20px,
+  lg: 32px,
+  xl: 52px,
+  xxl: 84px,
+);
+
+$sizes: (
+  XXXS: 8px,
+  XXS: 10px,
+  XS: 12px,
+  P0: 15px,
+  P1: 18px,
+  P2: 20px,
+  P3: 24px,
+  P4: 36px,
+  P5: 48px,
+  P6: 60px,
+);
+
+$borderRadius: (
+  subtle: 1,
+  round: 5px,
+  extraRound: 15px,
+  circle: 50%,
+);
+
+$weights: (
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semiBold: 600,
+  bold: 700,
+  heavy: 800,
+);
+
+@function spacing($spacingName) {
+  @return map-get($spacings, $spacingName);
+}
+@function size($sizeName) {
+  @return map-get($sizes, $sizeName);
+}
+@function radius($radiusName) {
+  @return map-get($borderRadius, $radiusName);
+}
+@function weight($weightName) {
+  @return map-get($weights, $weightName);
+}

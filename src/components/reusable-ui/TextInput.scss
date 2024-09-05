@@ -1,0 +1,24 @@
+@use "../../theme/theme";
+
+.input-firstname {
+  color: theme.$color_greyDark;
+  position: relative;
+  & .icon {
+    position: absolute;
+    left: 13px;
+    top: 19px;
+  }
+  & input {
+    color: theme.$color_dark;
+    background-color: theme.$color_background_white;
+    padding: 18px 38px;
+    width: 400px;
+    text-align: left;
+    border: none;
+    border-radius: theme.radius(round);
+    font-size: theme.size(P0);
+    &::placeholder {
+      color: theme.$color_greyMedium;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+// @use "../../../theme/colors" as colors;
+@use "../../../theme/theme";
+
+div.logo-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & span {
+    color: theme.$color_primary;
+    font-family: "Amatic SC";
+    font-weight: theme.weight(bold);
+    font-size: theme.size(P5);
+  }
+  & img {
+    width: 80px;
+    margin-inline: 0.4rem;
+  }
+}
