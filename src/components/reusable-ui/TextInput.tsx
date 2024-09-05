@@ -21,7 +21,7 @@ export default function TextInput({
   return (
     <div className="input-firstname">
       <i className="icon">{Icon}</i>
-      <input type="text" value={value} onChange={handleChange} {...extraProps} />
+      <input value={value} onChange={handleChange} {...extraProps} />
     </div>
   );
 }

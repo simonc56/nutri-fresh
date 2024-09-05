@@ -1,15 +1,15 @@
 // @use "../../../theme/colors" as colors;
-@use "../../theme/theme";
+@use "../../../theme/theme";
 
 div.logo-text {
   display: flex;
   justify-content: center;
   align-items: center;
   & span {
-    color: theme.$color_primary_burger;
+    color: theme.$color_primary;
     font-family: "Amatic SC";
-    font-weight: 700;
-    font-size: 44px;
+    font-weight: theme.weight(bold);
+    font-size: theme.size(P5);
   }
   & img {
     width: 80px;

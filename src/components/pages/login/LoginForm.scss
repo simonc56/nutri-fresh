@@ -11,7 +11,7 @@
   }
 
   h1 {
-    font-size: 48px;
+    font-size: theme.size(P5);
     text-align: center;
     margin: 0;
     padding: 20px;
@@ -25,28 +25,4 @@
   }
 
   align-items: center;
-  & button {
-    font-family: "Arial";
-    font-weight: 700;
-    font-size: 15px;
-    color: theme.$color_white;
-    background-color: theme.$color_primary;
-    border: none;
-    border-radius: 5px;
-    height: 53px;
-    padding-inline: 1rem;
-    width: 400px;
-    margin-top: 1rem;
-    cursor: pointer;
-    & svg {
-      position: relative;
-      top: 2px;
-      left: 6px;
-    }
-    &:hover {
-      background-color: theme.$color_white;
-      color: theme.$color_primary;
-      border: 1px solid theme.$color_primary;
-    }
-  }
 }

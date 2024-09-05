@@ -2,8 +2,9 @@ import { FormEvent, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { PiUserCircleFill } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
-import TextInput from "./TextInput";
+import TextInput from "../../reusable-ui/TextInput";
 
+import PrimaryButton from "../../reusable-ui/PrimaryButton";
 import "./LoginForm.scss";
 
 function LoginForm() {
@@ -25,13 +26,12 @@ function LoginForm() {
         value={inputValue}
         setValue={setInputValue}
         Icon={<PiUserCircleFill />}
+        type="text"
         placeholder="Entrez votre prénom..."
         aria-label="Entrez votre prénom"
         required
       />
-      <button type="submit">
-        Accéder à mon espace <IoIosArrowForward />
-      </button>
+      <PrimaryButton label="Accéder à mon espace" Icon={<IoIosArrowForward />} type="submit" />
     </form>
   );
 }

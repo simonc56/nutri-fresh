@@ -1,4 +1,4 @@
-@use "../../../theme/theme";
+@use "../../theme/theme";
 
 .input-firstname {
   color: theme.$color_greyDark;
@@ -10,11 +10,15 @@
   }
   & input {
     color: theme.$color_dark;
+    background-color: theme.$color_background_white;
     padding: 18px 38px;
     width: 400px;
     text-align: left;
     border: none;
-    border-radius: 5px;
-    font-size: 14px;
+    border-radius: theme.radius(round);
+    font-size: theme.size(P0);
+    &::placeholder {
+      color: theme.$color_greyMedium;
+    }
   }
 }

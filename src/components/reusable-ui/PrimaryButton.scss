@@ -1,0 +1,26 @@
+@use "../../theme/theme";
+
+.primary-button {
+  font-family: "Arial";
+  font-weight: theme.weight(bold);
+  font-size: theme.size(P0);
+  color: theme.$color_white;
+  background-color: theme.$color_primary;
+  border: none;
+  border-radius: theme.radius(round);
+  height: 53px;
+  padding-inline: 1rem;
+  width: 400px;
+  margin-top: 1rem;
+  cursor: pointer;
+  & svg {
+    position: relative;
+    top: 2px;
+    left: 6px;
+  }
+  &:hover {
+    background-color: theme.$color_white;
+    color: theme.$color_primary;
+    border: 1px solid theme.$color_primary;
+  }
+}
