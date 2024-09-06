@@ -1,0 +1,13 @@
+@use "../../../theme/theme";
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: theme.$color_white;
+  height: 100px;
+  padding-left: 16px;
+  & .logo-text {
+    transform: scale(0.9);
+  }
+}
