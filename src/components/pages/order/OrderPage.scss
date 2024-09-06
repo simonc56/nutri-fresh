@@ -1,10 +1,13 @@
+@use "../../../theme/theme";
+
 .order-page {
   background-color: orange;
   height: 100vh;
   display: flex;
   justify-content: center;
   & .container {
-    background-color: red;
+    background-color: theme.$color_white;
+    border-radius: theme.radius(extraRound);
     margin: 1rem;
     max-width: 1400px;
     flex-grow: 1;
