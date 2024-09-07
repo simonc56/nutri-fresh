@@ -5,7 +5,7 @@ import Profile from "./Profile";
 export default function Navbar({ username }: { username: string }) {
   return (
     <nav className="navbar">
-      <Logo />
+      <Logo className="logo-order-page" onClick={() => window.location.reload()} />
       <Profile username={username} />
     </nav>
   );
