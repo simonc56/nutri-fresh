@@ -1,14 +1,12 @@
 .login-page {
   min-height: 100vh;
-  background: rgba(0, 0, 0, 0.6) url("../../../assets/burger-background.jpg");
+  background: rgba(0, 0, 0, 0.6) url("../../../assets/burger-background.webp");
   background-blend-mode: darken;
   background-size: cover;
   background-position: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  & div.logo-text {
-    margin: 7rem 0 3rem;
-    transform: scale(2.5);
-  }
+  justify-content: center;
+  gap: 4rem;
 }

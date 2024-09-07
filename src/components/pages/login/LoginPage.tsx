@@ -6,7 +6,7 @@ import "./LoginPage.scss";
 export default function LoginPage() {
   return (
     <div className="login-page">
-      <Logo />
+      <Logo className="logo-login-page" />
       <LoginForm />
     </div>
   );

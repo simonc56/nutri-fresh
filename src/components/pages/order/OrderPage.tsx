@@ -1,20 +1,18 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
+import Main from "./Main";
+import Navbar from "./Navbar";
+import "./OrderPage.scss";
 
 function OrderPage() {
-  const { name } = useParams();
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate("/");
-  };
+  const { username } = useParams();
 
   return (
-    <div>
-      <h1>Bonjour {name}</h1>
-      <br />
-      <button type="button" onClick={handleClick}>
-        Déconnexion
-      </button>
+    <div className="order-page">
+      <div className="container">
+        <Navbar username={username || ""} />
+        <Main />
+      </div>
     </div>
   );
 }

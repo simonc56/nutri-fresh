@@ -2,13 +2,13 @@ import logo from "../../../assets/logo-orange.png";
 
 import "./Logo.scss";
 
-function Logo() {
+function Logo({ className, onClick }: { className?: string; onClick?: () => void }) {
   return (
-    <div className="logo-text">
-      <span>crazee</span>
+    <h1 className={`logo-text ${className}`} onClick={onClick}>
+      <span>CRAZEE</span>
       <img src={logo} />
-      <span>burger</span>
-    </div>
+      <span>BURGER</span>
+    </h1>
   );
 }
 

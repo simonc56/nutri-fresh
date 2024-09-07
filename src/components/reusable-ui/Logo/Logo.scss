@@ -1,7 +1,7 @@
 // @use "../../../theme/colors" as colors;
 @use "../../../theme/theme";
 
-div.logo-text {
+.logo-text {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,10 +9,17 @@ div.logo-text {
     color: theme.$color_primary;
     font-family: "Amatic SC";
     font-weight: theme.weight(bold);
-    font-size: theme.size(P5);
+    font-size: theme.size(P4);
+    letter-spacing: 1.5px;
   }
   & img {
     width: 80px;
     margin-inline: 0.4rem;
+  }
+  &.logo-login-page {
+    transform: scale(2.5);
+  }
+  &.logo-order-page {
+    cursor: pointer;
   }
 }
