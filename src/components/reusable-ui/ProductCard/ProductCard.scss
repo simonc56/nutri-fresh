@@ -1,0 +1,42 @@
+@use "../../../theme/theme";
+
+.product-card {
+  box-sizing: border-box;
+  width: 240px;
+  height: 330px;
+  border-radius: theme.radius(extraRound);
+  background-color: theme.$color_white;
+  box-shadow: -8px 8px 20px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: theme.spacing(md);
+  & .product-picture {
+    margin: auto;
+    max-width: 200px;
+    max-height: 145px;
+  }
+  & .product-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: theme.$color_primary;
+    & .product-title {
+      font-family: "Amatic SC";
+      font-size: theme.size(P4);
+      font-weight: theme.weight(bold);
+      color: theme.$color_dark;
+      text-align: left;
+      align-self: self-start;
+      margin-bottom: 0.6rem;
+    }
+    & .product-action {
+      font-size: theme.size(P0);
+      font-weight: theme.weight(regular);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}

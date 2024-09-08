@@ -1,17 +1,15 @@
-@use "../../theme/theme";
+@use "../../../theme/theme";
 
 .primary-button {
   font-family: "Arial";
   font-weight: theme.weight(bold);
-  font-size: theme.size(P0);
+  font-size: theme.size(XS);
   color: theme.$color_white;
   background-color: theme.$color_primary;
   border: none;
   border-radius: theme.radius(round);
-  height: 53px;
-  padding-inline: 1rem;
-  width: 400px;
-  margin-top: 1rem;
+  padding-inline: 1.5rem;
+  height: 2.5rem;
   cursor: pointer;
   & svg {
     position: relative;
@@ -26,5 +24,10 @@
   &:active {
     background-color: theme.$color_primary;
     color: theme.$color_white;
+  }
+  &.primary-button-large {
+    width: 400px;
+    height: 53px;
+    font-size: theme.size(P0);
   }
 }

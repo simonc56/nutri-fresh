@@ -2,9 +2,9 @@ import { FormEvent, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { PiUserCircleFill } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
-import TextInput from "../../reusable-ui/TextInput";
+import TextInput from "../../reusable-ui/TextInput/TextInput";
 
-import PrimaryButton from "../../reusable-ui/PrimaryButton";
+import PrimaryButton from "../../reusable-ui/PrimaryButton/PrimaryButton";
 import "./LoginForm.scss";
 
 function LoginForm() {
@@ -31,7 +31,12 @@ function LoginForm() {
         aria-label="Entrez votre prénom"
         required
       />
-      <PrimaryButton label="Accéder à mon espace" Icon={<IoIosArrowForward />} type="submit" />
+      <PrimaryButton
+        label="Accéder à mon espace"
+        Icon={<IoIosArrowForward />}
+        type="submit"
+        className="primary-button-large"
+      />
     </form>
   );
 }

@@ -1,4 +1,4 @@
-import logo from "../../../assets/logo-orange.png";
+import logo from "/images/logo-orange.png";
 
 import "./Logo.scss";
 
