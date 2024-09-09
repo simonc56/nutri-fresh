@@ -3,31 +3,35 @@
 .profile {
   margin-right: 50px;
   display: flex;
-  // align-items: center;
-  gap: 0.8rem;
-  & .user-info {
-    color: theme.$color_greyBlue;
-    text-align: right;
-    & p {
-      line-height: 1rem;
-      & b {
-        color: theme.$color_primary;
-      }
-    }
-    & a {
+  align-items: center;
+  gap: 50px;
+  & .user {
+    display: flex;
+    gap: 0.8rem;
+    & .user-info {
       color: theme.$color_greyBlue;
-      font-size: theme.size(XXS);
-      font-weight: theme.size(medium);
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
+      text-align: right;
+      & p {
+        line-height: 1rem;
+        & b {
+          color: theme.$color_primary;
+        }
+      }
+      & a {
+        color: theme.$color_greyBlue;
+        font-size: theme.size(XXS);
+        font-weight: theme.size(medium);
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
-  }
-  & .user-picture svg {
-    color: theme.$color_greyBlue;
-    height: theme.size(P4);
-    width: theme.size(P4);
-    margin: auto;
+    & .user-picture svg {
+      color: theme.$color_greyBlue;
+      height: theme.size(P4);
+      width: theme.size(P4);
+      margin: auto;
+    }
   }
 }

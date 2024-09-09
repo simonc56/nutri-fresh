@@ -30,6 +30,10 @@
       text-align: left;
       align-self: self-start;
       margin-bottom: 0.6rem;
+      overflow: hidden;
+      max-width: 100%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
     & .product-action {
       font-size: theme.size(P0);

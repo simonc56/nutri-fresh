@@ -1,19 +1,43 @@
+import { useState } from "react";
 import { BsPersonCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { notify } from "../../../../utils/notification";
+import ToggleButton from "../../../reusable-ui/ToggleButton/ToggleButton";
 import "./Profile.scss";
 
-export default function Profile({ username }: { username: string }) {
+type ProfileProps = {
+  username: string;
+  isAdmin?: boolean;
+};
+
+export default function Profile({ username, isAdmin = true }: ProfileProps) {
+  const [isAdminMode, setIsAdminMode] = useState(false);
+
+  const toggleAdminMode = () => {
+    if (!isAdminMode) notify("Mode admin activé");
+    setIsAdminMode(!isAdminMode);
+  };
+
   return (
     <div className="profile">
-      <div className="admin-mode"></div>
-      <div className="user-info">
-        <p>
-          Hey, <b>{username}</b>
-        </p>
-        <Link to="/">Se déconnecter</Link>
-      </div>
-      <div className="user-picture">
-        <BsPersonCircle />
+      {isAdmin && (
+        <ToggleButton
+          isChecked={isAdminMode}
+          onToggle={toggleAdminMode}
+          labelIfChecked="Désactiver le mode admin"
+          labelIfUnchecked="Activer le mode admin"
+        />
+      )}
+      <div className="user">
+        <div className="user-info">
+          <p>
+            Hey, <b>{username}</b>
+          </p>
+          <Link to="/">Se déconnecter</Link>
+        </div>
+        <div className="user-picture">
+          <BsPersonCircle />
+        </div>
       </div>
     </div>
   );
