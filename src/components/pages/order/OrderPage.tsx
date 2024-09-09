@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 
-import Main from "./Main";
-import Navbar from "./Navbar";
+import Main from "./Main/Main";
+import Navbar from "./Navbar/Navbar";
 import "./OrderPage.scss";
 
 function OrderPage() {

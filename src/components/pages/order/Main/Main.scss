@@ -1,4 +1,4 @@
-@use "../../../theme/theme";
+@use "../../../../theme/_theme.scss";
 
 .main {
   background-color: theme.$color_background_white;
@@ -6,10 +6,6 @@
   border-bottom-right-radius: theme.radius(extraRound);
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   padding: theme.spacing(xl);
-  display: flex;
-  gap: theme.spacing(xl) theme.spacing(xxl);
-  flex-wrap: wrap;
-  justify-content: center;
   overflow-y: scroll;
   scrollbar-width: none;
 }
