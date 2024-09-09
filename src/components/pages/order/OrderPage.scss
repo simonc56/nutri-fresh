@@ -8,6 +8,7 @@
   & .container {
     background-color: theme.$color_white;
     border-radius: theme.radius(extraRound);
+    overflow-y: hidden;
     margin: 1rem;
     max-width: 1400px;
     display: flex;
