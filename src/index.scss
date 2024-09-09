@@ -1,3 +1,5 @@
+@use "./theme/_theme.scss";
+
 body,
 p,
 input,
@@ -8,4 +10,8 @@ h3 {
   padding: 0;
   box-sizing: border-box;
   font-family: "Open Sans";
+}
+
+.Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--info {
+  background-color: theme.$color_background_dark;
 }
