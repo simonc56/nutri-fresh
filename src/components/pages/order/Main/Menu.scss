@@ -1,0 +1,8 @@
+@use "../../../../theme/_theme.scss";
+
+.menu {
+  display: flex;
+  gap: theme.spacing(xl) theme.spacing(xxl);
+  flex-wrap: wrap;
+  justify-content: center;
+}
