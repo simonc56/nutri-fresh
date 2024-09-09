@@ -1,0 +1,31 @@
+@use "../../../../../theme/_theme.scss";
+
+.admin-tabs {
+  background-color: transparent;
+  display: flex;
+  position: absolute;
+  height: 43px;
+  top: -43px;
+  left: 80px;
+  .admin-tab {
+    background-color: theme.$color_white;
+    border: 1px solid theme.$color_greyMedium;
+    border-bottom: none;
+    border-top-left-radius: theme.radius(round);
+    border-top-right-radius: theme.radius(round);
+    margin-right: 1px;
+    min-width: 60px;
+    padding-inline: theme.spacing(md);
+    font-size: theme.size(P0);
+    color: theme.$color_greyMedium;
+    font-weight: theme.weight(medium);
+    cursor: pointer;
+    & svg {
+      position: relative;
+      top: 2px;
+    }
+    & .tab-label {
+      margin-left: theme.spacing(xs);
+    }
+  }
+}
