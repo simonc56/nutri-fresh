@@ -19,7 +19,7 @@
     font-size: theme.size(SM);
     color: theme.$color_greyMedium;
     font-weight: theme.weight(medium);
-    box-shadow: 0px -6px 8px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: theme.shadow(subtle);
     cursor: pointer;
     // toggle tab can't be underlined at hover because has no text
     &:nth-child(1):hover svg {
@@ -39,7 +39,7 @@
     }
     &.active {
       background-color: theme.$color_dark;
-      border: 1px solid theme.$color_dark;
+      border: none;
       color: theme.$color_white;
       &:hover .tab-label {
         border-bottom: none;

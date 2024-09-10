@@ -6,7 +6,7 @@
   height: 330px;
   border-radius: theme.radius(extraRound);
   background-color: theme.$color_white;
-  box-shadow: -8px 8px 20px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: theme.shadow(medium);
   display: flex;
   flex-direction: column;
   justify-content: space-between;

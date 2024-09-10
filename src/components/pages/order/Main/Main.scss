@@ -2,7 +2,7 @@
 
 .main {
   background-color: theme.$color_background_white;
-  box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+  box-shadow: theme.shadow(strong);
   border-bottom-left-radius: theme.radius(extraRound);
   border-bottom-right-radius: theme.radius(extraRound);
   display: flex;
