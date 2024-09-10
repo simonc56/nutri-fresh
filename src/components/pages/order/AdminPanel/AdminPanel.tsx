@@ -1,21 +1,21 @@
+import { useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
-import { FiChevronDown } from "react-icons/fi";
 import { MdModeEditOutline } from "react-icons/md";
 import AdminContent from "./AdminContent/AdminContent";
 import "./AdminPanel.scss";
-import AdminTabs from "./AdminTabs/AdminTabs";
+import AdminTabs, { TabProps } from "./AdminTabs/AdminTabs";
 
 export default function AdminPanel() {
+  const [tabs, setTabs] = useState<TabProps[]>([
+    { icon: <AiOutlinePlus />, name: "Ajouter un produit", active: true },
+    { icon: <MdModeEditOutline />, name: "Modifier un produit" },
+  ]);
+  const [contentPanel, setContentPanel] = useState("Ajouter un produit");
+
   return (
-    <section className="admin-panel">
-      <AdminTabs
-        tabs={[
-          { icon: <FiChevronDown /> },
-          { icon: <AiOutlinePlus />, name: "Ajouter un produit" },
-          { icon: <MdModeEditOutline />, name: "Modifier un produit" },
-        ]}
-      />
-      <AdminContent />
-    </section>
+    <div className="admin-panel">
+      <AdminTabs tabs={tabs} setTabs={setTabs} />
+      <AdminContent content={contentPanel} />
+    </div>
   );
 }
