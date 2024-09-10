@@ -1,4 +1,5 @@
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { useOrderContext } from "../../../../../context/OrderContext";
 import "./AdminTabs.scss";
 
 export type TabProps = {
@@ -6,13 +7,6 @@ export type TabProps = {
   name?: string | undefined;
   active?: boolean;
   onClick?: () => void;
-};
-
-type AdminTabsProps = {
-  tabs: TabProps[];
-  setTabs: React.Dispatch<React.SetStateAction<TabProps[]>>;
-  isPanelOpen: boolean;
-  togglePanel: () => void;
 };
 
 function Tab({ icon, name, active, onClick }: TabProps) {
@@ -23,8 +17,13 @@ function Tab({ icon, name, active, onClick }: TabProps) {
   );
 }
 
-export default function AdminTabs({ tabs, setTabs, isPanelOpen, togglePanel }: AdminTabsProps) {
-  const handleClick = (index: number) => {
+export default function AdminTabs() {
+  const { isPanelOpen, setIsPanelOpen, tabs, setTabs, setContentPanel } = useOrderContext();
+  const togglePanel = () => {
+    setIsPanelOpen((prev) => !prev);
+  };
+
+  const clickToChangeTab = (index: number) => {
     setTabs((prevTabs) =>
       prevTabs.map((tab, i) => ({
         ...tab,
@@ -32,13 +31,21 @@ export default function AdminTabs({ tabs, setTabs, isPanelOpen, togglePanel }: A
       }))
     );
     if (!isPanelOpen) togglePanel();
+    // to be continued...
+    setContentPanel(tabs[index].name || "");
   };
 
   return (
     <div className="admin-tabs">
-      <Tab icon={isPanelOpen ? <FiChevronDown /> : <FiChevronUp />} onClick={togglePanel} />
+      <Tab icon={isPanelOpen ? <FiChevronDown /> : <FiChevronUp />} onClick={togglePanel} active={!isPanelOpen} />
       {tabs.map((tab, index) => (
-        <Tab icon={tab.icon} name={tab.name} active={tab.active || false} onClick={() => handleClick(index)} />
+        <Tab
+          key={tab.name}
+          icon={tab.icon}
+          name={tab.name}
+          active={tab.active || false}
+          onClick={() => clickToChangeTab(index)}
+        />
       ))}
     </div>
   );
