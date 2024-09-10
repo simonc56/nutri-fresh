@@ -1,4 +1,4 @@
-import { FiChevronDown } from "react-icons/fi";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import "./AdminTabs.scss";
 
 export type TabProps = {
@@ -11,6 +11,8 @@ export type TabProps = {
 type AdminTabsProps = {
   tabs: TabProps[];
   setTabs: React.Dispatch<React.SetStateAction<TabProps[]>>;
+  isPanelOpen: boolean;
+  togglePanel: () => void;
 };
 
 function Tab({ icon, name, active, onClick }: TabProps) {
@@ -21,7 +23,7 @@ function Tab({ icon, name, active, onClick }: TabProps) {
   );
 }
 
-export default function AdminTabs({ tabs, setTabs }: AdminTabsProps) {
+export default function AdminTabs({ tabs, setTabs, isPanelOpen, togglePanel }: AdminTabsProps) {
   const handleClick = (index: number) => {
     setTabs((prevTabs) =>
       prevTabs.map((tab, i) => ({
@@ -29,10 +31,12 @@ export default function AdminTabs({ tabs, setTabs }: AdminTabsProps) {
         active: i === index,
       }))
     );
+    if (!isPanelOpen) togglePanel();
   };
+
   return (
     <div className="admin-tabs">
-      <Tab icon={<FiChevronDown />} />
+      <Tab icon={isPanelOpen ? <FiChevronDown /> : <FiChevronUp />} onClick={togglePanel} />
       {tabs.map((tab, index) => (
         <Tab icon={tab.icon} name={tab.name} active={tab.active || false} onClick={() => handleClick(index)} />
       ))}

@@ -10,7 +10,7 @@
   .admin-tab {
     background-color: theme.$color_white;
     border: 1px solid theme.$color_greyLight;
-    border-bottom: none;
+    border-bottom: 2px solid theme.$color_greyLight;
     border-top-left-radius: theme.radius(round);
     border-top-right-radius: theme.radius(round);
     margin-right: 1px;
@@ -21,13 +21,13 @@
     font-weight: theme.weight(medium);
     box-shadow: theme.shadow(subtle);
     cursor: pointer;
-    // toggle tab can't be underlined at hover because has no text
-    &:nth-child(1):hover svg {
-      top: 5px;
-    }
     // underline on hover
-    &:hover .tab-label {
-      border-bottom: 2px solid theme.$color_greyMedium;
+    &:hover {
+      border-bottom-color: transparent;
+      & .tab-label {
+        border-bottom: 2px solid theme.$color_greyMedium;
+        padding-bottom: 2px;
+      }
     }
     & svg {
       position: relative;
@@ -43,7 +43,6 @@
       color: theme.$color_white;
       &:hover .tab-label {
         border-bottom: none;
-        cursor: default;
       }
     }
   }
