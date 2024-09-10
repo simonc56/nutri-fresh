@@ -16,7 +16,7 @@
     text-align: left;
     border: none;
     border-radius: theme.radius(round);
-    font-size: theme.size(P0);
+    font-size: theme.size(SM);
     &::placeholder {
       color: theme.$color_greyMedium;
     }
