@@ -29,7 +29,8 @@ $sizes: (
   XXXS: 8px,
   XXS: 10px,
   XS: 12px,
-  P0: 15px,
+  SM: 15px,
+  P0: 16px,
   P1: 18px,
   P2: 20px,
   P3: 24px,
@@ -54,6 +55,12 @@ $weights: (
   heavy: 800,
 );
 
+$shadows: (
+  subtle: 0 -6px 8px -2px rgba(0, 0, 0, 0.1),
+  medium: -8px 8px 20px 0 rgb(0 0 0 / 20%),
+  strong: 0 8px 20px 8px rgba(0, 0, 0, 0.2) inset,
+);
+
 @function spacing($spacingName) {
   @return map-get($spacings, $spacingName);
 }
@@ -65,4 +72,7 @@ $weights: (
 }
 @function weight($weightName) {
   @return map-get($weights, $weightName);
+}
+@function shadow($shadowName) {
+  @return map-get($shadows, $shadowName);
 }

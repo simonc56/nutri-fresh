@@ -6,7 +6,7 @@
   height: 330px;
   border-radius: theme.radius(extraRound);
   background-color: theme.$color_white;
-  box-shadow: -8px 8px 20px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: theme.shadow(medium);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -36,7 +36,7 @@
       text-overflow: ellipsis;
     }
     & .product-action {
-      font-size: theme.size(P0);
+      font-size: theme.size(SM);
       font-weight: theme.weight(regular);
       display: flex;
       justify-content: space-between;

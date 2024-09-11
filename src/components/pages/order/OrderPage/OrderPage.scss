@@ -1,10 +1,11 @@
-@use "../../../theme/theme";
+@use "../../../../theme/theme";
 
 .order-page {
   background-color: theme.$color_primary;
   height: 100vh;
   display: flex;
   justify-content: center;
+  position: relative;
   & .container {
     background-color: theme.$color_white;
     border-radius: theme.radius(extraRound);

@@ -5,4 +5,7 @@
   gap: theme.spacing(xl) theme.spacing(xxl);
   flex-wrap: wrap;
   justify-content: center;
+  padding: theme.spacing(xl);
+  overflow-y: scroll;
+  scrollbar-width: none;
 }

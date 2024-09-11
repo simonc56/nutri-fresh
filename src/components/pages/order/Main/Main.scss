@@ -2,10 +2,19 @@
 
 .main {
   background-color: theme.$color_background_white;
+  box-shadow: theme.shadow(strong);
   border-bottom-left-radius: theme.radius(extraRound);
   border-bottom-right-radius: theme.radius(extraRound);
-  box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-  padding: theme.spacing(xl);
+  display: flex;
   overflow-y: scroll;
   scrollbar-width: none;
+  & .basket {
+    background-color: lightseagreen;
+    width: 65%;
+  }
+  & .menu-and-admin {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
 }
