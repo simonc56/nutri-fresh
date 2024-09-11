@@ -9,7 +9,7 @@ import "./PrimaryButton.scss";
 export default function PrimaryButton({
   label,
   Icon,
-  className,
+  className = "",
   ...extraProps
 }: PrimaryButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
