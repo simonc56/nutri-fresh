@@ -6,7 +6,7 @@
   flex-direction: column;
   h1,
   h2 {
-    color: theme.$color_white;
+    color: theme.$color_dark;
     font-family: "Amatic SC";
   }
 
@@ -15,7 +15,7 @@
     text-align: center;
     margin: 0;
     padding: 20px;
-    width: 400px;
+    width: 510px;
     border-bottom: 0.15rem solid theme.$color_primary;
   }
 
@@ -26,5 +26,9 @@
   align-items: center;
   & .primary-button {
     margin-top: 1rem;
+  }
+  & .primary-button,
+  & .input-firstname {
+    box-shadow: theme.shadow(medium);
   }
 }

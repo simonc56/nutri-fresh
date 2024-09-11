@@ -1,13 +1,13 @@
-import logo from "/images/logo-orange.png";
+import logo from "/images/nutri-fresh-logo.png";
 
 import "./Logo.scss";
 
 function Logo({ className, onClick }: { className?: string; onClick?: () => void }) {
   return (
     <h1 className={`logo-text ${className}`} onClick={onClick}>
-      <span>CRAZEE</span>
+      <span>NUTRI</span>
       <img src={logo} />
-      <span>BURGER</span>
+      <span>FRESH</span>
     </h1>
   );
 }

@@ -19,7 +19,7 @@ function LoginForm() {
 
   return (
     <form className="login-form" action="submit" onSubmit={handleSubmit}>
-      <h1>Bienvenue chez nous !</h1>
+      <h1>Des repas savoureux et équilibrés !</h1>
       <br />
       <h2>Connectez-vous</h2>
       <TextInput
