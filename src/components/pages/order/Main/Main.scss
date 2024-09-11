@@ -8,12 +8,14 @@
   display: flex;
   overflow-y: scroll;
   scrollbar-width: none;
+  flex-grow: 1;
   & .basket {
     background-color: lightseagreen;
-    width: 65%;
+    width: 350px;
   }
   & .menu-and-admin {
     position: relative;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
   }

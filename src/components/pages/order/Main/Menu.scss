@@ -1,9 +1,9 @@
 @use "../../../../theme/_theme.scss";
 
 .menu {
-  display: flex;
-  gap: theme.spacing(xl) theme.spacing(xxl);
-  flex-wrap: wrap;
+  display: grid;
+  grid-gap: theme.spacing(xl) theme.spacing(xxl);
+  grid-template-columns: repeat(auto-fill, 240px);
   justify-content: center;
   padding: theme.spacing(xl);
   overflow-y: scroll;
