@@ -8,8 +8,7 @@ type OrderContextType = {
   setIsPanelOpen: Dispatch<SetStateAction<boolean>>;
   tabs: TabProps[];
   setTabs: Dispatch<SetStateAction<TabProps[]>>;
-  contentPanel: string;
-  setContentPanel: Dispatch<SetStateAction<string>>;
+  selectedTab: () => TabProps | undefined;
 };
 
 export const OrderContext = createContext<OrderContextType | undefined>(undefined);
