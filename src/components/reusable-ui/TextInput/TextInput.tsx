@@ -19,7 +19,7 @@ export default function TextInput({
   };
 
   return (
-    <div className="input-firstname">
+    <div className="input">
       <i className="icon">{Icon}</i>
       <input value={value} onChange={handleChange} {...extraProps} />
     </div>
