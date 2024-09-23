@@ -16,5 +16,10 @@
     input {
       width: 800px;
     }
+    .action-add {
+      display: flex;
+      align-items: center;
+      gap: theme.spacing(xs);
+    }
   }
 }
