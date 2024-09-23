@@ -11,7 +11,7 @@ type ProductCardProps = {
 export default function ProductCard({ imageSource, title, price }: ProductCardProps) {
   return (
     <div className="product-card">
-      <img src={imageSource} alt={title} className="product-picture" />
+      <img src={imageSource ? imageSource : "/images/coming-soon.png"} alt={title} className="product-picture" />
       <div className="product-info">
         <h2 className="product-title">{title}</h2>
         <div className="product-action">
