@@ -6,7 +6,7 @@
   font-size: theme.size(XS);
   color: theme.$color_white;
   background-color: theme.$color_primary;
-  border: none;
+  border: 1px solid theme.$color_primary;
   border-radius: theme.radius(round);
   padding-inline: 1.5rem;
   height: 2.5rem;
@@ -19,7 +19,6 @@
   &:hover {
     background-color: theme.$color_white;
     color: theme.$color_primary;
-    border: 1px solid theme.$color_primary;
   }
   &:active {
     background-color: theme.$color_primary;
