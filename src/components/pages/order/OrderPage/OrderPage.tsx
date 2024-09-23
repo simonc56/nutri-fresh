@@ -25,7 +25,7 @@ function OrderPage() {
       isAvailable: true,
       isAdvertised: false,
     } as menuItem;
-    setMenu((prev) => [...prev, newItem]);
+    setMenu((prev) => [newItem, ...prev]);
   };
 
   const valueOrderContext = {
