@@ -2,8 +2,8 @@
 
 .primary-button {
   font-family: "Arial";
-  font-weight: theme.weight(bold);
-  font-size: theme.size(XS);
+  font-weight: theme.weight(semiBold);
+  font-size: theme.size(SM);
   color: theme.$color_white;
   background-color: theme.$color_primary;
   border: 1px solid theme.$color_primary;

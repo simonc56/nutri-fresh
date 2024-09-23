@@ -41,8 +41,8 @@ export default function AddForm() {
     <form className="add-product-form" onSubmit={onSubmit}>
       <img
         className="image-preview"
-        src={newItem.imageSource ? newItem.imageSource : "/images/ananas.png"}
-        alt="product illustration"
+        src={newItem.imageSource ? newItem.imageSource : ""}
+        alt={newItem.imageSource ? "product illustration" : "Aucune image"}
       />
       <div className="input-fields">
         <TextInput
@@ -50,7 +50,7 @@ export default function AddForm() {
           value={newItem.title || ""}
           setValue={() => {}}
           Icon={<PiBowlFoodFill />}
-          className="item-title"
+          className="slim"
           onChange={(e) => onChange("title", e.target.value)}
           aria-label="Nom du produit"
         />
@@ -59,7 +59,7 @@ export default function AddForm() {
           value={newItem.imageSource || ""}
           setValue={() => {}}
           Icon={<BsFillCameraFill />}
-          className="item-image-source"
+          className="slim"
           onChange={(e) => onChange("imageSource", e.target.value)}
         />
         <TextInput
@@ -67,7 +67,7 @@ export default function AddForm() {
           value={(newItem.price && newItem.price != 0 && newItem.price.toString(10)) || ""}
           setValue={() => {}}
           Icon={<MdOutlineEuro />}
-          className="item-price"
+          className="slim"
           onChange={(e) => onChange("price", e.target.value)}
           type="number"
         />

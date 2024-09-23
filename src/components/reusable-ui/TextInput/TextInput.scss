@@ -5,13 +5,13 @@
   position: relative;
   .icon {
     position: absolute;
-    left: 13px;
+    left: 11px;
     top: 19px;
   }
   input {
     color: theme.$color_dark;
     background-color: theme.$color_background_white;
-    padding: 18px 38px;
+    padding: theme.size(P0) theme.size(P4);
     width: 400px;
     text-align: left;
     border: none;
@@ -19,6 +19,14 @@
     font-size: theme.size(SM);
     &::placeholder {
       color: theme.$color_greyMedium;
+    }
+  }
+  &.slim {
+    input {
+      padding: theme.size(XS) theme.size(P4);
+    }
+    .icon {
+      top: 13px;
     }
   }
 }
