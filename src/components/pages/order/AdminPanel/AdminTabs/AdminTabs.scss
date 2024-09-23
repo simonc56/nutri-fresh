@@ -24,16 +24,16 @@
     // underline on hover
     &:hover {
       border-bottom-color: transparent;
-      & .tab-label {
+      .tab-label {
         text-decoration: underline;
         padding-bottom: 2px;
       }
     }
-    & svg {
+    svg {
       position: relative;
       top: 2px;
     }
-    & .tab-label {
+    .tab-label {
       margin-left: theme.spacing(xs);
       padding-bottom: 2px;
     }

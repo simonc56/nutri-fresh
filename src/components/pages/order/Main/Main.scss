@@ -9,11 +9,11 @@
   overflow-y: scroll;
   scrollbar-width: none;
   flex-grow: 1;
-  & .basket {
+  .basket {
     background-color: lightseagreen;
     width: 350px;
   }
-  & .menu-and-admin {
+  .menu-and-admin {
     position: relative;
     flex-grow: 1;
     display: flex;

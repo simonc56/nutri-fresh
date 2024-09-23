@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   position: relative;
-  & .container {
+  .container {
     background-color: theme.$color_white;
     border-radius: theme.radius(extraRound);
     margin: 1rem;

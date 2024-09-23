@@ -3,17 +3,17 @@
 .add-product-form {
   display: flex;
   gap: theme.spacing(sm);
-  & .image-preview {
+  .image-preview {
     width: 240px;
     max-height: 220px;
     object-fit: contain;
   }
-  & .input-fields {
+  .input-fields {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: theme.spacing(xxs);
-    & input {
+    input {
       width: 800px;
     }
   }

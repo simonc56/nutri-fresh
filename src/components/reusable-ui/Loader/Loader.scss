@@ -1,7 +1,7 @@
 @use "../../../theme/_theme.scss";
 
 .loader {
-  & .spinner {
+  .spinner {
     margin: 1em auto;
     border: 10px solid theme.$color_background_white;
     border-top: 10px solid theme.$color_primary;
@@ -10,7 +10,7 @@
     height: 70px;
     animation: spin 1s linear infinite;
   }
-  & .label {
+  .label {
     text-align: center;
     font-size: var(--font-size-md);
   }

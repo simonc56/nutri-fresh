@@ -5,14 +5,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  & span {
+  span {
     color: theme.$color_primary;
     font-family: "Amatic SC";
     font-weight: theme.weight(bold);
     font-size: theme.size(P4);
     letter-spacing: 1.5px;
   }
-  & img {
+  img {
     width: 80px;
     margin-inline: 0.4rem;
   }

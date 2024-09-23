@@ -3,12 +3,12 @@
 .input {
   color: theme.$color_greyDark;
   position: relative;
-  & .icon {
+  .icon {
     position: absolute;
     left: 13px;
     top: 19px;
   }
-  & input {
+  input {
     color: theme.$color_dark;
     background-color: theme.$color_background_white;
     padding: 18px 38px;
