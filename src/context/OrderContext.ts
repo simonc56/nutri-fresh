@@ -12,6 +12,8 @@ type OrderContextType = {
   selectedTab: () => TabProps | undefined;
   menu: menuItem[];
   addItemToMenu: (item: Partial<menuItem>) => void;
+  removeItemFromMenu: (id: number) => void;
+  resetMenu: () => void;
 };
 
 export const OrderContext = createContext<OrderContextType | undefined>(undefined);

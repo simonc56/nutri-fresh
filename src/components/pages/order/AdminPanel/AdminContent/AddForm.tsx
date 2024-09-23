@@ -23,7 +23,6 @@ export default function AddForm() {
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
     addItemToMenu(newItem);
-    console.log("Product added!");
     setSuccessMessage(true);
     setTimeout(() => {
       setSuccessMessage(false);

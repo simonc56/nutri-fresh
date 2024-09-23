@@ -28,6 +28,14 @@ function OrderPage() {
     setMenu((prev) => [newItem, ...prev]);
   };
 
+  const removeItemFromMenu = (id: number) => {
+    setMenu((previousMenu) => previousMenu.filter((item) => item.id !== id));
+  };
+
+  const resetMenu = () => {
+    setMenu(fakeMenu.MEDIUM);
+  };
+
   const valueOrderContext = {
     isAdminMode,
     setIsAdminMode,
@@ -38,6 +46,8 @@ function OrderPage() {
     selectedTab,
     menu,
     addItemToMenu,
+    removeItemFromMenu,
+    resetMenu,
   };
 
   return (

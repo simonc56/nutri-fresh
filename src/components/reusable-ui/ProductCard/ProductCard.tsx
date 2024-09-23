@@ -7,9 +7,11 @@ type ProductCardProps = {
   imageSource: string;
   title: string;
   price: number;
+  onDelete: () => void;
+  canDelete: boolean;
 };
 
-export default function ProductCard({ imageSource, title, price }: ProductCardProps) {
+export default function ProductCard({ imageSource, title, price, onDelete, canDelete }: ProductCardProps) {
   return (
     <div className="product-card">
       <img src={imageSource ? imageSource : "/images/coming-soon.png"} alt={title} className="product-picture" />
@@ -20,9 +22,11 @@ export default function ProductCard({ imageSource, title, price }: ProductCardPr
           <PrimaryButton label="Ajouter" />
         </div>
       </div>
-      <button className="delete-button" aria-label="bouton supprimer">
-        <TiDelete className="icon" />
-      </button>
+      {canDelete && (
+        <button className="delete-button" aria-label="bouton supprimer" onClick={onDelete}>
+          <TiDelete className="icon" />
+        </button>
+      )}
     </div>
   );
 }

@@ -9,3 +9,24 @@
   overflow-y: scroll;
   scrollbar-width: none;
 }
+.empty-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  font-size: theme.size(P2);
+  color: theme.$color_greyMedium;
+  font-family: "Amatic SC";
+  & h2,
+  & p {
+    color: theme.$color_greyMedium;
+    font-family: "Amatic SC";
+    font-size: theme.size(P4);
+  }
+  p,
+  button {
+    margin-top: theme.spacing(lg);
+  }
+}
