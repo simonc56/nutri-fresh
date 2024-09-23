@@ -1,4 +1,4 @@
-type menuItem = {
+export type menuItem = {
   id: number;
   imageSource: string;
   title: string;

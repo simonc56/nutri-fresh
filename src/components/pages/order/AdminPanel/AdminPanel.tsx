@@ -7,9 +7,9 @@ export default function AdminPanel() {
   const { isPanelOpen } = useOrderContext();
 
   return (
-    <div className={`admin-panel${isPanelOpen ? " open" : ""}`}>
+    <div className="admin-panel">
       <AdminTabs />
-      <AdminContent />
+      {isPanelOpen && <AdminContent />}
     </div>
   );
 }

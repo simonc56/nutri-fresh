@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { OrderContext } from "../../../../context/OrderContext";
+import { fakeMenu, menuItem } from "../../../../fakeData/fakeMenu";
 import { TabProps } from "../AdminPanel/AdminTabs/AdminTabs";
 import { tabsConfig } from "../AdminPanel/tabsConfig";
 import Main from "../Main/Main";
@@ -13,6 +14,19 @@ function OrderPage() {
   const [isPanelOpen, setIsPanelOpen] = useState(true);
   const [tabs, setTabs] = useState<TabProps[]>(tabsConfig);
   const selectedTab = () => tabs.find((tab) => tab.active);
+  const [menu, setMenu] = useState<menuItem[]>(fakeMenu.MEDIUM);
+
+  const addItemToMenu = (item: Partial<menuItem>) => {
+    const maxId = Math.max(...menu.map((item) => item.id));
+    const newItem = {
+      ...item,
+      id: maxId + 1,
+      quantity: 0,
+      isAvailable: true,
+      isAdvertised: false,
+    } as menuItem;
+    setMenu((prev) => [...prev, newItem]);
+  };
 
   const valueOrderContext = {
     isAdminMode,
@@ -22,6 +36,8 @@ function OrderPage() {
     tabs,
     setTabs,
     selectedTab,
+    menu,
+    addItemToMenu,
   };
 
   return (

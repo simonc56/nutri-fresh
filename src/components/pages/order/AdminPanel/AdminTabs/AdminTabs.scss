@@ -3,9 +3,9 @@
 .admin-tabs {
   background-color: transparent;
   display: flex;
-  position: absolute;
+  position: relative;
   height: 43px;
-  top: -43px;
+  bottom: -1px;
   left: 80px;
   .admin-tab {
     background-color: theme.$color_white;
