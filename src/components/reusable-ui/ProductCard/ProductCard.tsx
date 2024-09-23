@@ -1,3 +1,4 @@
+import { TiDelete } from "react-icons/ti";
 import { formatPrice } from "../../../utils/maths";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
 import "./ProductCard.scss";
@@ -19,6 +20,9 @@ export default function ProductCard({ imageSource, title, price }: ProductCardPr
           <PrimaryButton label="Ajouter" />
         </div>
       </div>
+      <button className="delete-button" aria-label="bouton supprimer">
+        <TiDelete className="icon" />
+      </button>
     </div>
   );
 }
