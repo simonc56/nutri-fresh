@@ -23,7 +23,7 @@ export default function ProductCard({ imageSource, title, price, onDelete, canDe
         </div>
       </div>
       {canDelete && (
-        <button className="delete-button" aria-label="bouton supprimer" onClick={onDelete}>
+        <button className="delete-button" aria-label="bouton supprimer" onClick={onDelete} title="Supprimer">
           <TiDelete className="icon" />
         </button>
       )}

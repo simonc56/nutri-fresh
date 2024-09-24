@@ -39,11 +39,20 @@ export default function AddForm() {
 
   return (
     <form className="add-product-form" onSubmit={onSubmit}>
-      <img
-        className="image-preview"
-        src={newItem.imageSource ? newItem.imageSource : ""}
-        alt={newItem.imageSource ? "product illustration" : "Aucune image"}
-      />
+      <div className="image-preview">
+        {newItem.imageSource ? (
+          <img
+            className="image"
+            src={newItem.imageSource}
+            alt="product illustration"
+            onError={(e) => {
+              e.currentTarget.style.display = "none";
+            }}
+          />
+        ) : (
+          "Aucune image"
+        )}
+      </div>
       <div className="input-fields">
         <TextInput
           placeholder="Nom du produit (ex: Plat de lentilles)"
@@ -64,7 +73,7 @@ export default function AddForm() {
         />
         <TextInput
           placeholder="Prix"
-          value={(newItem.price && newItem.price != 0 && newItem.price.toString(10)) || ""}
+          value={(newItem.price && newItem.price.toString(10)) || ""}
           setValue={() => {}}
           Icon={<MdOutlineEuro />}
           className="slim"
@@ -75,7 +84,7 @@ export default function AddForm() {
           <PrimaryButton className="submit-button" label="Ajouter un nouveau produit au menu" />
           {successMessage && (
             <div className="success-label">
-              <FiCheck /> Ajouté avec succès !
+              <FiCheck className="icon" /> Ajouté avec succès !
             </div>
           )}
         </div>
