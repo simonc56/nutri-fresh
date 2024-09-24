@@ -3,4 +3,6 @@
   flex-grow: 1;
   padding: 1rem;
   background-color: theme.$color_white;
+  border-top: 1px solid theme.$color_greyLight;
+  box-shadow: theme.shadow(subtle);
 }

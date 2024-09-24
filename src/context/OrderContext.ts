@@ -1,5 +1,6 @@
 import { createContext, Dispatch, SetStateAction, useContext } from "react";
 import { TabProps } from "../components/pages/order/AdminPanel/AdminTabs/AdminTabs";
+import { menuItem } from "../fakeData/fakeMenu";
 
 type OrderContextType = {
   isAdminMode: boolean;
@@ -8,8 +9,11 @@ type OrderContextType = {
   setIsPanelOpen: Dispatch<SetStateAction<boolean>>;
   tabs: TabProps[];
   setTabs: Dispatch<SetStateAction<TabProps[]>>;
-  contentPanel: string;
-  setContentPanel: Dispatch<SetStateAction<string>>;
+  selectedTab: () => TabProps | undefined;
+  menu: menuItem[];
+  addItemToMenu: (item: Partial<menuItem>) => void;
+  removeItemFromMenu: (id: number) => void;
+  resetMenu: () => void;
 };
 
 export const OrderContext = createContext<OrderContextType | undefined>(undefined);

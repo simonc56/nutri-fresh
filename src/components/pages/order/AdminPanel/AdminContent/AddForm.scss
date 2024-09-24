@@ -1,0 +1,51 @@
+@use "../../../../../theme/_theme.scss";
+
+.add-product-form {
+  display: flex;
+  gap: theme.spacing(sm);
+  .image-preview {
+    width: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: theme.$color_greyMedium;
+    border: 1px solid theme.$color_greyLight;
+    border-radius: theme.radius(round);
+    .image {
+      width: 240px;
+      height: 195px;
+      object-fit: contain;
+      color: theme.$color_white;
+    }
+  }
+  .input-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: theme.spacing(xs);
+    input {
+      width: 800px;
+      &[type="number"] {
+        -moz-appearance: textfield;
+      }
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+    .action-add {
+      display: flex;
+      align-items: center;
+      gap: theme.spacing(xs);
+      .success-label {
+        color: theme.$color_success;
+        .icon {
+          border: 1px solid theme.$color_success;
+          border-radius: 50%;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}

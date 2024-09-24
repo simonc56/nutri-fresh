@@ -1,4 +1,16 @@
-export const fakeMenu1 = [
+export type menuItem = {
+  id: number;
+  imageSource: string;
+  title: string;
+  price: number;
+  quantity: number;
+  isAvailable: boolean;
+  isAdvertised: boolean;
+};
+
+const EMPTY: menuItem[] = [];
+
+const SMALL = [
   {
     id: 1,
     imageSource: "/images/burrito-bowl.png",
@@ -19,7 +31,55 @@ export const fakeMenu1 = [
   },
 ];
 
-export const fakeMenu2 = [
+const MEDIUM = [
+  {
+    id: 1,
+    imageSource: "/images/salmon-boulgour.png",
+    title: "Boulgour saumon",
+    price: 12.598,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: 2,
+    imageSource: "/images/salad.png",
+    title: "Salade poulet",
+    price: 10.367,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: 3,
+    imageSource: "/images/orange-juice.png",
+    title: "Jus d'orange",
+    price: 3.568,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: 4,
+    imageSource: "/images/kiwi-juice.png",
+    title: "Jus de kiwi",
+    price: 3.487,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: 5,
+    imageSource: "/images/water.png",
+    title: "Eau",
+    price: 3.356,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+];
+
+const LARGE = [
   {
     id: 1,
     imageSource: "/images/salmon-boulgour.png",
@@ -147,3 +207,10 @@ export const fakeMenu2 = [
     isAdvertised: false,
   },
 ];
+
+export const fakeMenu = {
+  EMPTY,
+  SMALL,
+  MEDIUM,
+  LARGE,
+};

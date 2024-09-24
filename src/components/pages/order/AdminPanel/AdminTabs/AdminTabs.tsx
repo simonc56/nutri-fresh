@@ -3,9 +3,11 @@ import { useOrderContext } from "../../../../../context/OrderContext";
 import "./AdminTabs.scss";
 
 export type TabProps = {
+  index?: string;
   icon: JSX.Element;
   name?: string | undefined;
   active?: boolean;
+  content?: JSX.Element;
   onClick?: () => void;
 };
 
@@ -18,7 +20,7 @@ function Tab({ icon, name, active, onClick }: TabProps) {
 }
 
 export default function AdminTabs() {
-  const { isPanelOpen, setIsPanelOpen, tabs, setTabs, setContentPanel } = useOrderContext();
+  const { isPanelOpen, setIsPanelOpen, tabs, setTabs } = useOrderContext();
   const togglePanel = () => {
     setIsPanelOpen((prev) => !prev);
   };
@@ -31,8 +33,6 @@ export default function AdminTabs() {
       }))
     );
     if (!isPanelOpen) togglePanel();
-    // to be continued...
-    setContentPanel(tabs[index].name || "");
   };
 
   return (
@@ -40,7 +40,7 @@ export default function AdminTabs() {
       <Tab icon={isPanelOpen ? <FiChevronDown /> : <FiChevronUp />} onClick={togglePanel} active={!isPanelOpen} />
       {tabs.map((tab, index) => (
         <Tab
-          key={tab.name}
+          key={tab.index}
           icon={tab.icon}
           name={tab.name}
           active={tab.active || false}

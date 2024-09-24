@@ -6,12 +6,14 @@ type InputProps = {
   value: string;
   setValue: (arg0: string) => void;
   Icon: JSX.Element;
+  className?: string;
 };
 
 export default function TextInput({
   value,
   setValue,
   Icon,
+  className,
   ...extraProps
 }: InputProps & React.InputHTMLAttributes<HTMLInputElement>) {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +21,7 @@ export default function TextInput({
   };
 
   return (
-    <div className="input-firstname">
+    <div className={`input ${className && className}`}>
       <i className="icon">{Icon}</i>
       <input value={value} onChange={handleChange} {...extraProps} />
     </div>

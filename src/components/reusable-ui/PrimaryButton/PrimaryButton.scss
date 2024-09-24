@@ -2,16 +2,16 @@
 
 .primary-button {
   font-family: "Arial";
-  font-weight: theme.weight(bold);
-  font-size: theme.size(XS);
+  font-weight: theme.weight(semiBold);
+  font-size: theme.size(SM);
   color: theme.$color_white;
   background-color: theme.$color_primary;
-  border: none;
+  border: 1px solid theme.$color_primary;
   border-radius: theme.radius(round);
   padding-inline: 1.5rem;
   height: 2.5rem;
   cursor: pointer;
-  & svg {
+  svg {
     position: relative;
     top: 2px;
     left: 6px;
@@ -19,7 +19,6 @@
   &:hover {
     background-color: theme.$color_white;
     color: theme.$color_primary;
-    border: 1px solid theme.$color_primary;
   }
   &:active {
     background-color: theme.$color_primary;
