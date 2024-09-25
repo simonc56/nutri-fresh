@@ -1,4 +1,4 @@
-import { useOrderContext } from "../../../../context/OrderContext";
+import { useOrderContext } from "../../../../context/useOrderContext";
 import AdminPanel from "../AdminPanel/AdminPanel";
 import "./Main.scss";
 import Menu from "./Menu";

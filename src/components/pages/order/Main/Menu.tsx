@@ -1,4 +1,4 @@
-import { useOrderContext } from "../../../../context/OrderContext";
+import { useOrderContext } from "../../../../context/useOrderContext";
 import PrimaryButton from "../../../reusable-ui/PrimaryButton/PrimaryButton";
 import ProductCard from "../../../reusable-ui/ProductCard/ProductCard";
 import "./Menu.scss";

@@ -1,5 +1,5 @@
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { useOrderContext } from "../../../../../context/OrderContext";
+import { useOrderContext } from "../../../../../context/useOrderContext";
 import "./AdminTabs.scss";
 
 export type TabProps = {
