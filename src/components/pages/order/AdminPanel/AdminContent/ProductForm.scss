@@ -1,8 +1,9 @@
 @use "../../../../../theme/_theme.scss";
 
-.add-product-form {
+.product-form {
   display: flex;
   gap: theme.spacing(sm);
+  height: 100%;
   .image-preview {
     width: 240px;
     display: flex;
@@ -45,6 +46,14 @@
           border-radius: 50%;
           vertical-align: middle;
         }
+      }
+    }
+    .info-edit {
+      color: theme.$color_primary;
+      margin-top: theme.spacing(xs);
+      em {
+        font-style: normal;
+        text-decoration: underline;
       }
     }
   }

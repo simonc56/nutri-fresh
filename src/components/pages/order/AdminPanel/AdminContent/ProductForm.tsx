@@ -3,14 +3,14 @@ import { BsFillCameraFill } from "react-icons/bs";
 import { FiCheck } from "react-icons/fi";
 import { MdOutlineEuro } from "react-icons/md";
 import { PiBowlFoodFill } from "react-icons/pi";
-import { useOrderContext } from "../../../../../context/OrderContext";
+import { useOrderContext } from "../../../../../context/useOrderContext";
 import { menuItem } from "../../../../../fakeData/fakeMenu";
 import PrimaryButton from "../../../../reusable-ui/PrimaryButton/PrimaryButton";
 import TextInput from "../../../../reusable-ui/TextInput/TextInput";
-import "./AddForm.scss";
+import "./ProductForm.scss";
 
-export default function AddForm() {
-  const [successMessage, setSuccessMessage] = useState(false);
+export default function ProductForm({ type }: { type: "add" | "edit" }) {
+  const [successAddMessage, setSuccessAddMessage] = useState(false);
   const emptyItem = {
     title: "",
     imageSource: "",
@@ -23,9 +23,9 @@ export default function AddForm() {
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
     addItemToMenu(newItem);
-    setSuccessMessage(true);
+    setSuccessAddMessage(true);
     setTimeout(() => {
-      setSuccessMessage(false);
+      setSuccessAddMessage(false);
     }, 2000);
     setNewItem(emptyItem);
   };
@@ -38,7 +38,7 @@ export default function AddForm() {
   };
 
   return (
-    <form className="add-product-form" onSubmit={onSubmit}>
+    <form className="product-form" onSubmit={onSubmit}>
       <div className="image-preview">
         {newItem.imageSource ? (
           <img
@@ -80,14 +80,20 @@ export default function AddForm() {
           onChange={(e) => onChange("price", e.target.value)}
           type="number"
         />
-        <div className="action-add">
-          <PrimaryButton className="submit-button" label="Ajouter un nouveau produit au menu" />
-          {successMessage && (
-            <div className="success-label">
-              <FiCheck className="icon" /> Ajouté avec succès !
-            </div>
-          )}
-        </div>
+        {type === "add" ? (
+          <div className="action-add">
+            <PrimaryButton className="submit-button" label="Ajouter un nouveau produit au menu" />
+            {successAddMessage && (
+              <div className="success-label">
+                <FiCheck className="icon" /> Ajouté avec succès !
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="info-edit">
+            Cliquer sur un produit du menu pour le modifier <em>en temps réel</em>
+          </div>
+        )}
       </div>
     </form>
   );

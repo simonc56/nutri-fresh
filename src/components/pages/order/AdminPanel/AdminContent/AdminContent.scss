@@ -1,6 +1,7 @@
 @use "../../../../../theme/_theme.scss";
 .admin-content {
   flex-grow: 1;
+  height: 197px;
   padding: 1rem;
   background-color: theme.$color_white;
   border-top: 1px solid theme.$color_greyLight;
