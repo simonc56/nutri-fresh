@@ -1,5 +1,5 @@
 import { useOrderContext } from "../../../../context/useOrderContext";
-import Admin from "../AdminPanel/Admin";
+import Admin from "../Admin/Admin";
 import "./Main.scss";
 import Menu from "./Menu";
 
