@@ -32,7 +32,7 @@ export default function AdminTabs() {
         active: i === index,
       }))
     );
-    if (!isPanelOpen) togglePanel();
+    setIsPanelOpen(true);
   };
 
   return (

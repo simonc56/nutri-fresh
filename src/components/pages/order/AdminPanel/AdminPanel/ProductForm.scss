@@ -27,7 +27,7 @@
     input {
       width: 800px;
       &[type="number"] {
-        -moz-appearance: textfield;
+        appearance: textfield;
       }
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {

@@ -1,7 +1,7 @@
 import { useOrderContext } from "../../../../../context/useOrderContext";
-import "./AdminContent.scss";
+import "./AdminPanel.scss";
 
 export default function AdminContent() {
   const { selectedTab } = useOrderContext();
-  return <div className="admin-content">{selectedTab()?.content || "No tab selected"}</div>;
+  return <div className="admin-panel">{selectedTab()?.content || "No tab selected"}</div>;
 }

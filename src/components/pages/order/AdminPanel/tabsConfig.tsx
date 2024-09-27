@@ -1,6 +1,7 @@
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
-import ProductForm from "./AdminContent/ProductForm";
+import EditContent from "./AdminPanel/EditContent";
+import ProductForm from "./AdminPanel/ProductForm";
 import { TabProps } from "./AdminTabs/AdminTabs";
 
 export const tabsConfig: TabProps[] = [
@@ -11,5 +12,5 @@ export const tabsConfig: TabProps[] = [
     active: true,
     content: <ProductForm type="add" />,
   },
-  { index: "edit", icon: <MdModeEditOutline />, name: "Modifier un produit", content: <ProductForm type="edit" /> },
+  { index: "edit", icon: <MdModeEditOutline />, name: "Modifier un produit", content: <EditContent /> },
 ];

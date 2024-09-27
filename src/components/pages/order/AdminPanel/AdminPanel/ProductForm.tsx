@@ -10,6 +10,7 @@ import TextInput from "../../../../reusable-ui/TextInput/TextInput";
 import "./ProductForm.scss";
 
 export default function ProductForm({ type }: { type: "add" | "edit" }) {
+  const { addItemToMenu } = useOrderContext();
   const [successAddMessage, setSuccessAddMessage] = useState(false);
   const emptyItem = {
     title: "",
@@ -18,7 +19,6 @@ export default function ProductForm({ type }: { type: "add" | "edit" }) {
   };
 
   const [newItem, setNewItem] = useState<Partial<menuItem>>(emptyItem);
-  const { addItemToMenu } = useOrderContext();
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event?.preventDefault();

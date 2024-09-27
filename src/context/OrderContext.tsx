@@ -11,10 +11,13 @@ type OrderContextType = {
   tabs: TabProps[];
   setTabs: Dispatch<SetStateAction<TabProps[]>>;
   selectedTab: () => TabProps | undefined;
+  selectTab: (index: string) => void;
   menu: menuItem[];
   addItemToMenu: (item: Partial<menuItem>) => void;
   removeItemFromMenu: (id: number) => void;
   resetMenu: () => void;
+  selectedItemIndex: number;
+  setSelectedItemIndex: Dispatch<SetStateAction<number>>;
 };
 
 export const OrderContext = createContext<OrderContextType | undefined>(undefined);
@@ -26,6 +29,7 @@ export default function OrderContextProvider({ children }: { children: React.Rea
   const [tabs, setTabs] = useState<TabProps[]>(tabsConfig);
   const selectedTab = () => tabs.find((tab) => tab.active);
   const [menu, setMenu] = useState<menuItem[]>(fakeMenu.MEDIUM);
+  const [selectedItemIndex, setSelectedItemIndex] = useState(0);
 
   const addItemToMenu = (item: Partial<menuItem>) => {
     const maxId = Math.max(...menu.map((item) => item.id));
@@ -47,6 +51,16 @@ export default function OrderContextProvider({ children }: { children: React.Rea
     setMenu(fakeMenu.MEDIUM);
   };
 
+  const selectTab = (index: string) => {
+    setTabs((prevTabs) =>
+      prevTabs.map((tab) => ({
+        ...tab,
+        active: tab.index === index,
+      }))
+    );
+    setIsPanelOpen(true);
+  };
+
   const valueOrderContext = {
     isAdminMode,
     setIsAdminMode,
@@ -55,10 +69,13 @@ export default function OrderContextProvider({ children }: { children: React.Rea
     tabs,
     setTabs,
     selectedTab,
+    selectTab,
     menu,
     addItemToMenu,
     removeItemFromMenu,
     resetMenu,
+    selectedItemIndex,
+    setSelectedItemIndex,
   };
 
   return <OrderContext.Provider value={valueOrderContext}>{children}</OrderContext.Provider>;

@@ -1,15 +1,15 @@
 import { useOrderContext } from "../../../../context/useOrderContext";
-import AdminContent from "./AdminContent/AdminContent";
-import "./AdminPanel.scss";
+import "./Admin.scss";
+import AdminPanel from "./AdminPanel/AdminPanel";
 import AdminTabs from "./AdminTabs/AdminTabs";
 
-export default function AdminPanel() {
+export default function Admin() {
   const { isPanelOpen } = useOrderContext();
 
   return (
-    <div className="admin-panel">
+    <div className="admin">
       <AdminTabs />
-      {isPanelOpen && <AdminContent />}
+      {isPanelOpen && <AdminPanel />}
     </div>
   );
 }

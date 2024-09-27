@@ -31,6 +31,7 @@ export default function Menu() {
       {menu.map(({ id, imageSource, title, price }) => (
         <ProductCard
           key={id}
+          id={id}
           imageSource={imageSource}
           title={title}
           price={price}

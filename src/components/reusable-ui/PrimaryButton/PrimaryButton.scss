@@ -24,9 +24,22 @@
     background-color: theme.$color_primary;
     color: theme.$color_white;
   }
-  &.primary-button-large {
+  &.primary-button__large {
     width: 400px;
     height: 53px;
     font-size: theme.size(SM);
+  }
+  &.primary-button__revert-color {
+    color: theme.$color_primary;
+    background-color: theme.$color_white;
+    border: 1px solid theme.$color_white;
+    &:hover {
+      background-color: theme.$color_primary;
+      color: theme.$color_white;
+    }
+    &:active {
+      background-color: theme.$color_white;
+      color: theme.$color_primary;
+    }
   }
 }
