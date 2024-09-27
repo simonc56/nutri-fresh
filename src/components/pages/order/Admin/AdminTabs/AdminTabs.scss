@@ -5,8 +5,10 @@
   display: flex;
   position: relative;
   height: 43px;
-  bottom: -1px;
+  width: fit-content;
+  position: absolute;
   left: 80px;
+  top: -43px;
   .admin-tab {
     background-color: theme.$color_white;
     border: 1px solid theme.$color_greyLight;
