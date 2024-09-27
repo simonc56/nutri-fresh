@@ -9,7 +9,7 @@ type ProductCardProps = {
   imageSource: string;
   title: string;
   price: number;
-  onDelete: () => void;
+  onDelete: (event: React.MouseEvent<HTMLButtonElement>) => void;
   canDelete: boolean;
 };
 

@@ -6,6 +6,11 @@ import "./Menu.scss";
 export default function Menu() {
   const { menu, removeItemFromMenu, resetMenu, isAdminMode } = useOrderContext();
 
+  const onDelete = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
+    event.stopPropagation();
+    removeItemFromMenu(id);
+  };
+
   const UserEmptyMenu = () => {
     return (
       <div className="empty-menu">
@@ -35,7 +40,7 @@ export default function Menu() {
           imageSource={imageSource}
           title={title}
           price={price}
-          onDelete={() => removeItemFromMenu(id)}
+          onDelete={(event) => onDelete(event, id)}
           canDelete={isAdminMode}
         />
       ))}
