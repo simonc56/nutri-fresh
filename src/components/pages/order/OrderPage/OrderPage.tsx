@@ -6,6 +6,7 @@ import "./OrderPage.scss";
 
 function OrderPage() {
   const { username } = useParams();
+  document.title = `Nutri Fresh | ${username}`;
 
   return (
     <OrderContextProvider>
