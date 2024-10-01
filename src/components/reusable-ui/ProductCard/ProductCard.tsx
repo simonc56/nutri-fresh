@@ -14,13 +14,13 @@ type ProductCardProps = {
 };
 
 export default function ProductCard({ id, imageSource, title, price, onDelete, canDelete }: ProductCardProps) {
-  const { isAdminMode, setIsPanelOpen, selectTab, selectedItemIndex, setSelectedItemIndex } = useOrderContext();
-  const isSelected = selectedItemIndex === id;
+  const { isAdminMode, setIsPanelOpen, selectTab, selectedItem, setSelectedItemById, unSelectItem } = useOrderContext();
+  const isSelected = selectedItem?.id === id;
   const onClickCard = () => {
     if (isSelected) {
-      setSelectedItemIndex(0);
+      unSelectItem();
     } else {
-      setSelectedItemIndex(id);
+      setSelectedItemById(id);
       selectTab("edit");
       setIsPanelOpen(true);
     }

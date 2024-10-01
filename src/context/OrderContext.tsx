@@ -16,20 +16,31 @@ type OrderContextType = {
   addItemToMenu: (item: Partial<menuItem>) => void;
   removeItemFromMenu: (id: number) => void;
   resetMenu: () => void;
-  selectedItemIndex: number;
-  setSelectedItemIndex: Dispatch<SetStateAction<number>>;
+  selectedItem: menuItem;
+  setSelectedItem: Dispatch<SetStateAction<menuItem>>;
+  setSelectedItemById: (id: number) => void;
+  unSelectItem: () => void;
 };
 
 export const OrderContext = createContext<OrderContextType | undefined>(undefined);
 
 // OrderContextProvider component to wrap the app with the context provider
 export default function OrderContextProvider({ children }: { children: React.ReactNode }) {
+  const emptyItem = {
+    id: 0,
+    imageSource: "",
+    title: "",
+    price: 0,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  };
   const [isAdminMode, setIsAdminMode] = useState(true);
   const [isPanelOpen, setIsPanelOpen] = useState(true);
   const [tabs, setTabs] = useState<TabProps[]>(tabsConfig);
   const selectedTab = () => tabs.find((tab) => tab.active);
   const [menu, setMenu] = useState<menuItem[]>(fakeMenu.MEDIUM);
-  const [selectedItemIndex, setSelectedItemIndex] = useState(0);
+  const [selectedItem, setSelectedItem] = useState<menuItem>(emptyItem);
 
   const addItemToMenu = (item: Partial<menuItem>) => {
     const maxId = Math.max(...menu.map((item) => item.id));
@@ -61,6 +72,14 @@ export default function OrderContextProvider({ children }: { children: React.Rea
     setIsPanelOpen(true);
   };
 
+  const setSelectedItemById = (id: number) => {
+    setSelectedItem(menu.find((item) => item.id === id) || emptyItem);
+  };
+
+  const unSelectItem = () => {
+    setSelectedItem(emptyItem);
+  };
+
   const valueOrderContext = {
     isAdminMode,
     setIsAdminMode,
@@ -74,8 +93,10 @@ export default function OrderContextProvider({ children }: { children: React.Rea
     addItemToMenu,
     removeItemFromMenu,
     resetMenu,
-    selectedItemIndex,
-    setSelectedItemIndex,
+    selectedItem,
+    setSelectedItem,
+    setSelectedItemById,
+    unSelectItem,
   };
 
   return <OrderContext.Provider value={valueOrderContext}>{children}</OrderContext.Provider>;

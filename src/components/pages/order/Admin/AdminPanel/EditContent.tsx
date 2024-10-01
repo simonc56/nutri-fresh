@@ -13,7 +13,10 @@ function NoItemSelectedToEdit() {
 
 // Intermediate component to conditionnaly display the ProductForm component
 export default function EditContent() {
-  const { selectedItemIndex } = useOrderContext();
-  const isItemSelected = selectedItemIndex !== 0;
-  return isItemSelected ? <ProductForm type="edit" /> : <NoItemSelectedToEdit />;
+  const { selectedItem, setSelectedItem } = useOrderContext();
+  return selectedItem.id !== 0 ? (
+    <ProductForm type="edit" menuItem={selectedItem} setMenuItem={setSelectedItem} resetForm={() => {}} />
+  ) : (
+    <NoItemSelectedToEdit />
+  );
 }
