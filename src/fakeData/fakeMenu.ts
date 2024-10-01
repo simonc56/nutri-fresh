@@ -1,4 +1,4 @@
-export type menuItem = {
+export type MenuItem = {
   id: number;
   imageSource: string;
   title: string;
@@ -8,7 +8,7 @@ export type menuItem = {
   isAdvertised: boolean;
 };
 
-const EMPTY: menuItem[] = [];
+const EMPTY: MenuItem[] = [];
 
 const SMALL = [
   {

@@ -1,7 +1,7 @@
 import { createContext, Dispatch, SetStateAction, useState } from "react";
 import { TabProps } from "../components/pages/order/Admin/AdminTabs/AdminTabs";
 import { tabsConfig } from "../components/pages/order/Admin/tabsConfig";
-import { fakeMenu, menuItem } from "../fakeData/fakeMenu";
+import { fakeMenu, MenuItem } from "../fakeData/fakeMenu";
 
 type OrderContextType = {
   isAdminMode: boolean;
@@ -12,14 +12,15 @@ type OrderContextType = {
   setTabs: Dispatch<SetStateAction<TabProps[]>>;
   selectedTab: () => TabProps | undefined;
   selectTab: (index: string) => void;
-  menu: menuItem[];
-  addItemToMenu: (item: Partial<menuItem>) => void;
+  menu: MenuItem[];
+  addItemToMenu: (item: Partial<MenuItem>) => void;
   removeItemFromMenu: (id: number) => void;
   resetMenu: () => void;
-  selectedItem: menuItem;
-  setSelectedItem: Dispatch<SetStateAction<menuItem>>;
+  selectedItem: MenuItem;
+  setSelectedItem: Dispatch<SetStateAction<MenuItem>>;
   setSelectedItemById: (id: number) => void;
   unSelectItem: () => void;
+  updateItem: (item: MenuItem) => void;
 };
 
 export const OrderContext = createContext<OrderContextType | undefined>(undefined);
@@ -39,10 +40,10 @@ export default function OrderContextProvider({ children }: { children: React.Rea
   const [isPanelOpen, setIsPanelOpen] = useState(true);
   const [tabs, setTabs] = useState<TabProps[]>(tabsConfig);
   const selectedTab = () => tabs.find((tab) => tab.active);
-  const [menu, setMenu] = useState<menuItem[]>(fakeMenu.MEDIUM);
-  const [selectedItem, setSelectedItem] = useState<menuItem>(emptyItem);
+  const [menu, setMenu] = useState<MenuItem[]>(fakeMenu.MEDIUM);
+  const [selectedItem, setSelectedItem] = useState<MenuItem>(emptyItem);
 
-  const addItemToMenu = (item: Partial<menuItem>) => {
+  const addItemToMenu = (item: Partial<MenuItem>) => {
     const maxId = Math.max(...menu.map((item) => item.id));
     const newItem = {
       ...item,
@@ -50,7 +51,7 @@ export default function OrderContextProvider({ children }: { children: React.Rea
       quantity: 0,
       isAvailable: true,
       isAdvertised: false,
-    } as menuItem;
+    } as MenuItem;
     setMenu((prev) => [newItem, ...prev]);
   };
 
@@ -80,6 +81,13 @@ export default function OrderContextProvider({ children }: { children: React.Rea
     setSelectedItem(emptyItem);
   };
 
+  const updateItem = (item: MenuItem) => {
+    setSelectedItem(item);
+    if (item.id !== 0 && menu.find((menuItem) => menuItem.id === item.id)) {
+      setMenu((prev) => prev.map((menuItem) => (menuItem.id === item.id ? item : menuItem)));
+    }
+  };
+
   const valueOrderContext = {
     isAdminMode,
     setIsAdminMode,
@@ -97,6 +105,7 @@ export default function OrderContextProvider({ children }: { children: React.Rea
     setSelectedItem,
     setSelectedItemById,
     unSelectItem,
+    updateItem,
   };
 
   return <OrderContext.Provider value={valueOrderContext}>{children}</OrderContext.Provider>;
