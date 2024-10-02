@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { BsFillCameraFill } from "react-icons/bs";
 import { FiCheck } from "react-icons/fi";
 import { MdOutlineEuro } from "react-icons/md";
@@ -14,8 +14,14 @@ type ProductFormProps = {
 };
 
 export default function ProductForm({ type }: ProductFormProps) {
-  const { addItemToMenu, selectedItem, updateItem, unSelectItem } = useOrderContext();
+  const { addItemToMenu, selectedItem, updateItem, unSelectItem, refInputName } = useOrderContext();
   const [successAddMessage, setSuccessAddMessage] = useState(false);
+
+  useEffect(() => {
+    if (refInputName.current) {
+      refInputName.current.focus();
+    }
+  }, [refInputName]);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
@@ -57,6 +63,7 @@ export default function ProductForm({ type }: ProductFormProps) {
             className="slim"
             onChange={(e) => onChange("title", e.target.value)}
             aria-label="Nom du produit"
+            ref={refInputName}
           />
           <TextInput
             placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"

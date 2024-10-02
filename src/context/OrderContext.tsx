@@ -1,4 +1,4 @@
-import { createContext, Dispatch, SetStateAction, useState } from "react";
+import { createContext, Dispatch, SetStateAction, useRef, useState } from "react";
 import { TabProps } from "../components/pages/order/Admin/AdminTabs/AdminTabs";
 import { tabsConfig } from "../components/pages/order/Admin/tabsConfig";
 import { fakeMenu, MenuItem } from "../fakeData/fakeMenu";
@@ -17,10 +17,10 @@ type OrderContextType = {
   removeItemFromMenu: (id: number) => void;
   resetMenu: () => void;
   selectedItem: MenuItem;
-  setSelectedItem: Dispatch<SetStateAction<MenuItem>>;
   setSelectedItemById: (id: number) => void;
   unSelectItem: () => void;
   updateItem: (item: MenuItem) => void;
+  refInputName: React.RefObject<HTMLInputElement>;
 };
 
 export const OrderContext = createContext<OrderContextType | undefined>(undefined);
@@ -42,6 +42,8 @@ export default function OrderContextProvider({ children }: { children: React.Rea
   const selectedTab = () => tabs.find((tab) => tab.active);
   const [menu, setMenu] = useState<MenuItem[]>(fakeMenu.MEDIUM);
   const [selectedItem, setSelectedItem] = useState<MenuItem>(emptyItem);
+
+  const refInputName = useRef<null | HTMLInputElement>(null);
 
   const addItemToMenu = (item: Partial<MenuItem>) => {
     const maxId = Math.max(...menu.map((item) => item.id));
@@ -75,6 +77,7 @@ export default function OrderContextProvider({ children }: { children: React.Rea
 
   const setSelectedItemById = (id: number) => {
     setSelectedItem(menu.find((item) => item.id === id) || emptyItem);
+    refInputName.current?.focus();
   };
 
   const unSelectItem = () => {
@@ -102,10 +105,10 @@ export default function OrderContextProvider({ children }: { children: React.Rea
     removeItemFromMenu,
     resetMenu,
     selectedItem,
-    setSelectedItem,
     setSelectedItemById,
     unSelectItem,
     updateItem,
+    refInputName,
   };
 
   return <OrderContext.Provider value={valueOrderContext}>{children}</OrderContext.Provider>;
