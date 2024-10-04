@@ -1,7 +1,7 @@
 import { HiCursorClick } from "react-icons/hi";
 import { useOrderContext } from "../../../../../context/useOrderContext";
-import "./EditContent.scss";
-import ProductForm from "./ProductForm";
+import "./EditForm.scss";
+import ProductForm from "./Form";
 
 function NoItemSelectedToEdit() {
   return (

@@ -5,7 +5,7 @@ import { PiBowlFoodFill } from "react-icons/pi";
 import { useOrderContext } from "../../../../../context/useOrderContext";
 import { MenuItem } from "../../../../../fakeData/fakeMenu";
 import TextInput from "../../../../reusable-ui/TextInput/TextInput";
-import "./ProductForm.scss";
+import "./Form.scss";
 
 type ProductFormProps = {
   onSubmit?: (event: FormEvent<HTMLFormElement>) => void;

@@ -2,8 +2,7 @@ import { FormEvent, useState } from "react";
 import { FiCheck } from "react-icons/fi";
 import { useOrderContext } from "../../../../../context/useOrderContext";
 import PrimaryButton from "../../../../reusable-ui/PrimaryButton/PrimaryButton";
-import "./EditContent.scss";
-import ProductForm from "./ProductForm";
+import ProductForm from "./Form";
 
 // Intermediate component to conditionnaly display the ProductForm component
 export default function AddContent() {
