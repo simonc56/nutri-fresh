@@ -36,7 +36,7 @@ export default function OrderContextProvider({ children }: { children: React.Rea
     isAvailable: true,
     isAdvertised: false,
   };
-  const [isAdminMode, setIsAdminMode] = useState(true);
+  const [isAdminMode, setIsAdminMode] = useState(false);
   const [isPanelOpen, setIsPanelOpen] = useState(true);
   const [tabs, setTabs] = useState<TabProps[]>(tabsConfig);
   const selectedTab = () => tabs.find((tab) => tab.active);
