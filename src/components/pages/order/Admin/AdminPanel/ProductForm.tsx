@@ -1,37 +1,25 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect } from "react";
 import { BsFillCameraFill } from "react-icons/bs";
-import { FiCheck } from "react-icons/fi";
 import { MdOutlineEuro } from "react-icons/md";
 import { PiBowlFoodFill } from "react-icons/pi";
 import { useOrderContext } from "../../../../../context/useOrderContext";
 import { MenuItem } from "../../../../../fakeData/fakeMenu";
-import PrimaryButton from "../../../../reusable-ui/PrimaryButton/PrimaryButton";
 import TextInput from "../../../../reusable-ui/TextInput/TextInput";
 import "./ProductForm.scss";
 
 type ProductFormProps = {
-  type: "add" | "edit";
+  onSubmit?: (event: FormEvent<HTMLFormElement>) => void;
+  children?: JSX.Element;
 };
 
-export default function ProductForm({ type }: ProductFormProps) {
-  const { addItemToMenu, selectedItem, updateItem, unSelectItem, refInputName } = useOrderContext();
-  const [successAddMessage, setSuccessAddMessage] = useState(false);
+export default function ProductForm({ onSubmit, children }: ProductFormProps) {
+  const { selectedItem, updateItem, refInputName } = useOrderContext();
 
   useEffect(() => {
     if (refInputName.current) {
       refInputName.current.focus();
     }
   }, [refInputName]);
-
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event?.preventDefault();
-    selectedItem && addItemToMenu(selectedItem);
-    setSuccessAddMessage(true);
-    setTimeout(() => {
-      setSuccessAddMessage(false);
-    }, 2000);
-    unSelectItem();
-  };
 
   const onChange = (key: keyof MenuItem, value: string | number | boolean) => {
     updateItem({ ...selectedItem, [key]: value });
@@ -82,20 +70,7 @@ export default function ProductForm({ type }: ProductFormProps) {
             onChange={(e) => onChange("price", e.target.value)}
             type="number"
           />
-          {type === "add" ? (
-            <div className="action-add">
-              <PrimaryButton className="submit-button" label="Ajouter un nouveau produit au menu" />
-              {successAddMessage && (
-                <div className="success-label">
-                  <FiCheck className="icon" /> Ajouté avec succès !
-                </div>
-              )}
-            </div>
-          ) : (
-            <div className="info-edit">
-              Cliquer sur un produit du menu pour le modifier <em>en temps réel</em>
-            </div>
-          )}
+          {children}
         </div>
       </form>
     )
