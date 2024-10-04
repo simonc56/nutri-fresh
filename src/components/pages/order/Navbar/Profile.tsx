@@ -1,6 +1,6 @@
 import { BsPersonCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { useOrderContext } from "../../../../context/OrderContext";
+import { useOrderContext } from "../../../../context/useOrderContext";
 import { notify } from "../../../../utils/notification";
 import ToggleButton from "../../../reusable-ui/ToggleButton/ToggleButton";
 import "./Profile.scss";

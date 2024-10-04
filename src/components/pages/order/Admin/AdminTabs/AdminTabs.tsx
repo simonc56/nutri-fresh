@@ -1,5 +1,5 @@
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { useOrderContext } from "../../../../../context/OrderContext";
+import { useOrderContext } from "../../../../../context/useOrderContext";
 import "./AdminTabs.scss";
 
 export type TabProps = {
@@ -20,7 +20,7 @@ function Tab({ icon, name, active, onClick }: TabProps) {
 }
 
 export default function AdminTabs() {
-  const { isPanelOpen, setIsPanelOpen, tabs, setTabs } = useOrderContext();
+  const { isPanelOpen, setIsPanelOpen, tabs, setTabs, unSelectItem } = useOrderContext();
   const togglePanel = () => {
     setIsPanelOpen((prev) => !prev);
   };
@@ -32,7 +32,8 @@ export default function AdminTabs() {
         active: i === index,
       }))
     );
-    if (!isPanelOpen) togglePanel();
+    setIsPanelOpen(true);
+    unSelectItem();
   };
 
   return (

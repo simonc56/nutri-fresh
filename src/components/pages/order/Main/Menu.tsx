@@ -1,10 +1,15 @@
-import { useOrderContext } from "../../../../context/OrderContext";
+import { useOrderContext } from "../../../../context/useOrderContext";
 import PrimaryButton from "../../../reusable-ui/PrimaryButton/PrimaryButton";
 import ProductCard from "../../../reusable-ui/ProductCard/ProductCard";
 import "./Menu.scss";
 
 export default function Menu() {
   const { menu, removeItemFromMenu, resetMenu, isAdminMode } = useOrderContext();
+
+  const onDelete = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
+    event.stopPropagation();
+    removeItemFromMenu(id);
+  };
 
   const UserEmptyMenu = () => {
     return (
@@ -31,10 +36,11 @@ export default function Menu() {
       {menu.map(({ id, imageSource, title, price }) => (
         <ProductCard
           key={id}
+          id={id}
           imageSource={imageSource}
           title={title}
           price={price}
-          onDelete={() => removeItemFromMenu(id)}
+          onDelete={(event) => onDelete(event, id)}
           canDelete={isAdminMode}
         />
       ))}

@@ -8,6 +8,7 @@
   padding: theme.spacing(xl);
   overflow-y: scroll;
   scrollbar-width: none;
+  flex-grow: 1;
 }
 .empty-menu {
   display: flex;

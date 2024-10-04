@@ -1,5 +1,5 @@
-import { useOrderContext } from "../../../../context/OrderContext";
-import AdminPanel from "../AdminPanel/AdminPanel";
+import { useOrderContext } from "../../../../context/useOrderContext";
+import Admin from "../Admin/Admin";
 import "./Main.scss";
 import Menu from "./Menu";
 
@@ -10,7 +10,7 @@ export default function Main() {
       {/* <section className="basket">Basket</section> */}
       <section className="menu-and-admin">
         <Menu />
-        {isAdminMode && <AdminPanel />}
+        {isAdminMode && <Admin />}
       </section>
     </main>
   );

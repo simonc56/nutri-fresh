@@ -35,7 +35,7 @@ function LoginForm() {
         label="Accéder à mon espace"
         Icon={<IoIosArrowForward />}
         type="submit"
-        className="primary-button-large"
+        className="primary-button__large"
       />
     </form>
   );
