@@ -21,9 +21,8 @@ function Tab({ icon, name, active, onClick }: TabProps) {
 
 export default function AdminTabs() {
   const { isPanelOpen, setIsPanelOpen, tabs, setTabs, unSelectItem } = useOrderContext();
-  const togglePanel = () => {
-    setIsPanelOpen((prev) => !prev);
-  };
+
+  const togglePanel = () => setIsPanelOpen((prev) => !prev);
 
   const clickToChangeTab = (index: number) => {
     setTabs((prevTabs) =>

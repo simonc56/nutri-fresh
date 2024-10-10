@@ -10,13 +10,13 @@ export default function AddContent() {
   const [successAddMessage, setSuccessAddMessage] = useState(false);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event?.preventDefault();
-    selectedItem && addItemToMenu(selectedItem);
-    setSuccessAddMessage(true);
-    setTimeout(() => {
-      setSuccessAddMessage(false);
-    }, 2000);
-    unSelectItem();
+    event.preventDefault();
+    if (selectedItem) {
+      addItemToMenu(selectedItem);
+      setSuccessAddMessage(true);
+      setTimeout(() => setSuccessAddMessage(false), 2000);
+      unSelectItem();
+    }
   };
 
   return (

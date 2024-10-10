@@ -46,7 +46,7 @@ export default function OrderContextProvider({ children }: { children: React.Rea
   const refInputName = useRef<null | HTMLInputElement>(null);
 
   const addItemToMenu = (item: Partial<MenuItem>) => {
-    const maxId = Math.max(...menu.map((item) => item.id));
+    const maxId = Math.max(...menu.map((item) => item.id), 0);
     const newItem = {
       ...item,
       id: maxId + 1,
@@ -86,9 +86,7 @@ export default function OrderContextProvider({ children }: { children: React.Rea
 
   const updateItem = (item: MenuItem) => {
     setSelectedItem(item);
-    if (item.id !== 0 && menu.find((menuItem) => menuItem.id === item.id)) {
-      setMenu((prev) => prev.map((menuItem) => (menuItem.id === item.id ? item : menuItem)));
-    }
+    setMenu((prev) => prev.map((menuItem) => (menuItem.id === item.id ? item : menuItem)));
   };
 
   const valueOrderContext = {
