@@ -20,12 +20,16 @@
     }
   }
   .input-fields {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: theme.spacing(xs);
+    .input {
+      width: 100%;
+    }
     input {
-      width: 800px;
+      width: 100%;
       &[type="number"] {
         appearance: textfield;
       }
