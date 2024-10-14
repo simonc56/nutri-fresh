@@ -1,4 +1,5 @@
-@use "../../../../../theme/_theme.scss";
+@use "src/theme/theme";
+
 .admin-panel {
   flex-grow: 1;
   height: 197px;
