@@ -8,7 +8,7 @@ export default function BannerCard({ imageSource, title, price, quantity }: Bann
   return (
     <div className="banner-card">
       <div className="banner-card-picture">
-        <img src={imageSource} alt={title} />
+        <img src={imageSource ? imageSource : "/images/coming-soon.png"} alt={title} />
       </div>
       <div className="banner-card-infos">
         <div className="banner-card-title">{title}</div>
