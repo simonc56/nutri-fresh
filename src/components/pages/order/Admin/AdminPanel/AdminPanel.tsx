@@ -1,4 +1,4 @@
-import { useOrderContext } from "../../../../../context/useOrderContext";
+import { useOrderContext } from "src/context/useOrderContext";
 import "./AdminPanel.scss";
 
 export default function AdminPanel() {

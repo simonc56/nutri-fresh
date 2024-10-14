@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import OrderContextProvider from "../../../../context/OrderContext";
+import OrderContextProvider from "src/context/OrderContext";
 import Main from "../Main/Main";
 import Navbar from "../Navbar/Navbar";
 import "./OrderPage.scss";

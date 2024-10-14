@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import Logo from "../../reusable-ui/Logo/Logo";
+import Loader from "src/components/reusable-ui/Loader/Loader";
+import Logo from "src/components/reusable-ui/Logo/Logo";
 import LoginForm from "./LoginForm";
-
-import Loader from "../../reusable-ui/Loader/Loader";
 import "./LoginPage.scss";
 
 export default function LoginPage() {

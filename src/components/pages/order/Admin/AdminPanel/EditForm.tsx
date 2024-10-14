@@ -1,5 +1,5 @@
 import { HiCursorClick } from "react-icons/hi";
-import { useOrderContext } from "../../../../../context/useOrderContext";
+import { useOrderContext } from "src/context/useOrderContext";
 import "./EditForm.scss";
 import ProductForm from "./Form";
 

@@ -2,9 +2,8 @@ import { FormEvent, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { PiUserCircleFill } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
-import TextInput from "../../reusable-ui/TextInput/TextInput";
-
-import PrimaryButton from "../../reusable-ui/PrimaryButton/PrimaryButton";
+import PrimaryButton from "src/components/reusable-ui/PrimaryButton/PrimaryButton";
+import TextInput from "src/components/reusable-ui/TextInput/TextInput";
 import "./LoginForm.scss";
 
 function LoginForm() {

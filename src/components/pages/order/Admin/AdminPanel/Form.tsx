@@ -2,9 +2,9 @@ import { FormEvent, useEffect } from "react";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { PiBowlFoodFill } from "react-icons/pi";
-import { useOrderContext } from "../../../../../context/useOrderContext";
-import { MenuItem } from "../../../../../fakeData/fakeMenu";
-import TextInput from "../../../../reusable-ui/TextInput/TextInput";
+import TextInput from "src/components/reusable-ui/TextInput/TextInput";
+import { useOrderContext } from "src/context/useOrderContext";
+import { MenuItem } from "src/fakeData/fakeMenu";
 import "./Form.scss";
 
 type ProductFormProps = {

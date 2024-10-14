@@ -1,4 +1,4 @@
-import { formatPrice } from "../../../../../utils/maths";
+import { formatPrice } from "src/utils/maths";
 import "./Total.scss";
 
 export default function Total({ amount }: { amount: number }) {

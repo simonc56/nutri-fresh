@@ -1,6 +1,6 @@
-import { useOrderContext } from "../../../../context/useOrderContext";
-import PrimaryButton from "../../../reusable-ui/PrimaryButton/PrimaryButton";
-import ProductCard from "../../../reusable-ui/ProductCard/ProductCard";
+import PrimaryButton from "src/components/reusable-ui/PrimaryButton/PrimaryButton";
+import ProductCard from "src/components/reusable-ui/ProductCard/ProductCard";
+import { useOrderContext } from "src/context/useOrderContext";
 import "./Menu.scss";
 
 export default function Menu() {

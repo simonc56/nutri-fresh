@@ -1,6 +1,6 @@
 import { TiDelete } from "react-icons/ti";
-import { useOrderContext } from "../../../context/useOrderContext";
-import { formatPrice } from "../../../utils/maths";
+import { useOrderContext } from "src/context/useOrderContext";
+import { formatPrice } from "src/utils/maths";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
 import "./ProductCard.scss";
 

@@ -1,4 +1,4 @@
-import Logo from "../../../reusable-ui/Logo/Logo";
+import Logo from "src/components/reusable-ui/Logo/Logo";
 import "./Navbar.scss";
 import Profile from "./Profile";
 

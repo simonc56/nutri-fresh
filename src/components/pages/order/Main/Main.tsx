@@ -1,4 +1,4 @@
-import { useOrderContext } from "../../../../context/useOrderContext";
+import { useOrderContext } from "src/context/useOrderContext";
 import Admin from "../Admin/Admin";
 import Basket from "./Basket/Basket";
 import "./Main.scss";

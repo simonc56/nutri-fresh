@@ -1,8 +1,8 @@
 import { FormEvent } from "react";
 import { FiCheck } from "react-icons/fi";
-import { useOrderContext } from "../../../../../context/useOrderContext";
-import { useTimedMessage } from "../../../../../hooks/useTimedMessage";
-import PrimaryButton from "../../../../reusable-ui/PrimaryButton/PrimaryButton";
+import PrimaryButton from "src/components/reusable-ui/PrimaryButton/PrimaryButton";
+import { useOrderContext } from "src/context/useOrderContext";
+import { useTimedMessage } from "src/hooks/useTimedMessage";
 import ProductForm from "./Form";
 
 // Intermediate component to conditionnaly display the ProductForm component

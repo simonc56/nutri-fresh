@@ -11,7 +11,7 @@ export const useMenu = () => {
     isAvailable: true,
     isAdvertised: false,
   };
-  const [menu, setMenu] = useState<MenuItem[]>(fakeMenu.MEDIUM);
+  const [menu, setMenu] = useState<MenuItem[]>(fakeMenu.LARGE);
   const [selectedItem, setSelectedItem] = useState<MenuItem>(emptyItem);
   const refInputName = useRef<null | HTMLInputElement>(null);
 
