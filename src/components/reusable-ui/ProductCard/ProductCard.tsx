@@ -14,8 +14,10 @@ type ProductCardProps = {
 };
 
 export default function ProductCard({ id, imageSource, title, price, onDelete, canDelete }: ProductCardProps) {
-  const { isAdminMode, setIsPanelOpen, selectTab, selectedItem, setSelectedItemById, unSelectItem } = useOrderContext();
+  const { isAdminMode, setIsPanelOpen, selectTab, selectedItem, setSelectedItemById, unSelectItem, addItemToBasket } =
+    useOrderContext();
   const isSelected = selectedItem?.id === id;
+
   const onClickCard = () => {
     if (isSelected) {
       unSelectItem();
@@ -24,6 +26,11 @@ export default function ProductCard({ id, imageSource, title, price, onDelete, c
       selectTab("edit");
       setIsPanelOpen(true);
     }
+  };
+
+  const onClickButtonAdd = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    addItemToBasket(id);
   };
 
   return (
@@ -36,7 +43,11 @@ export default function ProductCard({ id, imageSource, title, price, onDelete, c
         <h2 className="product-title">{title}</h2>
         <div className="product-action">
           <span className="product-price">{formatPrice(price)}</span>
-          <PrimaryButton label="Ajouter" className={isAdminMode && isSelected ? "primary-button__revert-color" : ""} />
+          <PrimaryButton
+            label="Ajouter"
+            onClick={onClickButtonAdd}
+            className={isAdminMode && isSelected ? "primary-button__revert-color" : ""}
+          />
         </div>
       </div>
       {canDelete && !isSelected && (
