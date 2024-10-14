@@ -14,6 +14,7 @@ export default function Basket() {
 
   return (
     <section className="basket">
+      <h2 className="sr-only">Panier</h2>
       <Total />
       <BasketBody content={basketContent} />
       <footer className="basket-footer">Codé avec React.js</footer>

@@ -34,6 +34,7 @@ export default function Menu() {
 
   return menu.length > 0 ? (
     <div className="menu">
+      <h2 className="sr-only">Menu</h2>
       {menu.map(({ id, imageSource, title, price }) => (
         <ProductCard
           key={id}

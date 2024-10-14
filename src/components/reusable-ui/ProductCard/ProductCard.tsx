@@ -40,18 +40,18 @@ export default function ProductCard({ id, imageSource, title, price, onDelete, c
     >
       <img src={imageSource ? imageSource : "/images/coming-soon.png"} alt={title} className="product-picture" />
       <div className={`product-info${isAdminMode && isSelected ? " product-info__revert-color" : ""}`}>
-        <h2 className="product-title">{title}</h2>
+        <h3 className="product-title">{title}</h3>
         <div className="product-action">
           <span className="product-price">{formatPrice(price)}</span>
           <PrimaryButton
-            label="Ajouter"
+            label="ajouter"
             onClick={onClickButtonAdd}
             className={isAdminMode && isSelected ? "primary-button__revert-color" : ""}
           />
         </div>
       </div>
       {canDelete && !isSelected && (
-        <button className="delete-button" aria-label="bouton supprimer" onClick={onDelete} title="Supprimer">
+        <button className="delete-button" aria-label="supprimer" onClick={onDelete} title="Supprimer">
           <TiDelete className="icon" />
         </button>
       )}

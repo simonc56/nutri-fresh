@@ -10,18 +10,26 @@ export default function BannerCard({ id, imageSource, title, price, quantity }: 
   const { removeItemFromBasket } = useOrderContext();
 
   return (
-    <div className="banner-card">
+    <article className="banner-card">
       <div className="banner-card-picture">
-        <img src={imageSource ? imageSource : "/images/coming-soon.png"} alt={title} />
+        <img
+          src={imageSource ? imageSource : "/images/coming-soon.png"}
+          alt={imageSource ? title : "image non disponible"}
+        />
       </div>
       <div className="banner-card-infos">
-        <div className="banner-card-title">{title}</div>
+        <h3 className="banner-card-title">{title}</h3>
         <div className="banner-card-price">{formatPrice(price)}</div>
       </div>
       <div className="banner-card-qty">x {quantity}</div>
-      <button className="banner-card-remove-btn" onClick={() => removeItemFromBasket(id)}>
+      <button
+        className="banner-card-remove-btn"
+        onClick={() => removeItemFromBasket(id)}
+        aria-label="supprimer"
+        title="Supprimer"
+      >
         <MdDeleteForever size={26} />
       </button>
-    </div>
+    </article>
   );
 }
