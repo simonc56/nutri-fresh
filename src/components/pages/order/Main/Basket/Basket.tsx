@@ -1,5 +1,4 @@
 import { useOrderContext } from "src/context/useOrderContext";
-import { fakeBasket } from "src/fakeData/fakeBasket";
 import { MenuItem } from "src/fakeData/fakeMenu";
 import "./Basket.scss";
 import BasketBody from "./BasketBody";
@@ -16,7 +15,7 @@ export default function Basket() {
   return (
     <section className="basket">
       <Total />
-      <BasketBody content={(fakeBasket.MEDIUM, basketContent)} />
+      <BasketBody content={basketContent} />
       <footer className="basket-footer">Codé avec React.js</footer>
     </section>
   );
