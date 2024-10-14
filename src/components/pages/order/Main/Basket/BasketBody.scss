@@ -1,0 +1,9 @@
+@use "../../../../../theme/_theme.scss";
+
+.basket-content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: theme.size(P4);
+}
