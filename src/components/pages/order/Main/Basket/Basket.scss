@@ -1,0 +1,19 @@
+@use "../../../../../theme/_theme.scss";
+
+.basket {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2) inset;
+  width: 350px;
+  height: 100%;
+  font-family: "Amatic SC";
+  .basket-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: theme.spacing(md);
+    background-color: theme.$color_background_dark;
+    color: theme.$color_greyLight;
+    font-size: theme.size(P3);
+  }
+}

@@ -1,0 +1,11 @@
+@use "../../../../../theme/_theme.scss";
+
+.basket-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: theme.spacing(sm) theme.spacing(md);
+  background-color: theme.$color_background_dark;
+  color: theme.$color_primary;
+  font-size: theme.size(P4);
+}
