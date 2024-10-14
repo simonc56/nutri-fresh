@@ -11,6 +11,7 @@
   box-sizing: border-box;
   align-items: center;
   height: 5.375rem;
+  position: relative;
   .banner-card-picture {
     width: 4rem;
     height: 100%;
@@ -49,5 +50,28 @@
     font-family: "Open Sans";
     color: theme.$color_primary;
     padding-inline: theme.spacing(md);
+  }
+  .banner-card-remove-btn {
+    display: none;
+  }
+
+  &:hover .banner-card-remove-btn {
+    display: block;
+    border: none;
+    position: absolute;
+    right: 0;
+    height: 100%;
+    border-top-right-radius: theme.radius(round);
+    border-bottom-right-radius: theme.radius(round);
+    background-color: theme.$color_red;
+    color: theme.$color_white;
+    width: 4.5rem;
+    &:hover {
+      color: theme.$color_dark;
+      cursor: pointer;
+    }
+    &:active {
+      color: theme.$color_white;
+    }
   }
 }
