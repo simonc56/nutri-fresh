@@ -3,7 +3,13 @@
 .basket-content {
   flex-grow: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: theme.spacing(md);
+  gap: theme.spacing(md);
+  align-items: stretch;
   font-size: theme.size(P4);
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: theme.$color_background_white rgba(0, 0, 0, 0);
 }
