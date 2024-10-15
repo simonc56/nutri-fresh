@@ -10,10 +10,9 @@ type ProductCardProps = {
   title: string;
   price: number;
   onDelete: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  canDelete: boolean;
 };
 
-export default function ProductCard({ id, imageSource, title, price, onDelete, canDelete }: ProductCardProps) {
+export default function ProductCard({ id, imageSource, title, price, onDelete }: ProductCardProps) {
   const { isAdminMode, setIsPanelOpen, selectTab, selectedItem, setSelectedItemById, unSelectItem, addItemToBasket } =
     useOrderContext();
   const isSelected = selectedItem?.id === id;
@@ -51,7 +50,7 @@ export default function ProductCard({ id, imageSource, title, price, onDelete, c
           />
         </div>
       </div>
-      {canDelete && !isSelected && (
+      {isAdminMode && !isSelected && (
         <button className="delete-button" aria-label="supprimer" onClick={onDelete} title="Supprimer">
           <TiDelete className="icon" />
         </button>

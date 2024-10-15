@@ -29,6 +29,11 @@ export default function BannerCard({ id, imageSource, title, price, quantity }: 
     }
   };
 
+  const onDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    removeItemFromBasket(id);
+  };
+
   return (
     <article
       className={`banner-card${isAdminMode ? " admin-mode" : ""}${isSelected ? " selected" : ""}`}
@@ -47,14 +52,11 @@ export default function BannerCard({ id, imageSource, title, price, quantity }: 
         </div>
       </div>
       <div className={`banner-card-qty${isAdminMode && isSelected ? " revert-color" : ""}`}>x {quantity}</div>
-      <button
-        className="banner-card-remove-btn"
-        onClick={() => removeItemFromBasket(id)}
-        aria-label="supprimer"
-        title="Supprimer"
-      >
-        <MdDeleteForever size={26} />
-      </button>
+      {(!isAdminMode || !isSelected) && (
+        <button className="banner-card-remove-btn" onClick={onDelete} aria-label="supprimer" title="Supprimer">
+          <MdDeleteForever size={26} />
+        </button>
+      )}
     </article>
   );
 }
