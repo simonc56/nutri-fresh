@@ -10,15 +10,15 @@ type ProductCardProps = {
   title: string;
   price: number;
   onDelete: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  canDelete: boolean;
 };
 
-export default function ProductCard({ id, imageSource, title, price, onDelete, canDelete }: ProductCardProps) {
+export default function ProductCard({ id, imageSource, title, price, onDelete }: ProductCardProps) {
   const { isAdminMode, setIsPanelOpen, selectTab, selectedItem, setSelectedItemById, unSelectItem, addItemToBasket } =
     useOrderContext();
   const isSelected = selectedItem?.id === id;
 
   const onClickCard = () => {
+    if (!isAdminMode) return;
     if (isSelected) {
       unSelectItem();
     } else {
@@ -39,7 +39,7 @@ export default function ProductCard({ id, imageSource, title, price, onDelete, c
       onClick={onClickCard}
     >
       <img src={imageSource ? imageSource : "/images/coming-soon.png"} alt={title} className="product-picture" />
-      <div className={`product-info${isAdminMode && isSelected ? " product-info__revert-color" : ""}`}>
+      <div className={`product-info${isAdminMode && isSelected ? " revert-color" : ""}`}>
         <h3 className="product-title">{title}</h3>
         <div className="product-action">
           <span className="product-price">{formatPrice(price)}</span>
@@ -50,7 +50,7 @@ export default function ProductCard({ id, imageSource, title, price, onDelete, c
           />
         </div>
       </div>
-      {canDelete && !isSelected && (
+      {isAdminMode && !isSelected && (
         <button className="delete-button" aria-label="supprimer" onClick={onDelete} title="Supprimer">
           <TiDelete className="icon" />
         </button>

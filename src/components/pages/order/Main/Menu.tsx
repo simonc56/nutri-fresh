@@ -43,7 +43,6 @@ export default function Menu() {
           title={title}
           price={price}
           onDelete={(event) => onDelete(event, id)}
-          canDelete={isAdminMode}
         />
       ))}
     </div>
