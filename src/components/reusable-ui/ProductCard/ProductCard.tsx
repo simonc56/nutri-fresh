@@ -19,6 +19,7 @@ export default function ProductCard({ id, imageSource, title, price, onDelete, c
   const isSelected = selectedItem?.id === id;
 
   const onClickCard = () => {
+    if (!isAdminMode) return;
     if (isSelected) {
       unSelectItem();
     } else {
@@ -39,7 +40,7 @@ export default function ProductCard({ id, imageSource, title, price, onDelete, c
       onClick={onClickCard}
     >
       <img src={imageSource ? imageSource : "/images/coming-soon.png"} alt={title} className="product-picture" />
-      <div className={`product-info${isAdminMode && isSelected ? " product-info__revert-color" : ""}`}>
+      <div className={`product-info${isAdminMode && isSelected ? " revert-color" : ""}`}>
         <h3 className="product-title">{title}</h3>
         <div className="product-action">
           <span className="product-price">{formatPrice(price)}</span>
