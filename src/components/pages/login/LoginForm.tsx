@@ -18,9 +18,9 @@ function LoginForm() {
 
   return (
     <form className="login-form" action="submit" onSubmit={handleSubmit}>
-      <h1>Des repas savoureux et équilibrés !</h1>
+      <h2>Des repas savoureux et équilibrés !</h2>
       <br />
-      <h2>Connectez-vous</h2>
+      <h3>Connectez-vous</h3>
       <TextInput
         value={inputValue}
         setValue={setInputValue}

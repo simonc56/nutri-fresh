@@ -1,4 +1,5 @@
 import { createContext, Dispatch, SetStateAction, useState } from "react";
+import useBasket, { BasketItem } from "src/hooks/useBasket";
 import { TabProps } from "../components/pages/order/Admin/AdminTabs/AdminTabs";
 import { tabsConfig } from "../components/pages/order/Admin/tabsConfig";
 import { MenuItem } from "../fakeData/fakeMenu";
@@ -21,6 +22,9 @@ type OrderContextType = {
   setSelectedItemById: (id: number) => void;
   unSelectItem: () => void;
   updateItem: (item: MenuItem) => void;
+  basket: BasketItem[];
+  addItemToBasket: (id: number) => void;
+  removeItemFromBasket: (id: number) => void;
   refInputName: React.RefObject<HTMLInputElement>;
 };
 
@@ -43,6 +47,7 @@ export default function OrderContextProvider({ children }: { children: React.Rea
     unSelectItem,
     refInputName,
   } = useMenu();
+  const { basket, addItemToBasket, removeItemFromBasket } = useBasket();
 
   const selectTab = (index: string) => {
     setTabs((prevTabs) =>
@@ -71,6 +76,9 @@ export default function OrderContextProvider({ children }: { children: React.Rea
     setSelectedItemById,
     unSelectItem,
     updateItem,
+    basket,
+    addItemToBasket,
+    removeItemFromBasket,
     refInputName,
   };
 

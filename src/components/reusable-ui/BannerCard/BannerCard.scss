@@ -1,0 +1,78 @@
+@use "src/theme/theme";
+
+.banner-card {
+  background-color: theme.$color_background_white;
+  color: theme.$color_dark;
+  font-family: "Amatic SC";
+  padding: theme.spacing(sm);
+  border-radius: theme.radius(round);
+  box-shadow: theme.shadow(medium);
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  height: 5.375rem;
+  position: relative;
+  .banner-card-picture {
+    width: 4rem;
+    height: 100%;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  .banner-card-infos {
+    flex-grow: 1;
+    margin-left: theme.spacing(md);
+    min-width: 0; // Allow flex item to shrink
+    .banner-card-title {
+      font-family: "Amatic SC";
+      font-size: theme.size(P3);
+      font-weight: theme.weight(bold);
+      margin-bottom: theme.spacing(xs);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .banner-card-price {
+      font-size: theme.size(SM);
+      font-weight: theme.weight(regular);
+      font-family: "Open Sans";
+      color: theme.$color_primary;
+    }
+  }
+  .banner-card-qty {
+    flex-shrink: 0;
+    font-size: theme.size(SM);
+    font-weight: theme.weight(regular);
+    font-family: "Open Sans";
+    color: theme.$color_primary;
+    padding-inline: theme.spacing(md);
+  }
+  .banner-card-remove-btn {
+    display: none;
+  }
+
+  &:hover .banner-card-remove-btn {
+    display: block;
+    border: none;
+    position: absolute;
+    right: 0;
+    height: 100%;
+    border-top-right-radius: theme.radius(round);
+    border-bottom-right-radius: theme.radius(round);
+    background-color: theme.$color_red;
+    color: theme.$color_white;
+    width: 4.5rem;
+    &:hover {
+      color: theme.$color_dark;
+      cursor: pointer;
+    }
+    &:active {
+      color: theme.$color_white;
+    }
+  }
+}

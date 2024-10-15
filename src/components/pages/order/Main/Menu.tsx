@@ -4,11 +4,12 @@ import { useOrderContext } from "src/context/useOrderContext";
 import "./Menu.scss";
 
 export default function Menu() {
-  const { menu, removeItemFromMenu, resetMenu, isAdminMode } = useOrderContext();
+  const { menu, removeItemFromMenu, resetMenu, isAdminMode, removeItemFromBasket } = useOrderContext();
 
   const onDelete = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
     event.stopPropagation();
     removeItemFromMenu(id);
+    removeItemFromBasket(id);
   };
 
   const UserEmptyMenu = () => {
@@ -33,6 +34,7 @@ export default function Menu() {
 
   return menu.length > 0 ? (
     <div className="menu">
+      <h2 className="sr-only">Menu</h2>
       {menu.map(({ id, imageSource, title, price }) => (
         <ProductCard
           key={id}
