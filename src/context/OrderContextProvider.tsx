@@ -1,34 +1,9 @@
-import { createContext, Dispatch, SetStateAction, useState } from "react";
-import useBasket, { BasketItem } from "src/hooks/useBasket";
+import { useState } from "react";
+import { OrderContext } from "src/context/useOrderContext";
+import useBasket from "src/hooks/useBasket";
 import { TabProps } from "../components/pages/order/Admin/AdminTabs/AdminTabs";
 import { tabsConfig } from "../components/pages/order/Admin/tabsConfig";
-import { MenuItem } from "../fakeData/fakeMenu";
 import { useMenu } from "../hooks/useMenu";
-
-type OrderContextType = {
-  isAdminMode: boolean;
-  setIsAdminMode: Dispatch<SetStateAction<boolean>>;
-  isPanelOpen: boolean;
-  setIsPanelOpen: Dispatch<SetStateAction<boolean>>;
-  tabs: TabProps[];
-  setTabs: Dispatch<SetStateAction<TabProps[]>>;
-  selectedTab: () => TabProps | undefined;
-  selectTab: (index: string) => void;
-  menu: MenuItem[];
-  addItemToMenu: (item: Partial<MenuItem>) => void;
-  removeItemFromMenu: (id: number) => void;
-  resetMenu: () => void;
-  selectedItem: MenuItem;
-  setSelectedItemById: (id: number) => void;
-  unSelectItem: () => void;
-  updateItem: (item: MenuItem) => void;
-  basket: BasketItem[];
-  addItemToBasket: (id: number) => void;
-  removeItemFromBasket: (id: number) => void;
-  refInputName: React.RefObject<HTMLInputElement>;
-};
-
-export const OrderContext = createContext<OrderContextType | undefined>(undefined);
 
 // OrderContextProvider component to wrap the app with the context provider
 export default function OrderContextProvider({ children }: { children: React.ReactNode }) {
@@ -40,6 +15,7 @@ export default function OrderContextProvider({ children }: { children: React.Rea
     menu,
     addItemToMenu,
     removeItemFromMenu,
+    loadMenu,
     resetMenu,
     updateItem,
     selectedItem,
@@ -71,6 +47,7 @@ export default function OrderContextProvider({ children }: { children: React.Rea
     menu,
     addItemToMenu,
     removeItemFromMenu,
+    loadMenu,
     resetMenu,
     selectedItem,
     setSelectedItemById,
