@@ -1,10 +1,17 @@
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import PrimaryButton from "src/components/reusable-ui/PrimaryButton/PrimaryButton";
 import ProductCard from "src/components/reusable-ui/ProductCard/ProductCard";
 import { useOrderContext } from "src/context/useOrderContext";
 import "./Menu.scss";
 
 export default function Menu() {
-  const { menu, removeItemFromMenu, resetMenu, isAdminMode, removeItemFromBasket } = useOrderContext();
+  const { menu, loadMenu, removeItemFromMenu, resetMenu, isAdminMode, removeItemFromBasket } = useOrderContext();
+  const { username } = useParams();
+
+  useEffect(() => {
+    if (username) loadMenu(username);
+  }, [username]);
 
   const onDelete = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
     event.stopPropagation();

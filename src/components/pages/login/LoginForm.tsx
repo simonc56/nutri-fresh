@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { PiUserCircleFill } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
+import { createUserWithDefaultMenu } from "src/api/user";
 import PrimaryButton from "src/components/reusable-ui/PrimaryButton/PrimaryButton";
 import TextInput from "src/components/reusable-ui/TextInput/TextInput";
 import "./LoginForm.scss";
@@ -12,6 +13,7 @@ function LoginForm() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    createUserWithDefaultMenu(inputValue);
     setInputValue("");
     navigate(`/order/${inputValue}`);
   };
