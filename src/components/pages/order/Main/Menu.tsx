@@ -6,17 +6,28 @@ import { useOrderContext } from "src/context/useOrderContext";
 import "./Menu.scss";
 
 export default function Menu() {
-  const { menu, loadMenu, removeItemFromMenu, resetMenu, isAdminMode, removeItemFromBasket } = useOrderContext();
+  const { menu, isLoading, loadMenu, removeItemFromMenu, resetMenu, isAdminMode, removeItemFromBasket } =
+    useOrderContext();
   const { username } = useParams();
 
   useEffect(() => {
-    if (username) loadMenu(username);
+    if (username) {
+      loadMenu(username);
+    }
   }, [username]);
 
   const onDelete = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
     event.stopPropagation();
     removeItemFromMenu(id);
     removeItemFromBasket(id);
+  };
+
+  const LoadingMessage = () => {
+    return (
+      <div className="empty-menu">
+        <p>Chargement en cours...</p>
+      </div>
+    );
   };
 
   const UserEmptyMenu = () => {
@@ -53,6 +64,8 @@ export default function Menu() {
         />
       ))}
     </div>
+  ) : isLoading ? (
+    <LoadingMessage />
   ) : isAdminMode ? (
     <AdminEmptyMenu />
   ) : (

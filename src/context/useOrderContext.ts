@@ -13,6 +13,7 @@ type OrderContextType = {
   selectedTab: () => TabProps | undefined;
   selectTab: (index: string) => void;
   menu: MenuItem[];
+  isLoading: boolean;
   addItemToMenu: (item: Partial<MenuItem>) => void;
   removeItemFromMenu: (id: number) => void;
   loadMenu: (userId: string) => void;

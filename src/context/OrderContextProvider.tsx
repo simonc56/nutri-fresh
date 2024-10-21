@@ -13,6 +13,7 @@ export default function OrderContextProvider({ children }: { children: React.Rea
   const selectedTab = () => tabs.find((tab) => tab.active);
   const {
     menu,
+    isLoading,
     addItemToMenu,
     removeItemFromMenu,
     loadMenu,
@@ -45,6 +46,7 @@ export default function OrderContextProvider({ children }: { children: React.Rea
     selectedTab,
     selectTab,
     menu,
+    isLoading,
     addItemToMenu,
     removeItemFromMenu,
     loadMenu,

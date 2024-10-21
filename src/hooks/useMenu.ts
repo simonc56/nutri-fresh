@@ -13,6 +13,7 @@ export const useMenu = () => {
     isAdvertised: false,
   };
   const [menu, setMenu] = useState<MenuItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedItem, setSelectedItem] = useState<MenuItem>(emptyItem);
   const refInputName = useRef<null | HTMLInputElement>(null);
 
@@ -33,6 +34,7 @@ export const useMenu = () => {
   };
 
   const loadMenu = async (userId: string) => {
+    setIsLoading(true);
     const userData = await getUserData(userId);
     const importedMenu = JSON.parse(JSON.stringify(userData?.menu)) as MenuItem[];
     if (userData) {
@@ -41,6 +43,7 @@ export const useMenu = () => {
       createUserWithDefaultMenu(userId);
       setMenu(fakeMenu.LARGE);
     }
+    setIsLoading(false);
   };
 
   const resetMenu = () => {
@@ -63,6 +66,7 @@ export const useMenu = () => {
 
   return {
     menu,
+    isLoading,
     addItemToMenu,
     removeItemFromMenu,
     loadMenu,
