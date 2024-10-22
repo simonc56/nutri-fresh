@@ -22,7 +22,7 @@ function LoginForm() {
     <form className="login-form" action="submit" onSubmit={handleSubmit}>
       <h2>Des repas savoureux et équilibrés !</h2>
       <br />
-      <h3>Connectez-vous</h3>
+      <h3> </h3>
       <TextInput
         value={inputValue}
         setValue={setInputValue}
@@ -33,7 +33,7 @@ function LoginForm() {
         required
       />
       <PrimaryButton
-        label="Accéder à mon espace"
+        label="Accéder au magasin"
         Icon={<IoIosArrowForward />}
         type="submit"
         className="primary-button__large"
