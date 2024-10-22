@@ -36,9 +36,8 @@ export const useMenu = () => {
   const loadMenu = async (userId: string) => {
     setIsLoading(true);
     const userData = await getUserData(userId);
-    const importedMenu = JSON.parse(JSON.stringify(userData?.menu)) as MenuItem[];
     if (userData) {
-      setMenu(importedMenu);
+      setMenu(userData.menu);
     } else {
       createUserWithDefaultMenu(userId);
       setMenu(fakeMenu.LARGE);
