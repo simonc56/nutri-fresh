@@ -11,20 +11,6 @@ export default function OrderContextProvider({ children }: { children: React.Rea
   const [isPanelOpen, setIsPanelOpen] = useState(true);
   const [tabs, setTabs] = useState<TabProps[]>(tabsConfig);
   const selectedTab = () => tabs.find((tab) => tab.active);
-  const {
-    menu,
-    isLoading,
-    addItemToMenu,
-    removeItemFromMenu,
-    loadMenu,
-    resetMenu,
-    updateItem,
-    selectedItem,
-    setSelectedItemById,
-    unSelectItem,
-    refInputName,
-  } = useMenu();
-  const { basket, addItemToBasket, removeItemFromBasket } = useBasket();
 
   const selectTab = (index: string) => {
     setTabs((prevTabs) =>
@@ -37,6 +23,8 @@ export default function OrderContextProvider({ children }: { children: React.Rea
   };
 
   const valueOrderContext = {
+    ...useMenu(),
+    ...useBasket(),
     isAdminMode,
     setIsAdminMode,
     isPanelOpen,
@@ -45,20 +33,6 @@ export default function OrderContextProvider({ children }: { children: React.Rea
     setTabs,
     selectedTab,
     selectTab,
-    menu,
-    isLoading,
-    addItemToMenu,
-    removeItemFromMenu,
-    loadMenu,
-    resetMenu,
-    selectedItem,
-    setSelectedItemById,
-    unSelectItem,
-    updateItem,
-    basket,
-    addItemToBasket,
-    removeItemFromBasket,
-    refInputName,
   };
 
   return <OrderContext.Provider value={valueOrderContext}>{children}</OrderContext.Provider>;
