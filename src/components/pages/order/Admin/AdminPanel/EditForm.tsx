@@ -1,7 +1,10 @@
+import { FocusEvent, useState } from "react";
+import { BsCloudCheck } from "react-icons/bs";
 import { HiCursorClick } from "react-icons/hi";
 import { useOrderContext } from "src/context/useOrderContext";
+import { useTimedMessage } from "src/hooks/useTimedMessage";
 import "./EditForm.scss";
-import ProductForm from "./Form";
+import Form from "./Form";
 
 function NoItemSelectedToEdit() {
   return (
@@ -11,15 +14,34 @@ function NoItemSelectedToEdit() {
   );
 }
 
-// Intermediate component to conditionnaly display the ProductForm component
+// Intermediate component to conditionnaly display the Form component
 export default function EditContent() {
+  const { isDisplayed, displayMessage } = useTimedMessage(2000);
   const { selectedItem } = useOrderContext();
+  const [editedValue, setEditedValue] = useState("");
+
+  const handleOnFocus = (event: FocusEvent<HTMLInputElement>) => {
+    setEditedValue(event.target.value);
+  };
+
+  const handleOnBlur = (event: FocusEvent<HTMLInputElement>) => {
+    if (editedValue !== event.target.value) {
+      displayMessage();
+    }
+  };
+
   return selectedItem.id !== 0 ? (
-    <ProductForm>
-      <div className="info-edit">
-        Cliquer sur un produit du menu pour le modifier <em>en temps réel</em>
-      </div>
-    </ProductForm>
+    <Form onFocus={handleOnFocus} onBlur={handleOnBlur}>
+      {isDisplayed ? (
+        <div className="saved-label">
+          <BsCloudCheck className="icon" /> Modifications enregistrées !
+        </div>
+      ) : (
+        <div className="info-edit">
+          Cliquer sur un produit du menu pour le modifier <em>en temps réel</em>
+        </div>
+      )}
+    </Form>
   ) : (
     <NoItemSelectedToEdit />
   );
