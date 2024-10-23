@@ -2,6 +2,8 @@
 
 Site de vente de repas en ligne réalisé avec React / SASS / Context / Firebase.
 
+![image](https://raw.github.com/simonc56/nutri-fresh/main/public/images/screenshot.webp)
+
 ## Fonctionnalités
 
 - Ajouter/supprimer des articles au panier
