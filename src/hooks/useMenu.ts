@@ -49,6 +49,10 @@ export const useMenu = () => {
     }
   };
 
+  /**
+   * Set/Reset the menu to the default one
+   * both locally and in the database
+   */
   const resetMenu = () => {
     setMenu(fakeMenu.LARGE);
     dbUpdateFullMenu(fakeMenu.LARGE);

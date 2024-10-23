@@ -23,11 +23,19 @@ export const dbGetUserMenu = async () => {
   }
 };
 
-export const dbAuthenticateUser = async (userId: string) => {
+/**
+ * Check if the user exists in the database, if not, create it.
+ * Also sets the current user for other db requests, so must be called first.
+ * @param {string} userId
+ * @returns {boolean} true if the user is new
+ */
+export const dbAuthenticateUser = async (userId: string): Promise<boolean> => {
   dbUserRef = doc(db, "users", userId);
   const userSnapshot = await getDoc(dbUserRef);
+  let isNewUser = false;
   if (!userSnapshot.exists()) {
     setDoc(dbUserRef, { createdAt: new Date() });
-    return true; // indicates that the user is new
+    isNewUser = true;
   }
+  return isNewUser;
 };

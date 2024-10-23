@@ -14,7 +14,7 @@ export default function Menu() {
 
   useEffect(() => {
     if (username) {
-      dbAuthenticateUser(username).then(async (isNewUser) => {
+      dbAuthenticateUser(username).then((isNewUser) => {
         if (isNewUser) {
           resetMenu();
         } else {
