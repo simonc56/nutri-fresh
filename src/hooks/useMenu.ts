@@ -36,9 +36,9 @@ export const useMenu = () => {
     dbRemoveMenuItem(id);
   };
 
-  const loadMenu = async (username: string) => {
+  const loadMenu = async () => {
     setIsLoading(true);
-    const menu = await dbGetUserMenu(username);
+    const menu = await dbGetUserMenu();
     if (menu) {
       setMenu(menu);
       setIsLoading(false);

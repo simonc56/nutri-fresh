@@ -10,8 +10,7 @@ export const dbUserExists = async (userId: string) => {
   return docSnapshot.exists();
 };
 
-export const dbGetUserMenu = async (username: string) => {
-  dbUserRef = doc(db, "users", username);
+export const dbGetUserMenu = async () => {
   const menuCollection = collection(dbUserRef, "menu");
   const menuSnapshot = await getDocs(menuCollection);
   const menuData = menuSnapshot.docs.map((doc) => {

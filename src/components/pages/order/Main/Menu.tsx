@@ -18,7 +18,7 @@ export default function Menu() {
         if (isNewUser) {
           resetMenu();
         } else {
-          loadMenu(username).then((isSuccess) => {
+          loadMenu().then((isSuccess) => {
             if (!isSuccess) {
               notify("Erreur lors du chargement du menu");
             }
