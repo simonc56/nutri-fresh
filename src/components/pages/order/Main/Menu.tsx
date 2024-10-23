@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { dbAuthenticateUser } from "src/api/user";
 import PrimaryButton from "src/components/reusable-ui/PrimaryButton/PrimaryButton";
 import ProductCard from "src/components/reusable-ui/ProductCard/ProductCard";
 import { useOrderContext } from "src/context/useOrderContext";
+import { notify } from "src/utils/notification";
 import "./Menu.scss";
 
 export default function Menu() {
@@ -12,7 +14,17 @@ export default function Menu() {
 
   useEffect(() => {
     if (username) {
-      loadMenu(username);
+      dbAuthenticateUser(username).then(async (isNewUser) => {
+        if (isNewUser) {
+          resetMenu();
+        } else {
+          loadMenu(username).then((isSuccess) => {
+            if (!isSuccess) {
+              notify("Erreur lors du chargement du menu");
+            }
+          });
+        }
+      });
     }
   }, [username]);
 

@@ -1,28 +1,34 @@
-import { doc, getDoc, setDoc } from "firebase/firestore/lite";
-import { fakeMenu } from "src/fakeData/fakeMenu";
+import { collection, doc, DocumentReference, getDoc, getDocs, setDoc } from "firebase/firestore/lite";
+import { MenuItem } from "src/fakeData/fakeMenu";
 import { db } from "./firebase-config";
 
-export const userExists = async (userId: string) => {
+export let dbUserRef: DocumentReference;
+
+export const dbUserExists = async (userId: string) => {
   const docRef = doc(db, "users", userId);
   const docSnapshot = await getDoc(docRef);
   return docSnapshot.exists();
 };
 
-export const getUserData = async (userId: string) => {
-  const docRef = doc(db, "users", userId);
-  const docSnapshot = await getDoc(docRef);
-  if (docSnapshot.exists()) {
-    return docSnapshot.data();
+export const dbGetUserMenu = async (username: string) => {
+  dbUserRef = doc(db, "users", username);
+  const menuCollection = collection(dbUserRef, "menu");
+  const menuSnapshot = await getDocs(menuCollection);
+  const menuData = menuSnapshot.docs.map((doc) => {
+    return { ...doc.data(), id: parseInt(doc.id) };
+  });
+  if (menuData) {
+    return menuData as MenuItem[];
   } else {
     return null;
   }
 };
 
-export const createUserWithDefaultMenu = async (userId: string) => {
-  const docRef = doc(db, "users", userId);
-  const docSnapshot = await getDoc(docRef);
-  if (!docSnapshot.exists()) {
-    const data = { menu: fakeMenu.LARGE };
-    setDoc(docRef, data);
+export const dbAuthenticateUser = async (userId: string) => {
+  dbUserRef = doc(db, "users", userId);
+  const userSnapshot = await getDoc(dbUserRef);
+  if (!userSnapshot.exists()) {
+    setDoc(dbUserRef, { createdAt: new Date() });
+    return true; // indicates that the user is new
   }
 };

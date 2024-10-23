@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
-import { createUserWithDefaultMenu, getUserData } from "src/api/user";
+import { dbAddMenuItem, dbRemoveMenuItem, dbUpdateFullMenu, dbUpdateMenuItem } from "src/api/menu";
+import { dbGetUserMenu } from "src/api/user";
 import { fakeMenu, MenuItem } from "../fakeData/fakeMenu";
 
 export const useMenu = () => {
@@ -27,31 +28,36 @@ export const useMenu = () => {
       isAdvertised: false,
     } as MenuItem;
     setMenu((prev) => [newItem, ...prev]);
+    dbAddMenuItem(newItem);
   };
 
   const removeItemFromMenu = (id: number) => {
     setMenu((previousMenu) => previousMenu.filter((item) => item.id !== id));
+    dbRemoveMenuItem(id);
   };
 
-  const loadMenu = async (userId: string) => {
+  const loadMenu = async (username: string) => {
     setIsLoading(true);
-    const userData = await getUserData(userId);
-    if (userData) {
-      setMenu(userData.menu);
+    const menu = await dbGetUserMenu(username);
+    if (menu) {
+      setMenu(menu);
+      setIsLoading(false);
+      return true;
     } else {
-      createUserWithDefaultMenu(userId);
-      setMenu(fakeMenu.LARGE);
+      setIsLoading(false);
+      return false;
     }
-    setIsLoading(false);
   };
 
   const resetMenu = () => {
     setMenu(fakeMenu.LARGE);
+    dbUpdateFullMenu(fakeMenu.LARGE);
   };
 
   const updateItem = (item: MenuItem) => {
     setSelectedItem(item);
     setMenu((prev) => prev.map((menuItem) => (menuItem.id === item.id ? item : menuItem)));
+    if (item.id !== 0) dbUpdateMenuItem(item);
   };
 
   const setSelectedItemById = (id: number) => {

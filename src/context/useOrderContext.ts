@@ -16,7 +16,7 @@ type OrderContextType = {
   isLoading: boolean;
   addItemToMenu: (item: Partial<MenuItem>) => void;
   removeItemFromMenu: (id: number) => void;
-  loadMenu: (userId: string) => void;
+  loadMenu: (username: string) => Promise<boolean>;
   resetMenu: () => void;
   selectedItem: MenuItem;
   setSelectedItemById: (id: number) => void;
