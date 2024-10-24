@@ -17,7 +17,8 @@ export const dbGetUserMenu = async () => {
     return { ...doc.data(), id: parseInt(doc.id) };
   });
   if (menuData) {
-    return menuData as MenuItem[];
+    const sortedMenu = menuData.sort((a, b) => a.id - b.id);
+    return sortedMenu as MenuItem[];
   } else {
     return null;
   }
