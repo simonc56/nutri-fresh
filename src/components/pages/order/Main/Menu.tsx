@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { loadBasket } from "src/api/basket";
 import { dbAuthenticateUser } from "src/api/user";
 import PrimaryButton from "src/components/reusable-ui/PrimaryButton/PrimaryButton";
 import ProductCard from "src/components/reusable-ui/ProductCard/ProductCard";
@@ -8,7 +9,7 @@ import { notify } from "src/utils/notification";
 import "./Menu.scss";
 
 export default function Menu() {
-  const { menu, isLoading, loadMenu, removeItemFromMenu, resetMenu, isAdminMode, removeItemFromBasket } =
+  const { menu, isLoading, loadMenu, removeItemFromMenu, resetMenu, isAdminMode, setBasket, removeItemFromBasket } =
     useOrderContext();
   const { username } = useParams();
 
@@ -22,6 +23,8 @@ export default function Menu() {
             if (!isSuccess) {
               notify("Erreur lors du chargement du menu");
             }
+            const basket = loadBasket(username);
+            if (basket) setBasket(basket);
           });
         }
       });

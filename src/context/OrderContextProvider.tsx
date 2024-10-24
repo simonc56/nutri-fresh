@@ -25,7 +25,7 @@ export default function OrderContextProvider({ username, children }: { username:
   const valueOrderContext = {
     username,
     ...useMenu(),
-    ...useBasket(),
+    ...useBasket(username),
     isAdminMode,
     setIsAdminMode,
     isPanelOpen,

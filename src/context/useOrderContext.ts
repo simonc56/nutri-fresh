@@ -24,6 +24,7 @@ type OrderContextType = {
   unSelectItem: () => void;
   updateItem: (item: MenuItem) => void;
   basket: BasketItem[];
+  setBasket: Dispatch<SetStateAction<BasketItem[]>>;
   addItemToBasket: (id: number) => void;
   removeItemFromBasket: (id: number) => void;
   refInputName: React.RefObject<HTMLInputElement>;
