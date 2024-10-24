@@ -31,12 +31,17 @@ export const dbGetUserMenu = async () => {
  * @returns {boolean} true if the user is new
  */
 export const dbAuthenticateUser = async (userId: string): Promise<boolean> => {
-  dbUserRef = doc(db, "users", userId);
-  const userSnapshot = await getDoc(dbUserRef);
   let isNewUser = false;
-  if (!userSnapshot.exists()) {
-    setDoc(dbUserRef, { createdAt: new Date() });
-    isNewUser = true;
+  try {
+    dbUserRef = doc(db, "users", userId);
+    const userSnapshot = await getDoc(dbUserRef);
+    console.log("userSnapshot", userSnapshot);
+    if (!userSnapshot.exists()) {
+      setDoc(dbUserRef, { createdAt: new Date() });
+      isNewUser = true;
+    }
+  } catch {
+    throw new Error("Connexion impossible à la base de données, vérifier la connexion");
   }
   return isNewUser;
 };

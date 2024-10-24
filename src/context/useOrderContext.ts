@@ -15,6 +15,8 @@ type OrderContextType = {
   selectTab: (index: string) => void;
   menu: MenuItem[];
   isLoading: boolean;
+  isError: boolean;
+  setIsError: Dispatch<SetStateAction<boolean>>;
   addItemToMenu: (item: Partial<MenuItem>) => void;
   removeItemFromMenu: (id: number) => void;
   loadMenu: () => Promise<boolean>;

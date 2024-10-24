@@ -15,6 +15,7 @@ export const useMenu = () => {
   };
   const [menu, setMenu] = useState<MenuItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   const [selectedItem, setSelectedItem] = useState<MenuItem>(emptyItem);
   const refInputName = useRef<null | HTMLInputElement>(null);
 
@@ -77,6 +78,8 @@ export const useMenu = () => {
   return {
     menu,
     isLoading,
+    isError,
+    setIsError,
     addItemToMenu,
     removeItemFromMenu,
     loadMenu,

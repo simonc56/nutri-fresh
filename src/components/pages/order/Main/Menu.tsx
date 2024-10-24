@@ -9,25 +9,39 @@ import { notify } from "src/utils/notification";
 import "./Menu.scss";
 
 export default function Menu() {
-  const { menu, isLoading, loadMenu, removeItemFromMenu, resetMenu, isAdminMode, setBasket, removeItemFromBasket } =
-    useOrderContext();
+  const {
+    menu,
+    isLoading,
+    isError,
+    setIsError,
+    loadMenu,
+    removeItemFromMenu,
+    resetMenu,
+    isAdminMode,
+    setBasket,
+    removeItemFromBasket,
+  } = useOrderContext();
   const { username } = useParams();
 
   useEffect(() => {
     if (username) {
-      dbAuthenticateUser(username).then((isNewUser) => {
-        if (isNewUser) {
-          resetMenu();
-        } else {
-          loadMenu().then((isSuccess) => {
-            if (!isSuccess) {
-              notify("Erreur lors du chargement du menu");
-            }
-            const basket = loadBasket(username);
-            if (basket) setBasket(basket);
-          });
-        }
-      });
+      dbAuthenticateUser(username)
+        .then((isNewUser) => {
+          if (isNewUser) {
+            resetMenu();
+          } else {
+            loadMenu().then((isSuccess) => {
+              if (!isSuccess) {
+                notify("Erreur lors du chargement du menu");
+              }
+              const basket = loadBasket(username);
+              if (basket) setBasket(basket);
+            });
+          }
+        })
+        .catch(() => {
+          setIsError(true);
+        });
     }
   }, [username]);
 
@@ -37,10 +51,10 @@ export default function Menu() {
     removeItemFromBasket(id);
   };
 
-  const LoadingMessage = () => {
+  const Message = ({ content }: { content: string }) => {
     return (
       <div className="empty-menu">
-        <p>Chargement en cours...</p>
+        <p>{content}</p>
       </div>
     );
   };
@@ -65,6 +79,9 @@ export default function Menu() {
     );
   };
 
+  if (isError) return <Message content="Oups, problème d'accès !" />;
+  if (isLoading) return <Message content="Chargement en cours..." />;
+
   return menu.length > 0 ? (
     <div className="menu">
       <h2 className="sr-only">Menu</h2>
@@ -79,8 +96,6 @@ export default function Menu() {
         />
       ))}
     </div>
-  ) : isLoading ? (
-    <LoadingMessage />
   ) : isAdminMode ? (
     <AdminEmptyMenu />
   ) : (

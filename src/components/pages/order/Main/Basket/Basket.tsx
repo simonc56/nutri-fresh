@@ -5,7 +5,7 @@ import BasketBody from "./BasketBody";
 import Total from "./Total";
 
 export default function Basket() {
-  const { basket, menu, isLoading } = useOrderContext();
+  const { basket, menu } = useOrderContext();
 
   const basketContent = basket
     .map((item) => {
@@ -18,7 +18,7 @@ export default function Basket() {
     <section className="basket">
       <h2 className="sr-only">Panier</h2>
       <Total />
-      <BasketBody content={basketContent} isLoading={isLoading} />
+      <BasketBody content={basketContent} />
       <footer className="basket-footer">Codé avec React.js</footer>
     </section>
   );
