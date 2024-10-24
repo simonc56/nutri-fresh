@@ -5,7 +5,7 @@ import BasketBody from "./BasketBody";
 import Total from "./Total";
 
 export default function Basket() {
-  const { basket, menu } = useOrderContext();
+  const { basket, menu, isLoading } = useOrderContext();
 
   const basketContent = basket.map((item) => {
     const menuItem = menu.find((menuItem) => menuItem.id === item.id);
@@ -16,7 +16,7 @@ export default function Basket() {
     <section className="basket">
       <h2 className="sr-only">Panier</h2>
       <Total />
-      <BasketBody content={basketContent} />
+      <BasketBody content={basketContent} isLoading={isLoading} />
       <footer className="basket-footer">Codé avec React.js</footer>
     </section>
   );

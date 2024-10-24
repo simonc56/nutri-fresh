@@ -56,6 +56,7 @@ export const useMenu = () => {
   const resetMenu = () => {
     setMenu(fakeMenu.LARGE);
     dbUpdateFullMenu(fakeMenu.LARGE);
+    setIsLoading(false);
   };
 
   const updateItem = (item: MenuItem) => {
