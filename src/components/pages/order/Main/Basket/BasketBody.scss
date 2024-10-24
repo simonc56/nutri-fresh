@@ -11,7 +11,7 @@
   font-size: theme.size(P4);
   overflow-y: scroll;
   scrollbar-width: thin;
-  scrollbar-color: theme.$color_background_white rgba(80, 80, 80, 0.05);
+  scrollbar-color: theme.$color_background_white rgba(0, 0, 0, 0);
   .basket-empty {
     margin: auto;
   }
