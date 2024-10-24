@@ -6,7 +6,7 @@ import { tabsConfig } from "../components/pages/order/Admin/tabsConfig";
 import { useMenu } from "../hooks/useMenu";
 
 // OrderContextProvider component to wrap the app with the context provider
-export default function OrderContextProvider({ children }: { children: React.ReactNode }) {
+export default function OrderContextProvider({ username, children }: { username: string; children: React.ReactNode }) {
   const [isAdminMode, setIsAdminMode] = useState(false);
   const [isPanelOpen, setIsPanelOpen] = useState(true);
   const [tabs, setTabs] = useState<TabProps[]>(tabsConfig);
@@ -23,6 +23,7 @@ export default function OrderContextProvider({ children }: { children: React.Rea
   };
 
   const valueOrderContext = {
+    username,
     ...useMenu(),
     ...useBasket(),
     isAdminMode,

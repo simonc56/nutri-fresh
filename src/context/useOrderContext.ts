@@ -4,6 +4,7 @@ import { MenuItem } from "src/fakeData/fakeMenu";
 import { BasketItem } from "../hooks/useBasket";
 
 type OrderContextType = {
+  username: string;
   isAdminMode: boolean;
   setIsAdminMode: Dispatch<SetStateAction<boolean>>;
   isPanelOpen: boolean;

@@ -9,10 +9,10 @@ function OrderPage() {
   document.title = `Nutri Fresh | ${username}`;
 
   return (
-    <OrderContextProvider>
+    <OrderContextProvider username={username || ""}>
       <div className="order-page">
         <div className="container">
-          <Navbar username={username || ""} />
+          <Navbar />
           <Main />
         </div>
       </div>
