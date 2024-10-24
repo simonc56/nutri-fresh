@@ -7,23 +7,23 @@ import TextInput from "src/components/reusable-ui/TextInput/TextInput";
 import "./LoginForm.scss";
 
 function LoginForm() {
-  const [inputValue, setInputValue] = useState("");
+  const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setInputValue("");
-    navigate(`/order/${inputValue}`);
+    setUsername("");
+    navigate(`/order/${username}`);
   };
 
   return (
     <form className="login-form" action="submit" onSubmit={handleSubmit}>
       <h2>Des repas savoureux et équilibrés !</h2>
       <br />
-      <h3>Connectez-vous</h3>
+      <h3> </h3>
       <TextInput
-        value={inputValue}
-        setValue={setInputValue}
+        value={username}
+        setValue={setUsername}
         Icon={<PiUserCircleFill />}
         type="text"
         placeholder="Entrez votre prénom"
@@ -31,7 +31,7 @@ function LoginForm() {
         required
       />
       <PrimaryButton
-        label="Accéder à mon espace"
+        label="Accéder au magasin"
         Icon={<IoIosArrowForward />}
         type="submit"
         className="primary-button__large"

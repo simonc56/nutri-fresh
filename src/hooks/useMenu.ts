@@ -1,4 +1,6 @@
 import { useRef, useState } from "react";
+import { dbAddMenuItem, dbRemoveMenuItem, dbUpdateFullMenu, dbUpdateMenuItem } from "src/api/menu";
+import { dbGetUserMenu } from "src/api/user";
 import { fakeMenu, MenuItem } from "../fakeData/fakeMenu";
 
 export const useMenu = () => {
@@ -11,7 +13,9 @@ export const useMenu = () => {
     isAvailable: true,
     isAdvertised: false,
   };
-  const [menu, setMenu] = useState<MenuItem[]>(fakeMenu.LARGE);
+  const [menu, setMenu] = useState<MenuItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   const [selectedItem, setSelectedItem] = useState<MenuItem>(emptyItem);
   const refInputName = useRef<null | HTMLInputElement>(null);
 
@@ -25,19 +29,41 @@ export const useMenu = () => {
       isAdvertised: false,
     } as MenuItem;
     setMenu((prev) => [newItem, ...prev]);
+    dbAddMenuItem(newItem);
   };
 
   const removeItemFromMenu = (id: number) => {
     setMenu((previousMenu) => previousMenu.filter((item) => item.id !== id));
+    dbRemoveMenuItem(id);
   };
 
+  const loadMenu = async () => {
+    setIsLoading(true);
+    const menu = await dbGetUserMenu();
+    if (menu) {
+      setMenu(menu);
+      setIsLoading(false);
+      return true;
+    } else {
+      setIsLoading(false);
+      return false;
+    }
+  };
+
+  /**
+   * Set/Reset the menu to the default one
+   * both locally and in the database
+   */
   const resetMenu = () => {
-    setMenu(fakeMenu.MEDIUM);
+    setMenu(fakeMenu.LARGE);
+    dbUpdateFullMenu(fakeMenu.LARGE);
+    setIsLoading(false);
   };
 
   const updateItem = (item: MenuItem) => {
     setSelectedItem(item);
     setMenu((prev) => prev.map((menuItem) => (menuItem.id === item.id ? item : menuItem)));
+    if (item.id !== 0) dbUpdateMenuItem(item);
   };
 
   const setSelectedItemById = (id: number) => {
@@ -51,8 +77,12 @@ export const useMenu = () => {
 
   return {
     menu,
+    isLoading,
+    isError,
+    setIsError,
     addItemToMenu,
     removeItemFromMenu,
+    loadMenu,
     resetMenu,
     updateItem,
     selectedItem,

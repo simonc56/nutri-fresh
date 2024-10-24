@@ -7,7 +7,8 @@
   justify-content: center;
   padding: theme.spacing(xl);
   overflow-y: scroll;
-  scrollbar-width: none;
+  scrollbar-width: thin;
+  scrollbar-color: theme.$color_background_white rgba(0, 0, 0, 0);
   flex-grow: 1;
 }
 .empty-menu {

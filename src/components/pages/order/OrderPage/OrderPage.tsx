@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import OrderContextProvider from "src/context/OrderContext";
+import OrderContextProvider from "src/context/OrderContextProvider";
 import Main from "../Main/Main";
 import Navbar from "../Navbar/Navbar";
 import "./OrderPage.scss";
@@ -9,10 +9,10 @@ function OrderPage() {
   document.title = `Nutri Fresh | ${username}`;
 
   return (
-    <OrderContextProvider>
+    <OrderContextProvider username={username || ""}>
       <div className="order-page">
         <div className="container">
-          <Navbar username={username || ""} />
+          <Navbar />
           <Main />
         </div>
       </div>
