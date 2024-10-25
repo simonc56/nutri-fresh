@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { dbAddMenuItem, dbRemoveMenuItem, dbUpdateFullMenu, dbUpdateMenuItem } from "src/api/menu";
 import { dbGetUserMenu } from "src/api/user";
 import { MenuItem, startMenu } from "../startData/startMenu";
 import { useTimedMessage } from "./useTimedMessage";
@@ -30,12 +29,10 @@ export const useMenu = () => {
       quantity: 0,
     } as MenuItem;
     setMenu((prev) => [newItem, ...prev]);
-    dbAddMenuItem(newItem);
   };
 
   const removeItemFromMenu = (id: number) => {
     setMenu((previousMenu) => previousMenu.filter((item) => item.id !== id));
-    dbRemoveMenuItem(id);
   };
 
   const loadMenu = async () => {
@@ -57,7 +54,6 @@ export const useMenu = () => {
    */
   const resetMenu = () => {
     setMenu(startMenu.LARGE);
-    dbUpdateFullMenu(startMenu.LARGE);
     setIsLoading(false);
   };
 
@@ -67,7 +63,6 @@ export const useMenu = () => {
     if (item.id !== 0) {
       clearTimeout(myTimeout);
       const timeoutID = window.setTimeout(() => {
-        dbUpdateMenuItem(item);
         displayMessage();
       }, 500);
       setMyTimeout(timeoutID);

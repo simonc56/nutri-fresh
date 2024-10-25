@@ -7,10 +7,10 @@ import "./Main.scss";
 import Menu from "./Menu";
 
 export default function Main() {
-  const { username, resetMenu, loadMenu, setBasket, setIsError } = useOrderContext();
+  const { username, resetMenu, setBasket } = useOrderContext();
 
   useEffect(() => {
-    initUserSession(username, resetMenu, loadMenu, setBasket, setIsError);
+    initUserSession(username, resetMenu, setBasket);
   }, [username]);
 
   return (
