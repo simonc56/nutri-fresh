@@ -8,7 +8,8 @@ export const dbUpdateFullMenu = async (menu: MenuItem[]) => {
   const menuCollection = collection(dbUserRef, "menu");
   menu.forEach((item) => {
     const menuItemRef = doc(menuCollection, item.id.toString());
-    const { id, ...itemWithoutId } = item;
+    const itemWithoutId = { ...item } as Partial<MenuItem>;
+    delete itemWithoutId.id;
     batch.set(menuItemRef, itemWithoutId);
   });
   await batch.commit();
