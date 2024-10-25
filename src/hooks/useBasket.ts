@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { saveBasket } from "src/api/basket";
+import { saveBasketToLocalStorage } from "src/api/basket";
 
 export type BasketItem = { id: number; quantity: number };
 
@@ -18,7 +18,7 @@ export default function useBasket(username: string) {
         // item not in basket, add it
         updatedBasket = [...previousBasket, { id, quantity: 1 }];
       }
-      saveBasket(username, updatedBasket); // save to local storage
+      saveBasketToLocalStorage(username, updatedBasket);
       return updatedBasket;
     });
   };
@@ -26,7 +26,7 @@ export default function useBasket(username: string) {
   const removeItemFromBasket = (id: number) => {
     setBasket((prev) => {
       const updatedBasket = prev.filter((item) => item.id !== id);
-      saveBasket(username, updatedBasket); // save to local storage
+      saveBasketToLocalStorage(username, updatedBasket);
       return updatedBasket;
     });
   };
