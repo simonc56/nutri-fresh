@@ -15,4 +15,24 @@
   .basket-empty {
     margin: auto;
   }
+  .banner-enter,
+  .banner-appear {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  .banner-enter-active,
+  .banner-appear-active {
+    opacity: 1;
+    transform: translateX(0%);
+    transition: all 0.3s ease-out;
+  }
+  .banner-exit {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  .banner-exit-active {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.3s ease-in;
+  }
 }
