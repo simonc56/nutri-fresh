@@ -35,7 +35,6 @@ export const dbAuthenticateUser = async (userId: string): Promise<boolean> => {
   try {
     dbUserRef = doc(db, "users", userId);
     const userSnapshot = await getDoc(dbUserRef);
-    console.log("userSnapshot", userSnapshot);
     if (!userSnapshot.exists()) {
       setDoc(dbUserRef, { createdAt: new Date() });
       isNewUser = true;
