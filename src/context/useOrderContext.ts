@@ -30,6 +30,8 @@ type OrderContextType = {
   addItemToBasket: (id: number) => void;
   removeItemFromBasket: (id: number) => void;
   refInputName: React.RefObject<HTMLInputElement>;
+  isDisplayed: boolean;
+  displayMessage: () => void;
 };
 
 export const OrderContext = createContext<OrderContextType | undefined>(undefined);

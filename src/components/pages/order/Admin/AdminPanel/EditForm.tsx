@@ -1,8 +1,6 @@
-import { FocusEvent, useState } from "react";
 import { BsCloudCheck } from "react-icons/bs";
 import { HiCursorClick } from "react-icons/hi";
 import { useOrderContext } from "src/context/useOrderContext";
-import { useTimedMessage } from "src/hooks/useTimedMessage";
 import "./EditForm.scss";
 import Form from "./Form";
 
@@ -16,22 +14,10 @@ function NoItemSelectedToEdit() {
 
 // Intermediate component to conditionnaly display the Form component
 export default function EditContent() {
-  const { isDisplayed, displayMessage } = useTimedMessage(2000);
-  const { selectedItem } = useOrderContext();
-  const [editedValue, setEditedValue] = useState("");
-
-  const handleOnFocus = (event: FocusEvent<HTMLInputElement>) => {
-    setEditedValue(event.target.value);
-  };
-
-  const handleOnBlur = (event: FocusEvent<HTMLInputElement>) => {
-    if (editedValue !== event.target.value) {
-      displayMessage();
-    }
-  };
+  const { selectedItem, isDisplayed } = useOrderContext();
 
   return selectedItem.id !== 0 ? (
-    <Form onFocus={handleOnFocus} onBlur={handleOnBlur}>
+    <Form>
       {isDisplayed ? (
         <div className="saved-label">
           <BsCloudCheck className="icon" /> Modifications enregistrées !

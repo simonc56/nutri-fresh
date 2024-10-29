@@ -2,13 +2,11 @@ import { FormEvent } from "react";
 import { FiCheck } from "react-icons/fi";
 import PrimaryButton from "src/components/reusable-ui/PrimaryButton/PrimaryButton";
 import { useOrderContext } from "src/context/useOrderContext";
-import { useTimedMessage } from "src/hooks/useTimedMessage";
 import Form from "./Form";
 
 // Intermediate component to conditionnaly display the ProductForm component
 export default function AddContent() {
-  const { addItemToMenu, selectedItem, unSelectItem } = useOrderContext();
-  const { isDisplayed, displayMessage } = useTimedMessage(2000);
+  const { addItemToMenu, selectedItem, unSelectItem, isDisplayed, displayMessage } = useOrderContext();
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

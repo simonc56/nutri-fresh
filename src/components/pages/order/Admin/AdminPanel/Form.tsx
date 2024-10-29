@@ -1,4 +1,4 @@
-import { FocusEvent, FormEvent, useEffect } from "react";
+import { FormEvent, useEffect } from "react";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { PiBowlFoodFill } from "react-icons/pi";
@@ -9,12 +9,10 @@ import "./Form.scss";
 
 type ProductFormProps = {
   onSubmit?: (event: FormEvent<HTMLFormElement>) => void;
-  onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
-  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   children?: JSX.Element;
 };
 
-export default function Form({ onSubmit, onFocus, onBlur, children }: ProductFormProps) {
+export default function Form({ onSubmit, children }: ProductFormProps) {
   const { selectedItem, updateItem, selectedTab, refInputName } = useOrderContext();
 
   useEffect(() => {
@@ -51,8 +49,6 @@ export default function Form({ onSubmit, onFocus, onBlur, children }: ProductFor
           Icon={<PiBowlFoodFill />}
           className="slim"
           onChange={(e) => onChange("title", e.target.value)}
-          onFocus={onFocus}
-          onBlur={onBlur}
           aria-label="Nom du produit"
           ref={refInputName}
         />
@@ -63,8 +59,6 @@ export default function Form({ onSubmit, onFocus, onBlur, children }: ProductFor
           Icon={<BsFillCameraFill />}
           className="slim"
           onChange={(e) => onChange("imageSource", e.target.value)}
-          onFocus={onFocus}
-          onBlur={onBlur}
         />
         <TextInput
           placeholder="Prix"
@@ -73,8 +67,6 @@ export default function Form({ onSubmit, onFocus, onBlur, children }: ProductFor
           Icon={<MdOutlineEuro />}
           className="slim"
           onChange={(e) => onChange("price", e.target.value)}
-          onFocus={onFocus}
-          onBlur={onBlur}
           type="number"
         />
         {children}
