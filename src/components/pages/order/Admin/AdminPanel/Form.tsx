@@ -1,4 +1,4 @@
-import { FormEvent, useEffect } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { PiBowlFoodFill } from "react-icons/pi";
@@ -14,10 +14,14 @@ type ProductFormProps = {
 
 export default function Form({ onSubmit, children }: ProductFormProps) {
   const { selectedItem, updateItem, selectedTab, refInputName } = useOrderContext();
+  const [firstRender, setFirstRender] = useState(true);
 
   useEffect(() => {
-    if (selectedTab()?.index === "edit") refInputName.current?.focus();
-  }, [selectedTab, refInputName]);
+    if (firstRender && selectedTab()?.index === "edit") {
+      setFirstRender(false);
+      refInputName.current?.focus();
+    }
+  }, [selectedTab]);
 
   const onChange = (key: keyof MenuItem, value: string | number | boolean) => {
     updateItem({ ...selectedItem, [key]: value });
