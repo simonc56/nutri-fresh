@@ -45,18 +45,20 @@ export default function Menu() {
   if (isLoading) return <Message content="Chargement en cours..." />;
 
   return menu.length > 0 ? (
-    <div className="menu">
-      <h2 className="sr-only">Menu</h2>
-      {menu.map(({ id, imageSource, title, price }) => (
-        <ProductCard
-          key={id}
-          id={id}
-          imageSource={imageSource}
-          title={title}
-          price={price}
-          onDelete={(event) => onDelete(event, id)}
-        />
-      ))}
+    <div className="menu-container">
+      <div className="menu">
+        <h2 className="sr-only">Menu</h2>
+        {menu.map(({ id, imageSource, title, price }) => (
+          <ProductCard
+            key={id}
+            id={id}
+            imageSource={imageSource}
+            title={title}
+            price={price}
+            onDelete={(event) => onDelete(event, id)}
+          />
+        ))}
+      </div>
     </div>
   ) : isAdminMode ? (
     <AdminEmptyMenu />

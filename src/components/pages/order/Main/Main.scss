@@ -8,12 +8,9 @@
   overflow: hidden;
   scrollbar-width: none;
   flex-grow: 1;
-  position: relative;
   .menu-and-admin {
+    position: relative;
     box-shadow: theme.shadow(strong);
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    scrollbar-color: theme.$color_background_white rgba(0, 0, 0, 0);
     flex-grow: 1;
   }
 }
