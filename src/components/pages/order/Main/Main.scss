@@ -5,14 +5,15 @@
   border-bottom-left-radius: theme.radius(extraRound);
   border-bottom-right-radius: theme.radius(extraRound);
   display: flex;
-  overflow-y: scroll;
+  overflow: hidden;
   scrollbar-width: none;
   flex-grow: 1;
+  position: relative;
   .menu-and-admin {
     box-shadow: theme.shadow(strong);
-    position: relative;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: theme.$color_background_white rgba(0, 0, 0, 0);
     flex-grow: 1;
-    display: flex;
-    flex-direction: column;
   }
 }
