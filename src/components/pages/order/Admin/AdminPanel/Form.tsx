@@ -15,11 +15,11 @@ type ProductFormProps = {
 };
 
 export default function Form({ onSubmit, onFocus, onBlur, children }: ProductFormProps) {
-  const { selectedItem, updateItem, refInputName, isAdminMode } = useOrderContext();
+  const { selectedItem, updateItem, selectedTab, refInputName } = useOrderContext();
 
   useEffect(() => {
-    if (isAdminMode) setTimeout(() => refInputName.current?.focus(), 500);
-  }, [isAdminMode, refInputName]);
+    if (selectedTab()?.index === "edit") refInputName.current?.focus();
+  }, [selectedTab, refInputName]);
 
   const onChange = (key: keyof MenuItem, value: string | number | boolean) => {
     updateItem({ ...selectedItem, [key]: value });
