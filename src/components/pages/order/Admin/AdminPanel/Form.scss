@@ -8,17 +8,27 @@
     width: 240px;
     display: flex;
     justify-content: center;
+    margin-bottom: 3rem;
     align-items: center;
     color: theme.$color_greyMedium;
-    border: 1px solid theme.$color_greyLight;
-    border-radius: theme.radius(round);
     .image {
-      width: 240px;
-      height: 195px;
+      width: 200px;
+      height: 155px;
       object-fit: contain;
       color: theme.$color_white;
     }
   }
+  .image-no-preview {
+    width: 240px;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: theme.$color_greyMedium;
+    border: 1px solid theme.$color_greyLight;
+    border-radius: theme.radius(round);
+  }
+
   .input-fields {
     flex-grow: 1;
     display: flex;

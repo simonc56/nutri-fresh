@@ -31,8 +31,8 @@ export default function Form({ onSubmit, children }: ProductFormProps) {
 
   return (
     <form className="product-form" onSubmit={onSubmit}>
-      <div className="image-preview">
-        {selectedItem.imageSource ? (
+      {selectedItem.imageSource ? (
+        <div className="image-preview">
           <img
             className="image"
             src={selectedItem.imageSource}
@@ -41,10 +41,11 @@ export default function Form({ onSubmit, children }: ProductFormProps) {
               e.currentTarget.style.display = "none";
             }}
           />
-        ) : (
-          "Aucune image"
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className="image-no-preview">Aucune image</div>
+      )}
+
       <div className="input-fields">
         <TextInput
           placeholder="Nom du produit (ex: Plat de lentilles)"
