@@ -20,6 +20,9 @@
     &::placeholder {
       color: theme.$color_greyMedium;
     }
+    &:focus {
+      outline: none;
+    }
   }
   &.slim {
     input {
