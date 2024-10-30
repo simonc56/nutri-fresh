@@ -2,6 +2,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { useOrderContext } from "src/context/useOrderContext";
 import { MenuItem } from "src/fakeData/fakeMenu";
 import { formatPrice } from "src/utils/maths";
+import Counter from "../Counter/Counter";
 import "./BannerCard.scss";
 
 type BannerCardProps = Omit<MenuItem, "isAvailable" | "isAdvertised">;
@@ -51,7 +52,9 @@ export default function BannerCard({ id, imageSource, title, price, quantity }: 
           {formatPrice(price)}
         </div>
       </div>
-      <div className={`banner-card-qty${isAdminMode && isSelected ? " revert-color" : ""}`}>x {quantity}</div>
+      <div className={`banner-card-qty${isAdminMode && isSelected ? " revert-color" : ""}`}>
+        <Counter content={`x ${quantity}`} />
+      </div>
       {(!isAdminMode || !isSelected) && (
         <button className="banner-card-remove-btn" onClick={onDelete} aria-label="supprimer" title="Supprimer">
           <MdDeleteForever size={26} />

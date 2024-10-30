@@ -1,3 +1,4 @@
+import Counter from "src/components/reusable-ui/Counter/Counter";
 import { useOrderContext } from "src/context/useOrderContext";
 import { MenuItem } from "src/fakeData/fakeMenu";
 import { BasketItem } from "src/hooks/useBasket";
@@ -15,7 +16,9 @@ export default function Total() {
   return (
     <header className="basket-total">
       <div className="basket-total-label">Total</div>
-      <div className="basket-total-value">{formatPrice(totalCalculated)}</div>
+      <div className="basket-total-value">
+        <Counter content={formatPrice(totalCalculated)} />
+      </div>
     </header>
   );
 }
