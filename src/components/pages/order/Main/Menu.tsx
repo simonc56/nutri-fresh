@@ -1,3 +1,4 @@
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import PrimaryButton from "src/components/reusable-ui/PrimaryButton/PrimaryButton";
 import ProductCard from "src/components/reusable-ui/ProductCard/ProductCard";
 import { useOrderContext } from "src/context/useOrderContext";
@@ -45,18 +46,24 @@ export default function Menu() {
   if (isLoading) return <Message content="Chargement en cours..." />;
 
   return menu.length > 0 ? (
-    <div className="menu">
-      <h2 className="sr-only">Menu</h2>
-      {menu.map(({ id, imageSource, title, price }) => (
-        <ProductCard
-          key={id}
-          id={id}
-          imageSource={imageSource}
-          title={title}
-          price={price}
-          onDelete={(event) => onDelete(event, id)}
-        />
-      ))}
+    <div className="menu-container">
+      <div className="menu">
+        <h2 className="sr-only">Menu</h2>
+        <TransitionGroup component={null}>
+          {menu.map(({ id, imageSource, title, price }) => (
+            <CSSTransition key={id} timeout={300} classNames="card">
+              <ProductCard
+                key={id}
+                id={id}
+                imageSource={imageSource}
+                title={title}
+                price={price}
+                onDelete={(event) => onDelete(event, id)}
+              />
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
+      </div>
     </div>
   ) : isAdminMode ? (
     <AdminEmptyMenu />

@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { dbAddMenuItem, dbRemoveMenuItem, dbUpdateFullMenu, dbUpdateMenuItem } from "src/api/menu";
 import { dbGetUserMenu } from "src/api/user";
 import { fakeMenu, MenuItem } from "../fakeData/fakeMenu";
+import { useTimedMessage } from "./useTimedMessage";
 
 export const useMenu = () => {
   const emptyItem = {
@@ -18,6 +19,8 @@ export const useMenu = () => {
   const [isError, setIsError] = useState(false);
   const [selectedItem, setSelectedItem] = useState<MenuItem>(emptyItem);
   const refInputName = useRef<null | HTMLInputElement>(null);
+  const [myTimeout, setMyTimeout] = useState<number>();
+  const { isDisplayed, displayMessage } = useTimedMessage(2000);
 
   const addItemToMenu = (item: Partial<MenuItem>) => {
     const maxId = Math.max(...menu.map((item) => item.id), 0);
@@ -63,7 +66,14 @@ export const useMenu = () => {
   const updateItem = (item: MenuItem) => {
     setSelectedItem(item);
     setMenu((prev) => prev.map((menuItem) => (menuItem.id === item.id ? item : menuItem)));
-    if (item.id !== 0) dbUpdateMenuItem(item);
+    if (item.id !== 0) {
+      clearTimeout(myTimeout);
+      const timeoutID = window.setTimeout(() => {
+        dbUpdateMenuItem(item);
+        displayMessage();
+      }, 500);
+      setMyTimeout(timeoutID);
+    }
   };
 
   const setSelectedItemById = (id: number) => {
@@ -89,5 +99,7 @@ export const useMenu = () => {
     setSelectedItemById,
     unSelectItem,
     refInputName,
+    isDisplayed,
+    displayMessage,
   };
 };

@@ -1,4 +1,4 @@
-import { FocusEvent, FormEvent, useEffect } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { PiBowlFoodFill } from "react-icons/pi";
@@ -9,17 +9,19 @@ import "./Form.scss";
 
 type ProductFormProps = {
   onSubmit?: (event: FormEvent<HTMLFormElement>) => void;
-  onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
-  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   children?: JSX.Element;
 };
 
-export default function Form({ onSubmit, onFocus, onBlur, children }: ProductFormProps) {
-  const { selectedItem, updateItem, refInputName } = useOrderContext();
+export default function Form({ onSubmit, children }: ProductFormProps) {
+  const { selectedItem, updateItem, selectedTab, refInputName } = useOrderContext();
+  const [firstRender, setFirstRender] = useState(true);
 
   useEffect(() => {
-    refInputName.current?.focus();
-  }, [refInputName]);
+    if (firstRender && selectedTab()?.index === "edit") {
+      setFirstRender(false);
+      refInputName.current?.focus();
+    }
+  }, [selectedTab]);
 
   const onChange = (key: keyof MenuItem, value: string | number | boolean) => {
     updateItem({ ...selectedItem, [key]: value });
@@ -29,8 +31,8 @@ export default function Form({ onSubmit, onFocus, onBlur, children }: ProductFor
 
   return (
     <form className="product-form" onSubmit={onSubmit}>
-      <div className="image-preview">
-        {selectedItem.imageSource ? (
+      {selectedItem.imageSource ? (
+        <div className="image-preview">
           <img
             className="image"
             src={selectedItem.imageSource}
@@ -39,10 +41,11 @@ export default function Form({ onSubmit, onFocus, onBlur, children }: ProductFor
               e.currentTarget.style.display = "none";
             }}
           />
-        ) : (
-          "Aucune image"
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className="image-no-preview">Aucune image</div>
+      )}
+
       <div className="input-fields">
         <TextInput
           placeholder="Nom du produit (ex: Plat de lentilles)"
@@ -51,8 +54,6 @@ export default function Form({ onSubmit, onFocus, onBlur, children }: ProductFor
           Icon={<PiBowlFoodFill />}
           className="slim"
           onChange={(e) => onChange("title", e.target.value)}
-          onFocus={onFocus}
-          onBlur={onBlur}
           aria-label="Nom du produit"
           ref={refInputName}
         />
@@ -63,8 +64,6 @@ export default function Form({ onSubmit, onFocus, onBlur, children }: ProductFor
           Icon={<BsFillCameraFill />}
           className="slim"
           onChange={(e) => onChange("imageSource", e.target.value)}
-          onFocus={onFocus}
-          onBlur={onBlur}
         />
         <TextInput
           placeholder="Prix"
@@ -73,8 +72,6 @@ export default function Form({ onSubmit, onFocus, onBlur, children }: ProductFor
           Icon={<MdOutlineEuro />}
           className="slim"
           onChange={(e) => onChange("price", e.target.value)}
-          onFocus={onFocus}
-          onBlur={onBlur}
           type="number"
         />
         {children}

@@ -7,7 +7,7 @@ import "./Main.scss";
 import Menu from "./Menu";
 
 export default function Main() {
-  const { username, isAdminMode, resetMenu, loadMenu, setBasket, setIsError } = useOrderContext();
+  const { username, resetMenu, loadMenu, setBasket, setIsError } = useOrderContext();
 
   useEffect(() => {
     initUserSession(username, resetMenu, loadMenu, setBasket, setIsError);
@@ -18,7 +18,7 @@ export default function Main() {
       <Basket />
       <section className="menu-and-admin">
         <Menu />
-        {isAdminMode && <Admin />}
+        <Admin />
       </section>
     </main>
   );

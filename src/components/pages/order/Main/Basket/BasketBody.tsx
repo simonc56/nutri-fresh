@@ -1,3 +1,4 @@
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import BannerCard from "src/components/reusable-ui/BannerCard/BannerCard";
 import { useOrderContext } from "src/context/useOrderContext";
 import { MenuItem } from "src/fakeData/fakeMenu";
@@ -18,7 +19,17 @@ export default function BasketBody({ content }: { content: BasketItem[] }) {
 
   return (
     <main className="basket-content">
-      {content.length !== 0 ? content.map((item) => <BannerCard key={item.id} {...item} />) : <EmptyBasket />}
+      {content.length !== 0 ? (
+        <TransitionGroup component={null} appear exit>
+          {content.map((item) => (
+            <CSSTransition key={item.id} timeout={300} classNames="banner" component={null}>
+              <BannerCard key={item.id} {...item} />
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
+      ) : (
+        <EmptyBasket />
+      )}
     </main>
   );
 }

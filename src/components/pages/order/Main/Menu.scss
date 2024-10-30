@@ -1,16 +1,38 @@
 @use "src/theme/theme";
 
-.menu {
-  display: grid;
-  grid-gap: theme.spacing(xl) theme.spacing(xxl);
-  grid-template-columns: repeat(auto-fill, 240px);
-  justify-content: center;
-  padding: theme.spacing(xl);
+.menu-container {
+  height: 100%;
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: theme.$color_background_white rgba(0, 0, 0, 0);
-  flex-grow: 1;
+  .menu {
+    display: grid;
+    grid-gap: theme.spacing(xl) theme.spacing(xxl);
+    grid-template-columns: repeat(auto-fill, 240px);
+    justify-content: center;
+    padding: theme.spacing(xl);
+    flex-grow: 1;
+    .card-enter {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    .card-enter-active {
+      opacity: 1;
+      transform: translateX(0);
+      transition: all 300ms;
+    }
+    .card-exit {
+      opacity: 1;
+      scale: 1;
+    }
+    .card-exit-active {
+      opacity: 0;
+      scale: 1;
+      transition: all 500ms;
+    }
+  }
 }
+
 .empty-menu {
   display: flex;
   flex-direction: column;
