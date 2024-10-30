@@ -59,6 +59,7 @@
     }
   }
   .delete-button {
+    animation: slidein 300ms;
     border: none;
     background: none;
     padding: 0;
@@ -80,5 +81,17 @@
       width: 100%;
       height: 100%;
     }
+  }
+}
+
+@keyframes slidein {
+  from {
+    opacity: 0;
+    right: -8px;
+  }
+
+  to {
+    opacity: 1;
+    right: 8px;
   }
 }
