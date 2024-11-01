@@ -1,0 +1,26 @@
+@use "src/theme/theme";
+
+.boolean-input {
+  color: theme.$color_greyDark;
+  position: relative;
+  background-color: theme.$color_background_white;
+  border-radius: theme.radius(round);
+  width: 100%;
+  .icon {
+    position: absolute;
+    left: 11px;
+    top: 13px;
+  }
+  label {
+    color: theme.$color_dark;
+    cursor: pointer;
+    display: inline-block;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    padding: theme.size(XS) theme.size(P4);
+    font-size: theme.size(SM);
+  }
+  input {
+    display: none;
+  }
+}
