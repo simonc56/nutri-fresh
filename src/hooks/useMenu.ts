@@ -28,8 +28,6 @@ export const useMenu = () => {
       ...item,
       id: maxId + 1,
       quantity: 0,
-      isAvailable: true,
-      isAdvertised: false,
     } as MenuItem;
     setMenu((prev) => [newItem, ...prev]);
     dbAddMenuItem(newItem);
