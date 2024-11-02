@@ -1,7 +1,7 @@
 @use "src/theme/theme";
 
 .banner-card {
-  background-color: theme.$color_background_white;
+  background-color: theme.$color_white;
   color: theme.$color_dark;
   font-family: "Amatic SC";
   padding: theme.spacing(sm);
