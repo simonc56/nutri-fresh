@@ -1,0 +1,45 @@
+@use "src/theme/theme";
+
+.ribbon {
+  position: absolute;
+  top: 20px;
+  left: -56px;
+  width: 104px;
+  border-bottom: 3rem solid theme.$color_red;
+  border-left: 3rem solid transparent;
+  border-right: 3rem solid transparent;
+  transform: rotate(-45deg);
+  box-shadow: 0px 10px 7px -5px rgba(0, 0, 0, 0.2);
+  .label {
+    position: absolute;
+    color: white;
+    top: 14px;
+    width: 125px;
+    left: -10px;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    font-size: theme.size(P1);
+    font-family: "Arial", open-sans;
+    font-weight: 500;
+  }
+  .ribbon-left {
+    position: absolute;
+    top: 48px;
+    left: -48px;
+    border-top: 7px solid theme.$color_redSecondary;
+    border-right: 7px solid transparent;
+    border-left: 7px solid transparent;
+  }
+  .ribbon-right {
+    position: absolute;
+    top: 48px;
+    right: -48px;
+    border-top: 7px solid theme.$color_redSecondary;
+    border-right: 7px solid transparent;
+    border-left: 7px solid transparent;
+  }
+}

@@ -2,6 +2,7 @@ import { TiDelete } from "react-icons/ti";
 import { useOrderContext } from "src/context/useOrderContext";
 import { formatPrice } from "src/utils/maths";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import Ribbon from "../Ribbon/Ribbon";
 import "./ProductCard.scss";
 
 type ProductCardProps = {
@@ -9,10 +10,11 @@ type ProductCardProps = {
   imageSource: string;
   title: string;
   price: number;
+  isAdvertised: boolean;
   onDelete: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-export default function ProductCard({ id, imageSource, title, price, onDelete }: ProductCardProps) {
+export default function ProductCard({ id, imageSource, title, price, isAdvertised, onDelete }: ProductCardProps) {
   const { isAdminMode, setIsPanelOpen, selectTab, selectedItem, setSelectedItemById, unSelectItem, addItemToBasket } =
     useOrderContext();
   const isSelected = selectedItem?.id === id;
@@ -38,6 +40,7 @@ export default function ProductCard({ id, imageSource, title, price, onDelete }:
       className={`product-card${isAdminMode ? " admin-mode" : ""}${isSelected ? " selected" : ""}`}
       onClick={onClickCard}
     >
+      {isAdvertised && <Ribbon label="nouveau" />}
       <img src={imageSource ? imageSource : "/images/coming-soon.png"} alt={title} className="product-picture" />
       <div className={`product-info${isAdminMode && isSelected ? " revert-color" : ""}`}>
         <h3 className="product-title">{title}</h3>
