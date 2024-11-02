@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-
+import { TbSwitchVertical } from "react-icons/tb";
 import "./BooleanInput.scss";
 
 type InputProps = {
@@ -18,6 +18,9 @@ const BooleanInput = forwardRef(
         <i className="icon">{Icon}</i>
         <label htmlFor={id}>{checked ? labels[0] : labels[1]} </label>
         <input type="checkbox" ref={ref} id={id} checked={checked} {...extraProps} />
+        <i className="toggle-icon">
+          <TbSwitchVertical />
+        </i>
       </div>
     );
   }

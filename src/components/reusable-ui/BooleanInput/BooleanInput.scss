@@ -8,8 +8,20 @@
   width: 100%;
   .icon {
     position: absolute;
+    pointer-events: none;
     left: 11px;
     top: 13px;
+  }
+  .toggle-icon {
+    position: absolute;
+    pointer-events: none;
+    display: none;
+    transform: scale(1.2);
+    right: 11px;
+    top: 13px;
+  }
+  &:hover .toggle-icon {
+    display: block;
   }
   label {
     color: theme.$color_dark;
