@@ -30,7 +30,7 @@
   }
 
   .input-fields {
-    flex-grow: 1;
+    min-width: 35rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
