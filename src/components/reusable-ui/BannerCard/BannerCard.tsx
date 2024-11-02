@@ -1,6 +1,6 @@
 import { MdDeleteForever } from "react-icons/md";
 import { useOrderContext } from "src/context/useOrderContext";
-import { MenuItem } from "src/fakeData/fakeMenu";
+import { MenuItem } from "src/startData/startMenu";
 import { formatPrice } from "src/utils/maths";
 import Counter from "../Counter/Counter";
 import "./BannerCard.scss";

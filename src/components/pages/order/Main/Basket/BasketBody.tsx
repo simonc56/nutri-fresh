@@ -1,7 +1,7 @@
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import BannerCard from "src/components/reusable-ui/BannerCard/BannerCard";
 import { useOrderContext } from "src/context/useOrderContext";
-import { MenuItem } from "src/fakeData/fakeMenu";
+import { MenuItem } from "src/startData/startMenu";
 import "./BasketBody.scss";
 
 type BasketItem = Omit<MenuItem, "isAvailable" | "isAdvertised">;

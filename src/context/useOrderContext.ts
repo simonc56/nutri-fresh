@@ -1,6 +1,6 @@
 import { createContext, Dispatch, SetStateAction, useContext } from "react";
 import { TabProps } from "src/components/pages/order/Admin/AdminTabs/AdminTabs";
-import { MenuItem } from "src/fakeData/fakeMenu";
+import { MenuItem } from "src/startData/startMenu";
 import { BasketItem } from "../hooks/useBasket";
 
 type OrderContextType = {

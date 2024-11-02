@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { dbAddMenuItem, dbRemoveMenuItem, dbUpdateFullMenu, dbUpdateMenuItem } from "src/api/menu";
 import { dbGetUserMenu } from "src/api/user";
-import { fakeMenu, MenuItem } from "../fakeData/fakeMenu";
+import { MenuItem, startMenu } from "../startData/startMenu";
 import { useTimedMessage } from "./useTimedMessage";
 
 export const useMenu = () => {
@@ -56,8 +56,8 @@ export const useMenu = () => {
    * both locally and in the database
    */
   const resetMenu = () => {
-    setMenu(fakeMenu.LARGE);
-    dbUpdateFullMenu(fakeMenu.LARGE);
+    setMenu(startMenu.LARGE);
+    dbUpdateFullMenu(startMenu.LARGE);
     setIsLoading(false);
   };
 

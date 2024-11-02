@@ -1,7 +1,7 @@
 import Counter from "src/components/reusable-ui/Counter/Counter";
 import { useOrderContext } from "src/context/useOrderContext";
-import { MenuItem } from "src/fakeData/fakeMenu";
 import { BasketItem } from "src/hooks/useBasket";
+import { MenuItem } from "src/startData/startMenu";
 import { formatPrice } from "src/utils/maths";
 import "./Total.scss";
 

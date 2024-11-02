@@ -7,7 +7,7 @@ import { PiBowlFoodFill } from "react-icons/pi";
 import BooleanInput from "src/components/reusable-ui/BooleanInput/BooleanInput";
 import TextInput from "src/components/reusable-ui/TextInput/TextInput";
 import { useOrderContext } from "src/context/useOrderContext";
-import { MenuItem } from "src/fakeData/fakeMenu";
+import { MenuItem } from "src/startData/startMenu";
 import "./Form.scss";
 
 type ProductFormProps = {
