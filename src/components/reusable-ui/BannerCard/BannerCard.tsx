@@ -42,7 +42,7 @@ export default function BannerCard({ id, imageSource, title, price, quantity }: 
     >
       <div className="banner-card-picture">
         <img
-          src={imageSource ? imageSource : "/images/coming-soon.png"}
+          src={imageSource ? imageSource : "/images/bientot-disponible.png"}
           alt={imageSource ? title : "image non disponible"}
         />
       </div>
