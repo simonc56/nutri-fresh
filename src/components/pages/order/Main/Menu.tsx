@@ -50,7 +50,7 @@ export default function Menu() {
       <div className="menu">
         <h2 className="sr-only">Menu</h2>
         <TransitionGroup component={null}>
-          {menu.map(({ id, imageSource, title, price, isAdvertised }) => (
+          {menu.map(({ id, imageSource, title, price, isAvailable, isAdvertised }) => (
             <CSSTransition key={id} timeout={300} classNames="card">
               <ProductCard
                 key={id}
@@ -58,6 +58,7 @@ export default function Menu() {
                 imageSource={imageSource}
                 title={title}
                 price={price}
+                isAvailable={isAvailable}
                 isAdvertised={isAdvertised}
                 onDelete={(event) => onDelete(event, id)}
               />

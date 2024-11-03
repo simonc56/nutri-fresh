@@ -1,0 +1,18 @@
+@use "src/theme/theme";
+
+.unavailable-tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(theme.$color_white, 0.7);
+  border-radius: theme.radius(extraRound);
+  padding: theme.spacing(lg);
+  z-index: 1;
+  pointer-events: none;
+  img {
+    margin-top: 5rem;
+    width: 100%;
+  }
+}

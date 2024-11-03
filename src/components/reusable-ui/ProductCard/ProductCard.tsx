@@ -3,6 +3,7 @@ import { useOrderContext } from "src/context/useOrderContext";
 import { formatPrice } from "src/utils/maths";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
 import Ribbon from "../Ribbon/Ribbon";
+import UnavailableTag from "../UnavailableTag/UnavailableTag";
 import "./ProductCard.scss";
 
 type ProductCardProps = {
@@ -10,11 +11,20 @@ type ProductCardProps = {
   imageSource: string;
   title: string;
   price: number;
+  isAvailable: boolean;
   isAdvertised: boolean;
   onDelete: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-export default function ProductCard({ id, imageSource, title, price, isAdvertised, onDelete }: ProductCardProps) {
+export default function ProductCard({
+  id,
+  imageSource,
+  title,
+  price,
+  isAvailable,
+  isAdvertised,
+  onDelete,
+}: ProductCardProps) {
   const { isAdminMode, setIsPanelOpen, selectTab, selectedItem, setSelectedItemById, unSelectItem, addItemToBasket } =
     useOrderContext();
   const isSelected = selectedItem?.id === id;
@@ -32,7 +42,7 @@ export default function ProductCard({ id, imageSource, title, price, isAdvertise
 
   const onClickButtonAdd = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
-    addItemToBasket(id);
+    if (isAvailable) addItemToBasket(id);
   };
 
   return (
@@ -41,6 +51,7 @@ export default function ProductCard({ id, imageSource, title, price, isAdvertise
       onClick={onClickCard}
     >
       {isAdvertised && <Ribbon label="nouveau" />}
+      {!isAvailable && <UnavailableTag />}
       <img src={imageSource ? imageSource : "/images/bientot-disponible.png"} alt={title} className="product-picture" />
       <div className={`product-info${isAdminMode && isSelected ? " revert-color" : ""}`}>
         <h3 className="product-title">{title}</h3>
@@ -49,6 +60,7 @@ export default function ProductCard({ id, imageSource, title, price, isAdvertise
           <PrimaryButton
             label="ajouter"
             onClick={onClickButtonAdd}
+            clickAllowed={isAvailable}
             className={isAdminMode && isSelected ? "primary-button__revert-color" : ""}
           />
         </div>

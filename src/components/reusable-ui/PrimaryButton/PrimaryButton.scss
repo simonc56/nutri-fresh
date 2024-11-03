@@ -11,6 +11,9 @@
   padding-inline: 1.5rem;
   height: 2.5rem;
   cursor: pointer;
+  &.no-click {
+    cursor: not-allowed;
+  }
   svg {
     position: relative;
     top: 2px;
