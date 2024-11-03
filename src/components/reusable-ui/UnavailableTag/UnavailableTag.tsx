@@ -1,5 +1,5 @@
-import unavailableTag from "../../../../public/images/stock-epuise.png";
 import "./UnavailableTag.scss";
+import unavailableTag from "/images/stock-epuise.png";
 
 export default function UnavailableTag() {
   return (
