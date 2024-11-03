@@ -6,9 +6,17 @@ import Counter from "../Counter/Counter";
 import Sticker from "../Sticker/Sticker";
 import "./BannerCard.scss";
 
-type BannerCardProps = Omit<MenuItem, "isAvailable">;
+type BannerCardProps = MenuItem;
 
-export default function BannerCard({ id, imageSource, title, price, quantity, isAdvertised }: BannerCardProps) {
+export default function BannerCard({
+  id,
+  imageSource,
+  title,
+  price,
+  quantity,
+  isAvailable,
+  isAdvertised,
+}: BannerCardProps) {
   const {
     isAdminMode,
     setIsPanelOpen,
@@ -51,11 +59,11 @@ export default function BannerCard({ id, imageSource, title, price, quantity, is
       <div className="banner-card-infos">
         <h3 className="banner-card-title">{title}</h3>
         <div className={`banner-card-price${isAdminMode && isSelected ? " revert-color" : ""}`}>
-          {formatPrice(price)}
+          {isAvailable ? formatPrice(price) : "Non disponible"}
         </div>
       </div>
       <div className={`banner-card-qty${isAdminMode && isSelected ? " revert-color" : ""}`}>
-        <Counter content={`x ${quantity}`} />
+        {isAvailable && <Counter content={`x ${quantity}`} />}
       </div>
       {(!isAdminMode || !isSelected) && (
         <button className="banner-card-remove-btn" onClick={onDelete} aria-label="supprimer" title="Supprimer">

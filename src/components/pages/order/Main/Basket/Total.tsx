@@ -10,7 +10,7 @@ export default function Total() {
 
   const totalCalculated = basket.reduce((acc: number, item: BasketItem) => {
     const menuItem = menu.find((menuItem: MenuItem) => menuItem.id === item.id);
-    return acc + (menuItem?.price || 0) * item.quantity;
+    return acc + ((menuItem?.isAvailable && menuItem?.price) || 0) * item.quantity;
   }, 0);
 
   return (
