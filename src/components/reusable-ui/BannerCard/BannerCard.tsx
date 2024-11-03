@@ -3,11 +3,12 @@ import { useOrderContext } from "src/context/useOrderContext";
 import { MenuItem } from "src/startData/startMenu";
 import { formatPrice } from "src/utils/maths";
 import Counter from "../Counter/Counter";
+import Sticker from "../Sticker/Sticker";
 import "./BannerCard.scss";
 
-type BannerCardProps = Omit<MenuItem, "isAvailable" | "isAdvertised">;
+type BannerCardProps = Omit<MenuItem, "isAvailable">;
 
-export default function BannerCard({ id, imageSource, title, price, quantity }: BannerCardProps) {
+export default function BannerCard({ id, imageSource, title, price, quantity, isAdvertised }: BannerCardProps) {
   const {
     isAdminMode,
     setIsPanelOpen,
@@ -45,6 +46,7 @@ export default function BannerCard({ id, imageSource, title, price, quantity }: 
           src={imageSource ? imageSource : "/images/bientot-disponible.png"}
           alt={imageSource ? title : "image non disponible"}
         />
+        {isAdvertised && <Sticker />}
       </div>
       <div className="banner-card-infos">
         <h3 className="banner-card-title">{title}</h3>
