@@ -4,6 +4,7 @@ import { MenuItem } from "src/startData/startMenu";
 import { formatPrice } from "src/utils/maths";
 import Counter from "../Counter/Counter";
 import Sticker from "../Sticker/Sticker";
+import UnavailableTag from "../UnavailableTag/UnavailableTag";
 import "./BannerCard.scss";
 
 export default function BannerCard({ id, imageSource, title, price, quantity, isAvailable, isAdvertised }: MenuItem) {
@@ -39,6 +40,7 @@ export default function BannerCard({ id, imageSource, title, price, quantity, is
       className={`banner-card${isAdminMode ? " admin-mode" : ""}${isSelected ? " selected" : ""}`}
       onClick={onClickCard}
     >
+      {!isAvailable && <UnavailableTag />}
       <div className="banner-card-picture">
         <img
           src={imageSource ? imageSource : "/images/bientot-disponible.png"}
@@ -49,7 +51,7 @@ export default function BannerCard({ id, imageSource, title, price, quantity, is
       <div className="banner-card-infos">
         <h3 className="banner-card-title">{title}</h3>
         <div className={`banner-card-price${isAdminMode && isSelected ? " revert-color" : ""}`}>
-          {isAvailable ? formatPrice(price) : "Non disponible"}
+          {formatPrice(price)}
         </div>
       </div>
       <div className={`banner-card-qty${isAdminMode && isSelected ? " revert-color" : ""}`}>
