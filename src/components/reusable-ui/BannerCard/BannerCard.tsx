@@ -6,17 +6,7 @@ import Counter from "../Counter/Counter";
 import Sticker from "../Sticker/Sticker";
 import "./BannerCard.scss";
 
-type BannerCardProps = MenuItem;
-
-export default function BannerCard({
-  id,
-  imageSource,
-  title,
-  price,
-  quantity,
-  isAvailable,
-  isAdvertised,
-}: BannerCardProps) {
+export default function BannerCard({ id, imageSource, title, price, quantity, isAvailable, isAdvertised }: MenuItem) {
   const {
     isAdminMode,
     setIsPanelOpen,

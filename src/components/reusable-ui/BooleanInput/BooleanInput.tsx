@@ -6,12 +6,11 @@ import "./BooleanInput.scss";
 type InputProps = {
   labels: string[];
   Icon: JSX.Element;
-  className?: string;
 };
 
 const BooleanInput = forwardRef(
   (
-    { labels, id, checked, Icon, className, ...extraProps }: InputProps & React.InputHTMLAttributes<HTMLInputElement>,
+    { labels, id, checked, Icon, ...extraProps }: InputProps & React.InputHTMLAttributes<HTMLInputElement>,
     ref: React.Ref<HTMLInputElement>
   ) => {
     return (
