@@ -16,10 +16,7 @@
     background-color: theme.$color_primary;
   }
   &.admin-mode:hover {
-    // slowly scale the card when hovered in and out
     cursor: pointer;
-    transform: scale(1.05);
-    transition: transform 0.2s ease-in-out;
     box-shadow: 0 0 10px 5px rgb(128 186 48 / 80%);
   }
   .banner-card-picture {
