@@ -27,7 +27,7 @@ const SMALL = [
     price: 3.356,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isAdvertised: true,
   },
 ];
 
@@ -47,7 +47,7 @@ const MEDIUM = [
     title: "Salade poulet",
     price: 10.367,
     quantity: 0,
-    isAvailable: true,
+    isAvailable: false,
     isAdvertised: false,
   },
   {
@@ -66,7 +66,7 @@ const MEDIUM = [
     price: 3.487,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isAdvertised: true,
   },
   {
     id: 5,
@@ -123,7 +123,7 @@ const LARGE = [
     price: 3.487,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isAdvertised: true,
   },
   {
     id: 6,
@@ -159,7 +159,7 @@ const LARGE = [
     price: 8.7,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isAdvertised: true,
   },
   {
     id: 10,
@@ -176,7 +176,7 @@ const LARGE = [
     title: "Noix 100g",
     price: 6.69,
     quantity: 0,
-    isAvailable: true,
+    isAvailable: false,
     isAdvertised: false,
   },
   {
@@ -204,7 +204,7 @@ const LARGE = [
     price: 3.2,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isAdvertised: true,
   },
 ];
 
