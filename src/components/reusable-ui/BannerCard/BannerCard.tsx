@@ -1,13 +1,13 @@
 import { MdDeleteForever } from "react-icons/md";
 import { useOrderContext } from "src/context/useOrderContext";
-import { MenuItem } from "src/fakeData/fakeMenu";
+import { MenuItem } from "src/startData/startMenu";
 import { formatPrice } from "src/utils/maths";
 import Counter from "../Counter/Counter";
+import Sticker from "../Sticker/Sticker";
+import UnavailableTag from "../UnavailableTag/UnavailableTag";
 import "./BannerCard.scss";
 
-type BannerCardProps = Omit<MenuItem, "isAvailable" | "isAdvertised">;
-
-export default function BannerCard({ id, imageSource, title, price, quantity }: BannerCardProps) {
+export default function BannerCard({ id, imageSource, title, price, quantity, isAvailable, isAdvertised }: MenuItem) {
   const {
     isAdminMode,
     setIsPanelOpen,
@@ -40,11 +40,13 @@ export default function BannerCard({ id, imageSource, title, price, quantity }: 
       className={`banner-card${isAdminMode ? " admin-mode" : ""}${isSelected ? " selected" : ""}`}
       onClick={onClickCard}
     >
+      {!isAvailable && <UnavailableTag />}
       <div className="banner-card-picture">
         <img
-          src={imageSource ? imageSource : "/images/coming-soon.png"}
+          src={imageSource ? imageSource : "/images/bientot-disponible.png"}
           alt={imageSource ? title : "image non disponible"}
         />
+        {isAdvertised && <Sticker />}
       </div>
       <div className="banner-card-infos">
         <h3 className="banner-card-title">{title}</h3>
@@ -53,7 +55,7 @@ export default function BannerCard({ id, imageSource, title, price, quantity }: 
         </div>
       </div>
       <div className={`banner-card-qty${isAdminMode && isSelected ? " revert-color" : ""}`}>
-        <Counter content={`x ${quantity}`} />
+        {isAvailable && <Counter content={`x ${quantity}`} />}
       </div>
       {(!isAdminMode || !isSelected) && (
         <button className="banner-card-remove-btn" onClick={onDelete} aria-label="supprimer" title="Supprimer">

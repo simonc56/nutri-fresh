@@ -1,5 +1,5 @@
 import { collection, deleteDoc, doc, setDoc, updateDoc, writeBatch } from "firebase/firestore/lite";
-import { MenuItem } from "src/fakeData/fakeMenu";
+import { MenuItem } from "src/startData/startMenu";
 import { db } from "./firebase-config";
 import { dbUserRef } from "./user";
 

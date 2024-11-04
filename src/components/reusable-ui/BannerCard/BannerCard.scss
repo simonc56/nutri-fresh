@@ -1,7 +1,7 @@
 @use "src/theme/theme";
 
 .banner-card {
-  background-color: theme.$color_background_white;
+  background-color: theme.$color_white;
   color: theme.$color_dark;
   font-family: "Amatic SC";
   padding: theme.spacing(sm);
@@ -16,14 +16,12 @@
     background-color: theme.$color_primary;
   }
   &.admin-mode:hover {
-    // slowly scale the card when hovered in and out
     cursor: pointer;
-    transform: scale(1.05);
-    transition: transform 0.2s ease-in-out;
     box-shadow: 0 0 10px 5px rgb(128 186 48 / 80%);
   }
   .banner-card-picture {
     width: 4rem;
+    position: relative;
     height: 100%;
     display: flex;
     flex-shrink: 0;
@@ -70,6 +68,7 @@
   }
   .banner-card-remove-btn {
     display: none;
+    z-index: 2;
   }
 
   &:hover .banner-card-remove-btn {

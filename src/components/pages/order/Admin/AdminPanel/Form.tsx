@@ -1,10 +1,13 @@
 import { FormEvent, useEffect, useState } from "react";
 import { BsFillCameraFill } from "react-icons/bs";
+import { FiPackage } from "react-icons/fi";
+import { GoMegaphone } from "react-icons/go";
 import { MdOutlineEuro } from "react-icons/md";
 import { PiBowlFoodFill } from "react-icons/pi";
+import BooleanInput from "src/components/reusable-ui/BooleanInput/BooleanInput";
 import TextInput from "src/components/reusable-ui/TextInput/TextInput";
 import { useOrderContext } from "src/context/useOrderContext";
-import { MenuItem } from "src/fakeData/fakeMenu";
+import { MenuItem } from "src/startData/startMenu";
 import "./Form.scss";
 
 type ProductFormProps = {
@@ -65,15 +68,32 @@ export default function Form({ onSubmit, children }: ProductFormProps) {
           className="slim"
           onChange={(e) => onChange("imageSource", e.target.value)}
         />
-        <TextInput
-          placeholder="Prix"
-          value={(selectedItem.price && selectedItem.price.toString(10)) || ""}
-          setValue={() => {}}
-          Icon={<MdOutlineEuro />}
-          className="slim"
-          onChange={(e) => onChange("price", e.target.value)}
-          type="number"
-        />
+        <div className="small-inputs">
+          <TextInput
+            placeholder="Prix"
+            value={(selectedItem.price && selectedItem.price.toString(10)) || ""}
+            setValue={() => {}}
+            Icon={<MdOutlineEuro />}
+            className="slim"
+            onChange={(e) => onChange("price", e.target.value)}
+            type="number"
+          />
+          <BooleanInput
+            labels={["En stock", "En rupture"]}
+            checked={selectedItem.isAvailable}
+            id="isAvailable"
+            Icon={<FiPackage />}
+            onChange={(e) => onChange("isAvailable", e.target.checked)}
+          />
+          <BooleanInput
+            labels={["Avec pub", "Sans pub"]}
+            checked={selectedItem.isAdvertised}
+            id="isAdvertised"
+            Icon={<GoMegaphone />}
+            className="slim"
+            onChange={(e) => onChange("isAdvertised", e.target.checked)}
+          />
+        </div>
         {children}
       </div>
     </form>

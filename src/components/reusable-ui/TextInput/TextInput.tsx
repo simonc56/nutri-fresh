@@ -19,7 +19,7 @@ const TextInput = forwardRef(
     };
 
     return (
-      <div className={`input ${className && className}`}>
+      <div className={`text-input ${className && className}`}>
         <i className="icon">{Icon}</i>
         <input ref={ref} value={value} onChange={handleChange} {...extraProps} />
       </div>

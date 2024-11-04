@@ -208,7 +208,7 @@ const LARGE = [
   },
 ];
 
-export const fakeMenu = {
+export const startMenu = {
   EMPTY,
   SMALL,
   MEDIUM,

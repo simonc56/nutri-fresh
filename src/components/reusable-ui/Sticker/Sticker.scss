@@ -1,0 +1,21 @@
+@use "src/theme/theme";
+
+.sticker {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: theme.size(XXXS);
+  font-family: open-sans;
+  font-weight: theme.weight(light);
+  padding: 8px;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: theme.$color_redSecondary;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+}

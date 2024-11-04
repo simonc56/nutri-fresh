@@ -1,5 +1,5 @@
 import { useOrderContext } from "src/context/useOrderContext";
-import { MenuItem } from "src/fakeData/fakeMenu";
+import { MenuItem } from "src/startData/startMenu";
 import "./Basket.scss";
 import BasketBody from "./BasketBody";
 import Total from "./Total";

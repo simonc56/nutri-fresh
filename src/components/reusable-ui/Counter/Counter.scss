@@ -4,9 +4,13 @@
   position: relative;
   overflow-y: hidden;
 }
-.counter {
+.counter-right {
   display: inline-block;
   right: 0;
+}
+.counter-left {
+  display: inline-block;
+  left: 0;
 }
 
 .count {

@@ -1,0 +1,38 @@
+@use "src/theme/theme";
+
+.boolean-input {
+  color: theme.$color_greyDark;
+  position: relative;
+  background-color: theme.$color_background_white;
+  border-radius: theme.radius(round);
+  width: 100%;
+  .icon {
+    position: absolute;
+    pointer-events: none;
+    left: 11px;
+    top: 13px;
+  }
+  .toggle-icon {
+    position: absolute;
+    pointer-events: none;
+    display: none;
+    transform: scale(1.2);
+    right: 11px;
+    top: 13px;
+  }
+  &:hover .toggle-icon {
+    display: block;
+  }
+  label {
+    color: theme.$color_dark;
+    cursor: pointer;
+    display: inline-block;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    padding: theme.size(XS) theme.size(P4);
+    font-size: theme.size(SM);
+  }
+  input {
+    display: none;
+  }
+}
