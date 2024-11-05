@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { PiUserCircleFill } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,10 @@ function LoginForm() {
     navigate(`/order/${username}`);
   };
 
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setUsername(event.target.value);
+  };
+
   return (
     <form className="login-form" action="submit" onSubmit={handleSubmit}>
       <h2>Des repas savoureux et équilibrés !</h2>
@@ -23,8 +27,8 @@ function LoginForm() {
       <h3> </h3>
       <TextInput
         value={username}
-        setValue={setUsername}
         Icon={<PiUserCircleFill />}
+        onChange={handleChange}
         type="text"
         placeholder="Entrez votre prénom"
         aria-label="Entrez votre prénom"

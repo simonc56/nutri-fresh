@@ -53,7 +53,6 @@ export default function Form({ onSubmit, children }: ProductFormProps) {
         <TextInput
           placeholder="Nom du produit (ex: Plat de lentilles)"
           value={selectedItem.title || ""}
-          setValue={() => {}}
           Icon={<PiBowlFoodFill />}
           className="slim"
           onChange={(e) => onChange("title", e.target.value)}
@@ -63,7 +62,6 @@ export default function Form({ onSubmit, children }: ProductFormProps) {
         <TextInput
           placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
           value={selectedItem.imageSource || ""}
-          setValue={() => {}}
           Icon={<BsFillCameraFill />}
           className="slim"
           onChange={(e) => onChange("imageSource", e.target.value)}
@@ -72,7 +70,6 @@ export default function Form({ onSubmit, children }: ProductFormProps) {
           <TextInput
             placeholder="Prix"
             value={(selectedItem.price && selectedItem.price.toString(10)) || ""}
-            setValue={() => {}}
             Icon={<MdOutlineEuro />}
             className="slim"
             onChange={(e) => onChange("price", e.target.value)}
