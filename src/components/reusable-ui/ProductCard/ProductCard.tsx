@@ -52,7 +52,11 @@ export default function ProductCard({
     >
       {isAdvertised && <Ribbon label="nouveau" />}
       {!isAvailable && <UnavailableTag />}
-      <img src={imageSource ? imageSource : "/images/bientot-disponible.png"} alt={title} className="product-picture" />
+      <img
+        src={imageSource ? imageSource : "/images/bientot-disponible.webp"}
+        alt={title}
+        className="product-picture"
+      />
       <div className={`product-info${isAdminMode && isSelected ? " revert-color" : ""}`}>
         <h3 className="product-title">{title}</h3>
         <div className="product-action">

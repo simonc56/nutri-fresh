@@ -1,4 +1,4 @@
-import logo from "/images/nutri-fresh-logo.png";
+import logo from "/images/nutri-fresh-logo.webp";
 
 import "./Logo.scss";
 

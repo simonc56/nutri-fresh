@@ -43,7 +43,7 @@ export default function BannerCard({ id, imageSource, title, price, quantity, is
       {!isAvailable && <UnavailableTag />}
       <div className="banner-card-picture">
         <img
-          src={imageSource ? imageSource : "/images/bientot-disponible.png"}
+          src={imageSource ? imageSource : "/images/bientot-disponible.webp"}
           alt={imageSource ? title : "image non disponible"}
         />
         {isAdvertised && <Sticker />}
