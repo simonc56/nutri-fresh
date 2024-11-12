@@ -18,6 +18,8 @@ type ProductFormProps = {
 export default function Form({ onSubmit, children }: ProductFormProps) {
   const { selectedItem, updateItem, selectedTab, refInputName } = useOrderContext();
   const [firstRender, setFirstRender] = useState(true);
+  const [myTimeout, setMyTimeout] = useState<number | undefined>(undefined);
+  const [inputImageSource, setInputImageSource] = useState<string>(selectedItem.imageSource);
 
   useEffect(() => {
     if (firstRender && selectedTab()?.index === "edit") {
@@ -26,8 +28,22 @@ export default function Form({ onSubmit, children }: ProductFormProps) {
     }
   }, [selectedTab]);
 
-  const onChange = (key: keyof MenuItem, value: string | number | boolean) => {
-    updateItem({ ...selectedItem, [key]: value });
+  useEffect(() => {
+    setInputImageSource(selectedItem.imageSource);
+  }, [selectedItem]);
+
+  const onChange = <K extends keyof MenuItem>(key: K, value: MenuItem[K]) => {
+    // debounce image url update while typing
+    if (key === "imageSource") {
+      setInputImageSource(value as string);
+      if (myTimeout) clearTimeout(myTimeout);
+      const timeoutID = window.setTimeout(() => {
+        updateItem({ ...selectedItem, [key]: value });
+      }, 500);
+      setMyTimeout(timeoutID);
+    } else {
+      updateItem({ ...selectedItem, [key]: value });
+    }
   };
 
   if (!selectedItem) return null;
@@ -36,14 +52,7 @@ export default function Form({ onSubmit, children }: ProductFormProps) {
     <form className="product-form" onSubmit={onSubmit}>
       {selectedItem.imageSource ? (
         <div className="image-preview">
-          <img
-            className="image"
-            src={selectedItem.imageSource}
-            alt="product illustration"
-            onError={(e) => {
-              e.currentTarget.style.display = "none";
-            }}
-          />
+          <img className="image" src={selectedItem.imageSource} alt="product illustration" />
         </div>
       ) : (
         <div className="image-no-preview">Aucune image</div>
@@ -61,7 +70,7 @@ export default function Form({ onSubmit, children }: ProductFormProps) {
         />
         <TextInput
           placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
-          value={selectedItem.imageSource || ""}
+          value={inputImageSource}
           Icon={<BsFillCameraFill />}
           className="slim"
           onChange={(e) => onChange("imageSource", e.target.value)}
@@ -72,7 +81,7 @@ export default function Form({ onSubmit, children }: ProductFormProps) {
             value={(selectedItem.price && selectedItem.price.toString(10)) || ""}
             Icon={<MdOutlineEuro />}
             className="slim"
-            onChange={(e) => onChange("price", e.target.value)}
+            onChange={(e) => onChange("price", parseFloat(e.target.value))}
             type="number"
           />
           <BooleanInput
