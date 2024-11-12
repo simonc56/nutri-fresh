@@ -1,5 +1,5 @@
 import "./UnavailableTag.scss";
-import unavailableTag from "/images/stock-epuise.png";
+import unavailableTag from "/images/stock-epuise.webp";
 
 export default function UnavailableTag() {
   return (
