@@ -5,7 +5,7 @@ import { useOrderContext } from "src/context/useOrderContext";
 import Form from "./Form";
 
 // Intermediate component to conditionnaly display the ProductForm component
-export default function AddContent() {
+export default function AddForm() {
   const { addItemToMenu, selectedItem, unSelectItem, isDisplayed, displayMessage } = useOrderContext();
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
