@@ -1,3 +1,4 @@
+@use "sass:map";
 $color_dark: #17161a;
 $color_incognito: #333;
 $color_white: #fff;
@@ -62,17 +63,17 @@ $shadows: (
 );
 
 @function spacing($spacingName) {
-  @return map-get($spacings, $spacingName);
+  @return map.get($spacings, $spacingName);
 }
 @function size($sizeName) {
-  @return map-get($sizes, $sizeName);
+  @return map.get($sizes, $sizeName);
 }
 @function radius($radiusName) {
-  @return map-get($borderRadius, $radiusName);
+  @return map.get($borderRadius, $radiusName);
 }
 @function weight($weightName) {
-  @return map-get($weights, $weightName);
+  @return map.get($weights, $weightName);
 }
 @function shadow($shadowName) {
-  @return map-get($shadows, $shadowName);
+  @return map.get($shadows, $shadowName);
 }
