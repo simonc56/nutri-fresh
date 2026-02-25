@@ -1,0 +1,13 @@
+{
+  "editor.defaultFormatter": "biomejs.biome",
+  "biome.enabled": true,
+  "eslint.enable": false,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports.biome": "explicit",
+    "source.fixAll.biome": "always",
+    "source.fixAll.eslint": "never"
+  },
+  "colorize.languages": ["javascript"]
+}
