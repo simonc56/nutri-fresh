@@ -17,7 +17,7 @@ export default function OrderContextProvider({ username, children }: { username:
       prevTabs.map((tab) => ({
         ...tab,
         active: tab.index === index,
-      }))
+      })),
     );
     setIsPanelOpen(true);
   };

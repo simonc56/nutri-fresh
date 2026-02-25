@@ -12,5 +12,10 @@ export const tabsConfig: TabProps[] = [
     active: true,
     content: <AddForm />,
   },
-  { index: "edit", icon: <MdModeEditOutline />, name: "Modifier un produit", content: <EditForm /> },
+  {
+    index: "edit",
+    icon: <MdModeEditOutline />,
+    name: "Modifier un produit",
+    content: <EditForm />,
+  },
 ];

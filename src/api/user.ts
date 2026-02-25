@@ -1,4 +1,4 @@
-import { collection, doc, DocumentReference, getDoc, getDocs, setDoc } from "firebase/firestore/lite";
+import { collection, DocumentReference, doc, getDoc, getDocs, setDoc } from "firebase/firestore/lite";
 import { MenuItem } from "src/startData/startMenu";
 import { db } from "./firebase-config";
 

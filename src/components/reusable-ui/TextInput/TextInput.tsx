@@ -11,7 +11,7 @@ type InputProps = {
 const TextInput = forwardRef(
   (
     { value, Icon, className, ...extraProps }: InputProps & React.InputHTMLAttributes<HTMLInputElement>,
-    ref: React.Ref<HTMLInputElement>
+    ref: React.Ref<HTMLInputElement>,
   ) => {
     return (
       <div className={`text-input ${className && className}`}>
@@ -19,7 +19,7 @@ const TextInput = forwardRef(
         <input ref={ref} value={value} {...extraProps} />
       </div>
     );
-  }
+  },
 );
 
 export default TextInput;

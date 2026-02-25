@@ -11,7 +11,7 @@ type InputProps = {
 const BooleanInput = forwardRef(
   (
     { labels, id, checked, Icon, ...extraProps }: InputProps & React.InputHTMLAttributes<HTMLInputElement>,
-    ref: React.Ref<HTMLInputElement>
+    ref: React.Ref<HTMLInputElement>,
   ) => {
     return (
       <div className="boolean-input">
@@ -25,7 +25,7 @@ const BooleanInput = forwardRef(
         </i>
       </div>
     );
-  }
+  },
 );
 
 export default BooleanInput;

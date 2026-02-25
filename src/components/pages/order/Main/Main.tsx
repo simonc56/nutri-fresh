@@ -11,7 +11,7 @@ export default function Main() {
 
   useEffect(() => {
     initUserSession(username, resetMenu, loadMenu, setBasket, setIsError);
-  }, [username]);
+  }, [username, loadMenu, setBasket, setIsError, resetMenu]);
 
   return (
     <main className="main">

@@ -26,7 +26,7 @@ export default function Form({ onSubmit, children }: ProductFormProps) {
       setFirstRender(false);
       refInputName.current?.focus();
     }
-  }, [selectedTab]);
+  }, [selectedTab, firstRender, refInputName.current?.focus]);
 
   useEffect(() => {
     setInputImageSource(selectedItem.imageSource);

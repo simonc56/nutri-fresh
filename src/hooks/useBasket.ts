@@ -12,7 +12,7 @@ export default function useBasket(username: string) {
       if (previousBasket.some((item) => item.id === id)) {
         // item already in basket, increment quantity
         updatedBasket = previousBasket.map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
         );
       } else {
         // item not in basket, add it

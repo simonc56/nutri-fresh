@@ -29,7 +29,7 @@ export default function AdminTabs() {
       prevTabs.map((tab, i) => ({
         ...tab,
         active: i === index,
-      }))
+      })),
     );
     setIsPanelOpen(true);
     unSelectItem();

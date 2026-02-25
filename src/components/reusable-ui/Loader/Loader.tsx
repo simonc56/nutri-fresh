@@ -1,4 +1,4 @@
-import './Loader.scss';
+import "./Loader.scss";
 
 type LoaderProps = {
   label?: string;

@@ -9,7 +9,7 @@ export const initUserSession = async (
   resetMenu: () => void,
   loadMenu: () => Promise<boolean>,
   setBasket: Dispatch<SetStateAction<BasketItem[]>>,
-  setIsError: Dispatch<SetStateAction<boolean>>
+  setIsError: Dispatch<SetStateAction<boolean>>,
 ) => {
   if (username) {
     try {
