@@ -29,7 +29,7 @@ type OrderContextType = {
   setBasket: Dispatch<SetStateAction<BasketItem[]>>;
   addItemToBasket: (id: number) => void;
   removeItemFromBasket: (id: number) => void;
-  refInputName: React.RefObject<HTMLInputElement>;
+  refInputName: React.RefObject<HTMLInputElement | null>;
   isDisplayed: boolean;
   displayMessage: () => void;
 };

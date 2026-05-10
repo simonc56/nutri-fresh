@@ -2,11 +2,13 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import PrimaryButton from "src/components/reusable-ui/PrimaryButton/PrimaryButton";
 import ProductCard from "src/components/reusable-ui/ProductCard/ProductCard";
 import { useOrderContext } from "src/context/useOrderContext";
+import { useTransitionNodeRef } from "src/hooks/useTransitionNodeRef";
 import "./Menu.scss";
 
 export default function Menu() {
   const { menu, isLoading, isError, removeItemFromMenu, resetMenu, isAdminMode, removeItemFromBasket } =
     useOrderContext();
+  const { getNodeRef } = useTransitionNodeRef<number, HTMLDivElement>();
 
   const onDelete = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
     event.stopPropagation();
@@ -50,20 +52,24 @@ export default function Menu() {
       <div className="menu">
         <h2 className="sr-only">Menu</h2>
         <TransitionGroup component={null}>
-          {menu.map(({ id, imageSource, title, price, isAvailable, isAdvertised }) => (
-            <CSSTransition key={id} timeout={300} classNames="card">
-              <ProductCard
-                key={id}
-                id={id}
-                imageSource={imageSource}
-                title={title}
-                price={price}
-                isAvailable={isAvailable}
-                isAdvertised={isAdvertised}
-                onDelete={(event) => onDelete(event, id)}
-              />
-            </CSSTransition>
-          ))}
+          {menu.map(({ id, imageSource, title, price, isAvailable, isAdvertised }) => {
+            const nodeRef = getNodeRef(id);
+
+            return (
+              <CSSTransition key={id} nodeRef={nodeRef} timeout={300} classNames="card">
+                <ProductCard
+                  ref={nodeRef}
+                  id={id}
+                  imageSource={imageSource}
+                  title={title}
+                  price={price}
+                  isAvailable={isAvailable}
+                  isAdvertised={isAdvertised}
+                  onDelete={(event) => onDelete(event, id)}
+                />
+              </CSSTransition>
+            );
+          })}
         </TransitionGroup>
       </div>
     </div>
