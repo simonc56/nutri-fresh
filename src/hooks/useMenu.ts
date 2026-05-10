@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { dbAddMenuItem, dbRemoveMenuItem, dbUpdateFullMenu, dbUpdateMenuItem } from "src/api/menu";
 import { dbGetUserMenu } from "src/api/user";
 import { MenuItem, startMenu } from "../startData/startMenu";
@@ -55,11 +55,11 @@ export const useMenu = () => {
    * Set/Reset the menu to the default one
    * both locally and in the database
    */
-  const resetMenu = () => {
+  const resetMenu = useCallback(() => {
     setMenu(startMenu.LARGE);
     dbUpdateFullMenu(startMenu.LARGE);
     setIsLoading(false);
-  };
+  }, []);
 
   const updateItem = (item: MenuItem) => {
     setSelectedItem(item);

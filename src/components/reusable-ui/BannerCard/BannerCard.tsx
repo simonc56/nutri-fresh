@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { useOrderContext } from "src/context/useOrderContext";
 import { MenuItem } from "src/startData/startMenu";
@@ -7,7 +8,10 @@ import Sticker from "../Sticker/Sticker";
 import UnavailableTag from "../UnavailableTag/UnavailableTag";
 import "./BannerCard.scss";
 
-export default function BannerCard({ id, imageSource, title, price, quantity, isAvailable, isAdvertised }: MenuItem) {
+const BannerCard = forwardRef<HTMLElement, MenuItem>(function BannerCard(
+  { id, imageSource, title, price, quantity, isAvailable, isAdvertised },
+  ref,
+) {
   const {
     isAdminMode,
     setIsPanelOpen,
@@ -37,6 +41,7 @@ export default function BannerCard({ id, imageSource, title, price, quantity, is
 
   return (
     <article
+      ref={ref}
       className={`banner-card${isAdminMode ? " admin-mode" : ""}${isSelected ? " selected" : ""}`}
       onClick={onClickCard}
     >
@@ -64,4 +69,6 @@ export default function BannerCard({ id, imageSource, title, price, quantity, is
       )}
     </article>
   );
-}
+});
+
+export default BannerCard;

@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { TiDelete } from "react-icons/ti";
 import { useOrderContext } from "src/context/useOrderContext";
 import { formatPrice } from "src/utils/maths";
@@ -16,15 +17,10 @@ type ProductCardProps = {
   onDelete: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-export default function ProductCard({
-  id,
-  imageSource,
-  title,
-  price,
-  isAvailable,
-  isAdvertised,
-  onDelete,
-}: ProductCardProps) {
+const ProductCard = forwardRef<HTMLDivElement, ProductCardProps>(function ProductCard(
+  { id, imageSource, title, price, isAvailable, isAdvertised, onDelete },
+  ref,
+) {
   const { isAdminMode, setIsPanelOpen, selectTab, selectedItem, setSelectedItemById, unSelectItem, addItemToBasket } =
     useOrderContext();
   const isSelected = selectedItem?.id === id;
@@ -47,6 +43,7 @@ export default function ProductCard({
 
   return (
     <div
+      ref={ref}
       className={`product-card${isAdminMode ? " admin-mode" : ""}${isSelected ? " selected" : ""}`}
       onClick={onClickCard}
     >
@@ -76,4 +73,6 @@ export default function ProductCard({
       )}
     </div>
   );
-}
+});
+
+export default ProductCard;
