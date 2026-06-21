@@ -2,8 +2,3 @@ allowBuilds:
   '@firebase/util': true
   '@parcel/watcher': true
   protobufjs: true
-onlyBuiltDependencies:
-  - '@firebase/util'
-  - '@parcel/watcher'
-  - esbuild
-  - protobufjs
