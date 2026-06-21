@@ -38,7 +38,7 @@ export const useMenu = () => {
     dbRemoveMenuItem(id);
   };
 
-  const loadMenu = async () => {
+  const loadMenu = useCallback(async () => {
     setIsLoading(true);
     const menu = await dbGetUserMenu();
     if (menu) {
@@ -49,7 +49,7 @@ export const useMenu = () => {
       setIsLoading(false);
       return false;
     }
-  };
+  }, []);
 
   /**
    * Set/Reset the menu to the default one
