@@ -1,6 +1,6 @@
 type PrimaryButtonProps = {
   label: string;
-  Icon?: JSX.Element;
+  Icon?: React.ReactElement;
   className?: string;
   clickAllowed?: boolean;
 };

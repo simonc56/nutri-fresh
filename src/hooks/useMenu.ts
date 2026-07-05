@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { dbAddMenuItem, dbRemoveMenuItem, dbUpdateFullMenu, dbUpdateMenuItem } from "src/api/menu";
 import { dbGetUserMenu } from "src/api/user";
 import { MenuItem, startMenu } from "../startData/startMenu";
@@ -38,7 +38,7 @@ export const useMenu = () => {
     dbRemoveMenuItem(id);
   };
 
-  const loadMenu = async () => {
+  const loadMenu = useCallback(async () => {
     setIsLoading(true);
     const menu = await dbGetUserMenu();
     if (menu) {
@@ -49,17 +49,17 @@ export const useMenu = () => {
       setIsLoading(false);
       return false;
     }
-  };
+  }, []);
 
   /**
    * Set/Reset the menu to the default one
    * both locally and in the database
    */
-  const resetMenu = () => {
+  const resetMenu = useCallback(() => {
     setMenu(startMenu.LARGE);
     dbUpdateFullMenu(startMenu.LARGE);
     setIsLoading(false);
-  };
+  }, []);
 
   const updateItem = (item: MenuItem) => {
     setSelectedItem(item);

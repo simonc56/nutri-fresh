@@ -5,7 +5,7 @@ import "./BooleanInput.scss";
 
 type InputProps = {
   labels: string[];
-  Icon: JSX.Element;
+  Icon: React.ReactElement;
 };
 
 const BooleanInput = forwardRef(

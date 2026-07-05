@@ -4,10 +4,10 @@ import "./AdminTabs.scss";
 
 export type TabProps = {
   index?: string;
-  icon: JSX.Element;
+  icon: React.ReactElement;
   name?: string | undefined;
   active?: boolean;
-  content?: JSX.Element;
+  content?: React.ReactElement;
   onClick?: () => void;
 };
 

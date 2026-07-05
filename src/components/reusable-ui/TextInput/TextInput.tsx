@@ -4,7 +4,7 @@ import "./TextInput.scss";
 
 type InputProps = {
   value: string;
-  Icon: JSX.Element;
+  Icon: React.ReactElement;
   className?: string;
 };
 

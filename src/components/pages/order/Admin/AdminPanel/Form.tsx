@@ -12,7 +12,7 @@ import "./Form.scss";
 
 type ProductFormProps = {
   onSubmit?: (event: FormEvent<HTMLFormElement>) => void;
-  children?: JSX.Element;
+  children?: React.ReactNode;
 };
 
 export default function Form({ onSubmit, children }: ProductFormProps) {
